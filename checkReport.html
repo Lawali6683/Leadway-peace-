@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LPFHRA - Check Reports</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/lwddsvh.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0D1B2A, #1B263B, #415A77);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(13, 27, 42, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        h1, h2 {
+            text-align: center;
+            font-weight: 600;
+            color: #E0E1DD;
+        }
+
+        .member-info {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: rgba(65, 90, 119, 0.3);
+            border-radius: 10px;
+        }
+        
+        .report-section {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .report-card {
+            background-color: #1B263B;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .report-header {
+            border-bottom: 2px solid #415A77;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .report-header h3 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .report-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .report-details p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .report-details span {
+            font-weight: 300;
+            color: #B2B2B2;
+        }
+        
+        .report-text {
+            border-left: 3px solid #778DA9;
+            padding-left: 15px;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .report-media-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .media-item {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            border: 2px solid #778DA9;
+        }
+        
+        .media-item img, .media-item video, .media-item audio {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .media-item video {
+            background-color: #000;
+        }
+        
+        .media-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            padding: 10px;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .report-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .report-actions button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            color: #E0E1DD;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn-view-complete { background-color: #28a745; }
+        .btn-delete { background-color: #dc3545; }
+        .btn-pdf { background-color: #007bff; }
+        .btn-print { background-color: #6c757d; }
+        
+        .btn-view-complete:hover { background-color: #218838; }
+        .btn-delete:hover { background-color: #c82333; }
+        .btn-pdf:hover { background-color: #0056b3; }
+        .btn-print:hover { background-color: #5a6268; }
+        
+        /* Modal for fullscreen media */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .modal-download-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .push-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+            animation: slideIn 0.5s forwards;
+        }
+
+        .push-notification.error {
+            background-color: #F44336;
+        }
+
+        @keyframes slideIn {
+            from { right: -300px; opacity: 0; }
+            to { right: 20px; opacity: 1; }
+        }
+        
+        /* PDF and Print Styles */
+        .report-paper {
+            display: none; /* Hide by default, show for printing/PDF */
+        }
+        
+        @media print {
+            body {
+                color: #000;
+                background: none;
+            }
+            .container, .modal, .push-notification, .report-actions, .member-info, .logo {
+                display: none !important;
+            }
+            .report-paper {
+                display: block;
+                width: 210mm;
+                min-height: 297mm;
+                margin: auto;
+                padding: 20mm;
+                background: #fff;
+                box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                font-family: 'Times New Roman', serif;
+                font-size: 12pt;
+            }
+            .paper-header {
+                text-align: center;
+                border-bottom: 2px solid #000;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+            .paper-header img {
+                max-width: 100px;
+            }
+            .paper-header h2 {
+                color: #000;
+            }
+            .paper-section {
+                margin-bottom: 15px;
+            }
+            .paper-section h3 {
+                border-bottom: 1px solid #000;
+                padding-bottom: 5px;
+            }
+            .paper-details p {
+                margin: 0;
+            }
+            .paper-images {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 15px;
+            }
+            .paper-images img {
+                max-width: 150px;
+                height: auto;
+                border: 1px solid #ccc;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .report-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">
+            <img src="https://i.imgur.com/lwddsvh.png" alt="LPFHRA Logo">
+        </div>
+        <h1>Check Reports</h1>
+        
+        <div class="member-info" id="memberInfo">
+            <p><i class="fas fa-user-circle"></i> Loading...</p>
+        </div>
+        
+        <div class="report-section" id="reportSection">
+            <p style="text-align: center;">Loading reports...</p>
+        </div>
+    </div>
+
+    <div id="mediaModal" class="modal">
+        <span class="close-btn">&times;</span>
+        <div class="modal-content-wrapper" style="text-align: center;">
+            <img id="modalImage" class="modal-content" style="display: none;">
+            <video id="modalVideo" class="modal-content" style="display: none;" controls></video>
+            <button id="modalDownloadBtn" class="modal-download-btn"><i class="fas fa-download"></i> Download</button>
+        </div>
+    </div>
+    
+    <div id="pushNotification" class="push-notification"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
+    
+    <script type="module">
+    import { getDatabase, ref, onValue, get, remove, update } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+    import { app } from './firebase.js';
+
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+    
+    const memberInfo = document.getElementById('memberInfo');
+    const reportSection = document.getElementById('reportSection');
+    const pushNotification = document.getElementById('pushNotification');
+    const mediaModal = document.getElementById('mediaModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalVideo = document.getElementById('modalVideo');
+    const modalDownloadBtn = document.getElementById('modalDownloadBtn');
+    const closeBtn = document.querySelector('.close-btn');
+
+    let currentUserData = null;
+
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            try {
+                const userRef = ref(db, 'Users/' + user.uid);
+                const snapshot = await get(userRef);
+                const userData = snapshot.val();
+
+                if (userData) {
+                    currentUserData = userData;
+                    displayMemberInfo(userData);
+                    fetchReports(userData);
+                } else {
+                    memberInfo.innerHTML = '<p><i class="fas fa-exclamation-circle"></i> Bayanan ka bai samuwa. Da fatan za a sake shiga.</p>';
+                    signOut(auth);
+                }
+            } catch (error) {
+                console.error("Kuskure wajen karanta bayanan mai amfani:", error);
+                memberInfo.innerHTML = '<p><i class="fas fa-exclamation-circle"></i> Kuskure ya faru wajen karanta bayanan ka. Da fatan za a sake gwadawa.</p>';
+            }
+        } else {
+            window.location.href = 'login.html';
+        }
+    });
+
+    function displayMemberInfo(data) {
+        memberInfo.innerHTML = `
+            <p><i class="fas fa-user-circle"></i> ${data.fullName} (${data.position})</p>
+            <p><i class="fas fa-map-marker-alt"></i> ${data.country}, ${data.state}, ${data.lga}</p>
+            <p>You are viewing reports close to you. Thank you for your service!</p>
+        `;
+    }
+    
+    function showNotification(message, type = 'success') {
+        pushNotification.textContent = message;
+        pushNotification.className = `push-notification ${type}`;
+        pushNotification.style.display = 'block';
+        setTimeout(() => {
+            pushNotification.style.display = 'none';
+        }, 5000);
+    }
+    
+    function displayReport(report, key) {
+        const reportCard = document.createElement('div');
+        reportCard.className = 'report-card';
+        
+        const isCompletedByMe = report.completedBy && report.completedBy[auth.currentUser.uid];
+        const isCompleted = report.isComplete || isCompletedByMe;
+    
+        if (isCompleted) {
+            if (!isCompletedByMe) {
+                return;
+            }
+        }
+    
+        const headerHtml = `
+            <div class="report-header">
+                <h3>Report #${key.substring(0, 8)}</h3>
+                <div>
+                    ${isCompleted ? '<span style="color: #28a745; font-weight: bold;"><i class="fas fa-check-circle"></i> Completed</span>' : ''}
+                </div>
+            </div>
+        `;
+        
+        const detailsHtml = `
+            <div class="report-details">
+                <p><strong><i class="fas fa-user"></i> Reported By:</strong> <span>${report.fullName}</span></p>
+                <p><strong><i class="fas fa-phone"></i> Phone:</strong> <span>${report.phoneNumber}</span></p>
+                <p><strong><i class="fas fa-venus-mars"></i> Gender:</strong> <span>${report.gender}</span></p>
+                <p><strong><i class="fas fa-calendar-alt"></i> Date of Incident:</strong> <span>${report.reportDate}</span></p>
+                <p><strong><i class="fas fa-map-marker-alt"></i> Location:</strong> <span>${report.country}, ${report.state}, ${report.lga}</span></p>
+                <p><strong><i class="fas fa-clock"></i> Report Time:</strong> <span>${new Date(report.reportTime).toLocaleString()}</span></p>
+            </div>
+            <div class="report-text">
+                <p><strong>Report Message:</strong></p>
+                <p>${report.reportText}</p>
+            </div>
+        `;
+        
+        let mediaHtml = '';
+        if (report.imageLinks && report.imageLinks.length > 0) {
+            mediaHtml += '<h4><i class="fas fa-images"></i> Images</h4><div class="report-media-gallery">';
+            report.imageLinks.forEach(link => {
+                mediaHtml += `<div class="media-item" data-type="image" data-url="${link}"><img src="${link}" alt="Evidence"><div class="media-icon"><i class="fas fa-search-plus"></i></div></div>`;
+            });
+            mediaHtml += '</div>';
+        }
+        if (report.videoLinks && report.videoLinks.length > 0) {
+            mediaHtml += '<h4><i class="fas fa-video"></i> Videos</h4><div class="report-media-gallery">';
+            report.videoLinks.forEach(link => {
+                mediaHtml += `<div class="media-item" data-type="video" data-url="${link}"><video src="${link}"></video><div class="media-icon"><i class="fas fa-play"></i></div></div>`;
+            });
+            mediaHtml += '</div>';
+        }
+        if (report.audioLinks && report.audioLinks.length > 0) {
+            mediaHtml += '<h4><i class="fas fa-headphones"></i> Audio</h4><div class="report-media-gallery">';
+            report.audioLinks.forEach(link => {
+                mediaHtml += `<div class="media-item" data-type="audio" data-url="${link}"><audio src="${link}"></audio><div class="media-icon"><i class="fas fa-volume-up"></i></div></div>`;
+            });
+            mediaHtml += '</div>';
+        }
+
+        const actionsHtml = `
+            <div class="report-actions">
+                <button class="btn-view-complete" data-key="${key}"><i class="fas fa-check"></i> View Complete</button>
+                <button class="btn-delete" data-key="${key}"><i class="fas fa-trash-alt"></i> Delete</button>
+                <button class="btn-pdf" data-key="${key}"><i class="fas fa-file-pdf"></i> Save to PDF</button>
+                <button class="btn-print" data-key="${key}"><i class="fas fa-print"></i> Print</button>
+            </div>
+        `;
+        
+        reportCard.innerHTML = headerHtml + detailsHtml + mediaHtml + actionsHtml;
+        reportSection.appendChild(reportCard);
+    }
+    
+    function fetchReports(userData) {
+        const reportsRef = ref(db, 'Reports');
+        
+        onValue(reportsRef, (snapshot) => {
+            const reportsData = snapshot.val();
+            reportSection.innerHTML = '';
+            
+            let foundReport = false;
+            
+            if (reportsData) {
+                const allReports = Object.keys(reportsData).map(key => ({ key, ...reportsData[key] }));
+                const localReports = allReports.filter(report =>
+                    report.country === userData.country && report.state === userData.state
+                );
+                
+                const remoteReports = allReports.filter(report =>
+                    report.country !== userData.country || report.state !== userData.state
+                );
+                
+                if (localReports.length > 0) {
+                    localReports.forEach(report => {
+                        displayReport(report, report.key);
+                        foundReport = true;
+                    });
+                }
+                
+                if (!foundReport && remoteReports.length > 0) {
+                    reportSection.innerHTML = '<p style="text-align: center; color: #ffc107;"><i class="fas fa-info-circle"></i> No reports found in your area. Showing reports from other regions.</p>';
+                    remoteReports.forEach(report => {
+                        displayReport(report, report.key);
+                        foundReport = true;
+                    });
+                }
+                
+                if (!foundReport) {
+                    reportSection.innerHTML = '<p style="text-align: center;"><i class="fas fa-box-open"></i> No new reports available. Thank you for your work!</p>';
+                }
+            } else {
+                reportSection.innerHTML = '<p style="text-align: center;"><i class="fas fa-box-open"></i> No reports available.</p>';
+            }
+        });
+    }
+
+    reportSection.addEventListener('click', async (e) => {
+        if (e.target.closest('.btn-view-complete')) {
+            const button = e.target.closest('button');
+            const reportKey = button.dataset.key;
+            const reportRef = ref(db, `Reports/${reportKey}`);
+            
+            try {
+                await update(reportRef, { isComplete: true, completedBy: { [auth.currentUser.uid]: true } });
+                showNotification("Report marked as complete!", "success");
+            } catch (error) {
+                console.error("Error updating report:", error);
+                showNotification("Failed to mark report as complete.", "error");
+            }
+        }
+        
+        if (e.target.closest('.btn-delete')) {
+            if (confirm("Are you sure you want to delete this report? This action cannot be undone.")) {
+                const button = e.target.closest('button');
+                const reportKey = button.dataset.key;
+                const reportRef = ref(db, `Reports/${reportKey}`);
+                
+                try {
+                    await remove(reportRef);
+                    showNotification("Report deleted successfully!", "success");
+                } catch (error) {
+                    console.error("Error deleting report:", error);
+                    showNotification("Failed to delete report.", "error");
+                }
+            }
+        }
+        
+        if (e.target.closest('.btn-pdf')) {
+            const button = e.target.closest('button');
+            const reportKey = button.dataset.key;
+            saveToPdf(reportKey);
+        }
+        
+        if (e.target.closest('.btn-print')) {
+            const button = e.target.closest('button');
+            const reportKey = button.dataset.key;
+            printReport(reportKey);
+        }
+    });
+
+    reportSection.addEventListener('click', (e) => {
+        const mediaItem = e.target.closest('.media-item');
+        if (mediaItem) {
+            const type = mediaItem.dataset.type;
+            const url = mediaItem.dataset.url;
+            
+            if (type === 'image') {
+                modalImage.src = url;
+                modalVideo.style.display = 'none';
+                modalImage.style.display = 'block';
+                modalDownloadBtn.style.display = 'block';
+                modalDownloadBtn.href = url;
+                modalDownloadBtn.download = `LPFHRA_Report_Image_${Date.now()}.jpg`;
+            } else if (type === 'video') {
+                modalVideo.src = url;
+                modalImage.style.display = 'none';
+                modalVideo.style.display = 'block';
+                modalDownloadBtn.style.display = 'block';
+                modalDownloadBtn.href = url;
+                modalDownloadBtn.download = `LPFHRA_Report_Video_${Date.now()}.mp4`;
+            } else if (type === 'audio') {
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `LPFHRA_Report_Audio_${Date.now()}.mp3`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                showNotification("Audio download started.", "success");
+                return;
+            }
+            mediaModal.style.display = 'block';
+        }
+    });
+
+    closeBtn.onclick = () => {
+        mediaModal.style.display = 'none';
+        modalVideo.pause();
+    };
+    
+    window.onclick = (event) => {
+        if (event.target === mediaModal) {
+            mediaModal.style.display = 'none';
+            modalVideo.pause();
+        }
+    };
+
+    async function createPaperContent(reportKey) {
+        const reportRef = ref(db, `Reports/${reportKey}`);
+        const snapshot = await get(reportRef);
+        const report = snapshot.val();
+
+        if (!report) {
+            showNotification("Report not found.", "error");
+            return null;
+        }
+
+        const paperDiv = document.createElement('div');
+        paperDiv.className = 'report-paper';
+
+        let imageHtml = '';
+        if (report.imageLinks && report.imageLinks.length > 0) {
+            imageHtml = '<div class="paper-images">';
+            report.imageLinks.forEach(link => {
+                imageHtml += `<img src="${link}" alt="Report Image">`;
+            });
+            imageHtml += '</div>';
+        }
+
+        paperDiv.innerHTML = `
+            <style>
+                .report-paper { font-family: Arial, sans-serif; padding: 20px; color: #333; }
+                .report-paper h2, h3 { color: #004d40; }
+                .report-paper .paper-header { text-align: center; margin-bottom: 20px; }
+                .report-paper .paper-header img { max-width: 150px; }
+                .report-paper .paper-section { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; }
+                .report-paper .paper-section h3 { margin-top: 0; }
+                .report-paper .paper-details p { margin: 5px 0; }
+                .report-paper .paper-images { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px; }
+                .report-paper .paper-images img { max-width: 100%; height: auto; border: 1px solid #ccc; padding: 5px; }
+            </style>
+            <div class="paper-header">
+                <img src="https://i.imgur.com/lwddsvh.png" alt="LPFHRA Logo">
+                <h2>Leadway Peace Functions & Human Rights Aids</h2>
+                <h3>Report Paper</h3>
+            </div>
+            <div class="paper-section">
+                <h3>Report Details</h3>
+                <div class="paper-details">
+                    <p><strong>Report ID:</strong> ${reportKey}</p>
+                    <p><strong>Reported By:</strong> ${report.fullName}</p>
+                    <p><strong>Location:</strong> ${report.country}, ${report.state}, ${report.lga}</p>
+                    <p><strong>Date of Incident:</strong> ${report.reportDate}</p>
+                    <p><strong>Report Time:</strong> ${new Date(report.reportTime).toLocaleString()}</p>
+                </div>
+            </div>
+            <div class="paper-section">
+                <h3>Report Message</h3>
+                <p>${report.reportText}</p>
+            </div>
+            ${imageHtml}
+        `;
+        return paperDiv;
+    }
+
+    async function saveToPdf(reportKey) {
+        showNotification("Generating PDF...", "info");
+        const content = await createPaperContent(reportKey);
+        if (!content) return;
+        
+        document.body.appendChild(content);
+        const options = {
+            margin: 10,
+            filename: `LPFHRA_Report_${reportKey.substring(0, 8)}.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+        
+        html2pdf().set(options).from(content).save().then(() => {
+            showNotification("PDF saved successfully!", "success");
+            content.remove();
+        });
+    }
+
+    async function printReport(reportKey) {
+        const content = await createPaperContent(reportKey);
+        if (!content) return;
+        
+        document.body.appendChild(content);
+        window.print();
+        content.remove();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "Leadway Peace Functions and Human Rights Aids",
+  "short_name": "LPFHRA",
+  "description": "Providing peace functions and human rights aid.",
+  "lang": "en-US",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0D1B2A",
+  "theme_color": "#FFFFFF",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://i.imgur.com/8f9sU7t.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://i.imgur.com/8f9sU7t.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

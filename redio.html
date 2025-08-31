@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Media | LPFHRA</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/lwddsvh.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        :root {
+            --primary-blue: #415A77;
+            --dark-blue: #0D1B2A;
+            --medium-blue: #1B263B;
+            --light-grey: #E0E1DD;
+            --text-white: #ffffff;
+            --accent-color: #778DA9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--dark-blue), var(--medium-blue), var(--primary-blue));
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            color: var(--text-white);
+            min-height: 100vh;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Container */
+        .coming-soon-container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header */
+        .page-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 80px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .site-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--light-grey);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .site-subtitle {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--accent-color);
+            text-transform: uppercase;
+        }
+
+        /* Coming Soon Section */
+        .coming-soon-section {
+            margin-top: 30px;
+        }
+
+        .coming-soon-section h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #FFC107; /* Yellow for attention */
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .coming-soon-section h3 .icon {
+            font-size: 2.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .coming-soon-section p {
+            font-size: 1.1rem;
+            color: var(--light-grey);
+            margin-bottom: 15px;
+        }
+        
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .feature-item {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-color);
+            transition: transform 0.3s ease;
+            max-width: 350px;
+            text-align: left;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-item h4 .icon {
+            color: var(--light-grey);
+        }
+
+        .feature-item p {
+            font-size: 1rem;
+            margin: 0;
+            color: var(--light-grey);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .coming-soon-container {
+                padding: 20px;
+            }
+
+            .site-title {
+                font-size: 1.8rem;
+            }
+
+            .site-subtitle {
+                font-size: 1rem;
+            }
+            
+            .coming-soon-section h3 {
+                font-size: 1.5rem;
+            }
+            
+            .coming-soon-section p {
+                font-size: 1rem;
+            }
+            
+            .feature-item {
+                padding: 15px;
+            }
+            
+            .feature-item h4 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="coming-soon-container">
+        <header class="page-header">
+            <img src="https://i.imgur.com/lwddsvh.png" alt="LPFHRA Logo" class="logo">
+            <h1 class="site-title">LPFHRA Live Media</h1>
+            <p class="site-subtitle">The Voice of Peace and Justice</p>
+        </header>
+        
+        <main>
+            <section class="coming-soon-section">
+                <h3><i class="fas fa-tools icon"></i> Under Development</h3>
+                <p>
+                    Thank you for your patience! We are currently working on a platform to bring you **Live Radio** and **Live Video** broadcasts.
+                    This new feature is being developed to provide a reliable source for real-time reports on security situations and human rights issues in any country or region.
+                    🙏Haruna Lawali Software Development 🙏
+                </p>
+                
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <h4><i class="fas fa-radio-alt icon"></i> Live Radio Broadcasts</h4>
+                        <p>We will soon offer a 24/7 radio stream where you can listen to our programs and live reports from our members in the field.</p>
+                    </li>
+                    <li class="feature-item">
+                        <h4><i class="fas fa-video icon"></i> Live Video Streams</h4>
+                        <p>Our members will be able to broadcast live videos to share uncensored, firsthand accounts of events as they happen.</p>
+                    </li>
+                    <li class="feature-item">
+                        <h4><i class="fas fa-shield-alt icon"></i> Secure Reporting</h4>
+                        <p>Our platform is being built with a focus on security, ensuring that our correspondents can report safely without risk.</p>
+                    </li>
+                    <li class="feature-item">
+                        <h4><i class="fas fa-chart-line icon"></i> Real-time Analytics</h4>
+                        <p>This technology will enable us to reach a wider audience and provide timely, critical information to those who need it most.</p>
+                    </li>
+                </ul>
+                
+                <p style="margin-top: 30px;">
+                    We apologize for any inconvenience. Please check back soon for our official launch!
+                </p>
+            </section>
+        </main>
+        
+    </div>
+
+</body>
+</html>

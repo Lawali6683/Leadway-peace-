@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About LPFHRA - Leadway Peace Functions & Human Rights Aids</title>
+    <link rel="icon" type="image/png" href="https://i.imgur.com/lwddsvh.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General Styles */
+:root {
+    --primary-blue: #415A77;
+    --dark-blue: #0D1B2A;
+    --medium-blue: #1B263B;
+    --light-grey: #E0E1DD;
+    --text-white: #ffffff;
+    --text-dark: #333;
+    --accent-color: #778DA9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--dark-blue), var(--medium-blue), var(--primary-blue));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: var(--text-white);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* Header */
+.main-header {
+    background: var(--medium-blue);
+    padding: 15px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 100px;
+    height: auto;
+    background: white;
+    border-radius: 50%;
+}
+
+.translate-btn {
+    background-color: var(--primary-blue);
+    color: var(--text-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.translate-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.translate-btn i {
+    font-size: 1.1rem;
+}
+
+/* Main Content */
+.main-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.content-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+#introduction h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--light-grey);
+}
+
+.motto {
+    font-style: italic;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    margin-bottom: 30px;
+}
+
+.hero-image {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.section-heading {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: var(--light-grey);
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-heading::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-blue);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: var(--light-grey);
+}
+
+.program-item {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 5px solid var(--primary-blue);
+    transition: background-color 0.3s ease;
+}
+
+.program-item:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.program-item h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--light-grey);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.program-item h3 .icon {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 50px;
+    font-style: italic;
+    color: var(--accent-color);
+    font-size: 1rem;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--dark-blue);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--medium-blue);
+}
+
+.main-footer p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Translation Modal */
+.site1-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.site1-modal-content {
+    background-color: var(--medium-blue);
+    margin: auto;
+    padding: 30px;
+    border: 1px solid var(--primary-blue);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    position: relative;
+    animation: fadeInScale 0.3s ease-out;
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.site1-modal-close {
+    color: var(--light-grey);
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.site1-modal-close:hover,
+.site1-modal-close:focus {
+    color: var(--accent-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.site4-translate-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--light-grey);
+    text-align: center;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.site4-translate-title i {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.site4-translate-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.site4-translate-list li button {
+    background-color: var(--primary-blue);
+    color: var(--text-white);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    min-width: 100px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.site4-translate-list li button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* Loading Overlay for Translation */
+.loading-overlay {
+    display: none; /* Hidden by default, only shown when translating */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10001;
+    flex-direction: column; /* Changed to column for text below spinner */
+    justify-content: center;
+    align-items: center;
+    color: var(--text-white);
+    font-size: 1.2rem;
+}
+
+.loading-overlay .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid var(--light-grey);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px; /* Added margin for text */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .main-header {
+        padding: 15px;
+    }
+    .translate-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    #introduction h1 {
+        font-size: 2rem;
+    }
+    .section-heading {
+        font-size: 1.7rem;
+    }
+    .program-item h3 {
+        font-size: 1.1rem;
+    }
+    p {
+        font-size: 0.95rem;
+    }
+    .content-section {
+        padding: 20px;
+    }
+    .signature {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        max-width: 80px;
+    }
+    #introduction h1 {
+        font-size: 1.8rem;
+    }
+    .section-heading {
+        font-size: 1.5rem;
+    }
+    .site1-modal-content {
+        padding: 20px;
+    }
+    .site4-translate-list li button {
+        font-size: 0.85rem;
+        min-width: 80px;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://i.imgur.com/lwddsvh.png" alt="LPFHRA Logo">
+            </div>
+            <nav>
+                <!-- Add navigation links here if you have a full navigation bar -->
+            </nav>
+            <button id="translateButton" class="translate-btn">
+                <i class="fas fa-language"></i> Translate
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content container">
+        <section id="introduction" class="content-section">
+            <h1 data-key="intro_title">LPFHRA Members,</h1>
+            <p class="motto" data-key="intro_motto">
+                I firmly believe that the core of peace lies in ensuring justice for everyone and ending the mistreatment of children while empowering them. This is a commitment to building a better future.
+            </p>
+            <div class="hero-image">
+                <img src="https://i.imgur.com/2qXwtZr.png" alt="LPFHRA Team Working Together">
+                <center><strong>Haruna Lawali (LPFHRA Software Development)</strong></center>
+            </div>
+        </section>
+
+        <section id="about-us" class="content-section">
+            <h2 class="section-heading" data-key="about_us_title">About Leadway Peace Functions and Human Rights Aids (LPFHRA)</h2>
+            <p data-key="about_us_p1">
+                Leadway Peace Functions and Human Rights Aids (LPFHRA) is a non-governmental organization established to serve humanity. Our main objective is to promote peace, ensure justice, and protect human rights in every corner of the world. We were not founded for any single country or region but for all communities globally.
+            </p>
+            <p data-key="about_us_p2">
+                We work diligently to ensure that every individual has the opportunity to live with dignity, without facing oppression, discrimination, or injustice. We believe that peace and justice are not privileges for the strong, but a right for every human being.
+            </p>
+        </section>
+
+        <section id="objectives-programs" class="content-section">
+            <h2 class="section-heading" data-key="objectives_title">Our Objectives and Programs</h2>
+            <p data-key="objectives_p1">LPFHRA's programs are extensive and cover various areas to achieve our goals. We work hard to:</p>
+            
+            <article class="program-item">
+                <h3 data-key="program1_title"><i class="fas fa-handshake icon"></i> Promote Peace and Unity:</h3>
+                <p data-key="program1_p1">We conduct training and awareness workshops in cities and villages to teach peaceful conflict resolution methods. We bring together community leaders, elders, youth, and women to create strategies that ensure peace. For example, we can organize a meeting where there is a conflict between two ethnic groups and invite their leaders to sit at a single table to discuss and find a solution without using force.</p>
+            </article>
+            
+            <article class="program-item">
+                <h3 data-key="program2_title"><i class="fas fa-shield-alt icon"></i> Protect Human Rights and Prevent Oppression:</h3>
+                <p data-key="program2_p1">We fight against all forms of oppression, abuse, and discrimination. We focus particularly on protecting the rights of children, women, and other vulnerable people. For example, if we receive a report that a girl has been abused, our organization will intervene with lawyers to ensure she receives justice and that the perpetrator is punished. Similarly, we fight against any form of child labor and support children in returning to school.</p>
+            </article>
+            
+            <article class="program-item">
+                <h3 data-key="program3_title"><i class="fas fa-lightbulb icon"></i> Improve Education and Awareness:</h3>
+                <p data-key="program3_p1">We conduct workshops and awareness campaigns on radio, television, and social media to educate the public about their rights and the importance of peace. We provide important information on the rights of women and children, and how to build good upbringing within the family. We have expert teachers and consultants who provide knowledge on modern strategies to improve the lives of the community.</p>
+            </article>
+            
+            <article class="program-item">
+                <h3 data-key="program4_title"><i class="fas fa-gavel icon"></i> Ensure Justice and Adherence to Law:</h3>
+                <p data-key="program4_p1">We work with legal officials, such as lawyers, judges, and security agents to ensure law and order are followed. We monitor any case of injustice and contribute to the courts by providing truthful evidence. If a poor person says they have been abused and cannot afford a lawyer, LPFHRA will advise and support them to get justice.</p>
+            </article>
+        </section>
+
+        <section id="workflow-technology" class="content-section">
+            <h2 class="section-heading" data-key="workflow_title">Our Workflow and Modern Technology</h2>
+            <p data-key="workflow_p1">LPFHRA uses modern technologies to achieve our goals quickly and efficiently.</p>
+            
+            <article class="program-item">
+                <h3 data-key="tech1_title"><i class="fas fa-globe-americas icon"></i> Modern Communication Channels:</h3>
+                <p data-key="tech1_p1">We use websites, social media, and mobile apps to spread our message, educate people, and receive reports. Through our online radio station, we broadcast our programs to communities worldwide.</p>
+            </article>
+            
+            <article class="program-item">
+                <h3 data-key="tech2_title"><i class="fas fa-search icon"></i> Analysis and Research:</h3>
+                <p data-key="tech2_p1">We have expert researchers who analyze community problems and research how to bring about change. We conduct research on human behavior and the strategies to address them to provide effective working methods.</p>
+            </article>
+            
+            <article class="program-item">
+                <h3 data-key="tech3_title"><i class="fas fa-file-alt icon"></i> Reporting System:</h3>
+                <p data-key="tech3_p1">We have a special system on our website where anyone can report or file a complaint about oppression or abuse they have faced or witnessed. Evidence can be sent to us via video, audio, or photo. This system gives everyone the opportunity to be a monitor and contributor to justice.</p>
+            </article>
+        </section>
+
+        <section id="join-us" class="content-section">
+            <h2 class="section-heading" data-key="join_us_title">How to Join Us</h2>
+            <p data-key="join_us_p1">LPFHRA welcomes all honest, dedicated, and contributing people to our community.</p>
+            
+            <article class="program-item">
+                <h3 data-key="member1_title"><i class="fas fa-user-plus icon"></i> How to Become a Member:</h3>
+                <p data-key="member1_p1">To become a member of LPFHRA, or to establish a branch in your country or town, the first step is to contact the LPFHRA leaders near you. After that, you must complete the LPFHRA online Course. This course will teach you the organization's mission, peace strategies, and how to become a true representative. We need dedicated people who will work hard and be self-reliant.</p>
+            </article>
+            
+            <article class="program-item">
+                <h3 data-key="member2_title"><i class="fas fa-handshake-angle icon"></i> Partnerships:</h3>
+                <p data-key="member2_p1">We work with any organization or individual who desires community development. This includes lawyer associations, human rights organizations, business groups, business people, leaders, students, employees, and even ordinary citizens. Everyone can contribute to building a just world.</p>
+            </article>
+            
+            <article class="program-item">
+                <h3 data-key="member3_title"><i class="fas fa-file-signature icon"></i> Reporting and Complaint System:</h3>
+                <p data-key="member3_p1">We have a system where anyone can file a complaint or report. If you see someone being oppressed, you can fill out a form on our website with a photo, video, or audio. LPFHRA members near you will receive this complaint and help until justice is served.</p>
+            </article>
+        </section>
+
+        <section id="special-principles" class="content-section">
+            <h2 class="section-heading" data-key="principles_title">Our Special Principles</h2>
+            <p data-key="principles_p1">LPFHRA does not tolerate abuse, discrimination, or differences based on region, religion, or ethnicity. We respect all people equally, and we adhere to national and international laws. We believe that every community is one, and everyone has the right to justice regardless of any differences.</p>
+        </section>
+
+        <section id="special-group" class="content-section">
+            <h2 class="section-heading" data-key="group_title">Special Group</h2>
+            <p data-key="group_p1">Only LPFHRA members who have been granted permission and a work certificate are authorized to disseminate information and reports on the organization's activities. This ensures that every message disseminated by us is reliable and authentic, as everyone knows that the information comes from the source.</p>
+            <p data-key="group_p2">We believe that through partnership and hard work, we can build a peaceful society where everyone can be proud to be a citizen with dignity and rights.</p>
+        </section>
+        
+        <div class="signature">
+            <p data-key="signature_name">Haruna Lawali, Software Development</p>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy;  LPFHRA. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Translation Modal -->
+    <div id="site4-translate-modal" class="site1-modal">
+        <div class="site1-modal-content">
+            <button class="site1-modal-close"><i class="fa-solid fa-times"></i></button>
+            <div class="site4-translate-title"><i class="fa-solid fa-language"></i> Translate</div>
+            <ul class="site4-translate-list">
+                <li><button data-lang="en">English</button></li>
+                <li><button data-lang="ha">Hausa</button></li>
+                <li><button data-lang="fr">French</button></li>
+                <li><button data-lang="yo">Yoruba</button></li>
+                <li><button data-lang="ar">Arabic</button></li>
+                <li><button data-lang="hi">Hindi</button></li>
+                <li><button data-lang="bn">Bangla</button></li>
+                <li><button data-lang="es">Spanish</button></li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Loading Overlay for Translation -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Translating content...</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const translateButton = document.getElementById('translateButton');
+    const translateModal = document.getElementById('site4-translate-modal');
+    const modalCloseButton = document.querySelector('.site1-modal-close');
+    const translateLanguageList = document.querySelector('.site4-translate-list');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+
+    // Make sure to replace this with your actual OpenRouter API Key
+    const openRouterApiKey = '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';
+    const translationCache = {}; // Cache for current session translations
+
+    // --- Translation Logic ---
+
+    // Function to get all translatable elements and their original text
+    function getTranslatableContent() {
+        const contentElements = document.querySelectorAll('[data-key]');
+        const contentToTranslate = {};
+        contentElements.forEach(el => {
+            const key = el.dataset.key;
+            // Store original text in a data attribute if not already there
+            if (!el.dataset.originalText) {
+                el.dataset.originalText = el.textContent.trim();
+            }
+            contentToTranslate[key] = el.dataset.originalText;
+        });
+        return contentToTranslate;
+    }
+
+    // Function to apply translated content to the DOM
+    function applyTranslationToDOM(translatedContent) {
+        for (const key in translatedContent) {
+            const el = document.querySelector(`[data-key="${key}"]`);
+            if (el) {
+                el.textContent = translatedContent[key];
+            }
+        }
+    }
+
+    // Function to translate text using OpenRouter API
+    async function translateText(text, targetLanguage) {
+        if (!text) return "";
+        if (targetLanguage === 'en') { // No translation needed for English
+            return text;
+        }
+
+        const cacheKey = `${text}-${targetLanguage}`;
+        if (translationCache[cacheKey]) {
+            return translationCache[cacheKey];
+        }
+
+        try {
+            const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${openRouterApiKey}`,
+                    'HTTP-Referer': 'https://lpfhra.org', // Replace with your actual site URL
+                    'X-Title': 'LPFHRA About Page',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    model: 'openai/gpt-4o-mini', // You can choose other models if preferred
+                    messages: [
+                        {
+                            role: 'system',
+                            content: `You are a professional translator. Translate the following text into ${targetLanguage}. Maintain the original formatting, including line breaks and gaps. Do not add any extra explanations or conversational text. Just the translation.`
+                        },
+                        {
+                            role: 'user',
+                            content: text,
+                        },
+                    ],
+                    temperature: 0.1, // Keep translation consistent
+                }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Translation API error:', errorData);
+                throw new Error(`Translation failed: ${errorData.message || response.statusText}`);
+            }
+
+            const data = await response.json();
+            const translated = data.choices[0]?.message?.content?.trim();
+            
+            if (translated) {
+                translationCache[cacheKey] = translated; // Store in session cache
+                return translated;
+            } else {
+                throw new Error('No translation content received.');
+            }
+        } catch (error) {
+            console.error('Error during translation:', error);
+            return null; // Return null or original text on error
+        }
+    }
+
+    // Function to show/hide loading overlay
+    function showLoadingOverlay() {
+        loadingOverlay.style.display = 'flex';
+    }
+
+    function hideLoadingOverlay() {
+        loadingOverlay.style.display = 'none';
+    }
+
+    // --- Modal Control ---
+    translateButton.addEventListener('click', () => {
+        translateModal.style.display = 'flex'; // Show modal
+    });
+
+    modalCloseButton.addEventListener('click', () => {
+        translateModal.style.display = 'none'; // Hide modal
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === translateModal) {
+            translateModal.style.display = 'none'; // Click outside modal to close
+        }
+    });
+
+    // --- Language Selection and Translation Trigger ---
+    translateLanguageList.addEventListener('click', async (event) => {
+        const button = event.target.closest('button[data-lang]');
+        if (button) {
+            const targetLanguage = button.dataset.lang;
+            translateModal.style.display = 'none'; // Hide modal immediately
+            showLoadingOverlay();
+
+            const originalContentMap = getTranslatableContent();
+            const translatedContentMap = {};
+            let translationFailed = false;
+
+            for (const key in originalContentMap) {
+                const originalText = originalContentMap[key];
+                const translatedText = await translateText(originalText, targetLanguage);
+                if (translatedText === null) {
+                    translationFailed = true;
+                    console.warn(`Failed to translate key: ${key}. Using original text.`);
+                    translatedContentMap[key] = originalText; // Use original if translation fails
+                } else {
+                    translatedContentMap[key] = translatedText;
+                }
+            }
+
+            hideLoadingOverlay();
+
+            if (translationFailed) {
+                alert('Some content could not be translated. Please check your network or try a different language.');
+            } else {
+                // Store translated content in localStorage
+                localStorage.setItem('lpfhra_translated_lang', targetLanguage);
+                localStorage.setItem('lpfhra_translated_content', JSON.stringify(translatedContentMap));
+                applyTranslationToDOM(translatedContentMap);
+                alert(`Content successfully translated to ${targetLanguage.toUpperCase()}!`);
+            }
+        }
+    });
+
+    // --- On Page Load: Check LocalStorage for Saved Translation ---
+    (async function loadSavedTranslation() {
+        const savedLang = localStorage.getItem('lpfhra_translated_lang');
+        const savedContent = localStorage.getItem('lpfhra_translated_content');
+
+        // Always initialize original content in data-original-text on load
+        getTranslatableContent(); 
+
+        if (savedLang && savedContent) {
+            try {
+                const translatedContentMap = JSON.parse(savedContent);
+                applyTranslationToDOM(translatedContentMap);
+                // alert(`Content loaded in ${savedLang.toUpperCase()}.`); // Optional: notify user
+            } catch (e) {
+                console.error("Error parsing saved translation from localStorage:", e);
+                localStorage.removeItem('lpfhra_translated_lang');
+                localStorage.removeItem('lpfhra_translated_content');
+                // No need to call getTranslatableContent() again, it was called at the start
+            }
+        }
+    })();
+});
+    </script>
+</body>
+</html>

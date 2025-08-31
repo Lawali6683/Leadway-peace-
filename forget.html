@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LPFHRA - Forgot Password</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Using the shared style.css for consistency -->
+    <style>
+        
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0D1B2A, #1B263B, #415A77);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #ffffff;
+    min-height: 100vh;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Preloader Styles - Consistent across all pages */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 27, 42, 0.9); /* Dark background with transparency */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    flex-direction: column;
+    color: #ffffff;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-content {
+    text-align: center;
+}
+
+.preloader-content img {
+    width: 100px;
+    height: 100px;
+    animation: pulse 2s infinite;
+    border-radius: 50%;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.25), 
+                0 0 50px rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.preloader-content p {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+/* General Container & Header Styles - Consistent across all pages */
+.container {
+    background: none; /* Removed background to show body gradient */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: none; /* Removed shadow */
+    width: 100%;
+    max-width: 500px; /* Adjusted max-width for smaller login/forgot forms */
+    box-sizing: border-box;
+    backdrop-filter: none; /* Removed backdrop-filter */
+    -webkit-backdrop-filter: none;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+header h1 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    color: #E0FBFC;
+}
+
+header p {
+    font-size: 1.1em;
+    color: #BDD2F0;
+}
+
+/* Form Styles - Consistent across all pages */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-section {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.form-section h2 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    color: #E0FBFC;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #BDD2F0;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"],
+.form-group select {
+    width: 100%; /* Ensures consistent width */
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1em;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    box-sizing: border-box; /* Crucial for consistent sizing with padding */
+}
+
+.form-group input::placeholder,
+.form-group select option {
+    color: #cccccc;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #72E0A4;
+    background: rgba(255, 255, 255, 0.15);
+    outline: none;
+    box-shadow: 0 0 8px rgba(114, 224, 164, 0.4);
+}
+
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23ffffff%22%3E%3Cpath%20d%3D%22M7%2010l5%205%205-5z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    cursor: pointer;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 45px;
+}
+
+.password-wrapper .toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #BDD2F0;
+    font-size: 0.9em;
+}
+
+/* Submit Button - Consistent across all pages */
+.submit-btn {
+    background: #4CAF50;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+.submit-btn:hover {
+    background: #45a049;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.6);
+}
+
+.submit-btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Links - Consistent across all pages */
+.login-prompt, .register-prompt, .forgot-password-link {
+    text-align: center;
+    margin-top: 15px;
+    color: #BDD2F0;
+    font-size: 0.95em;
+}
+
+.login-prompt a, .register-prompt a, .forgot-password-link a {
+    color: #72E0A4;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.login-prompt a:hover, .register-prompt a:hover, .forgot-password-link a:hover {
+    color: #60c995;
+    text-decoration: underline;
+}
+
+/* Notification Styles - Consistent across all pages */
+#notificationContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notification {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: slideInRight 0.5s forwards;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 350px;
+}
+
+.notification.success {
+    border-left: 5px solid #4CAF50;
+}
+
+.notification.error {
+    border-left: 5px solid #FF6B6B;
+}
+
+.notification.info {
+    border-left: 5px solid #2196F3;
+}
+
+.notification .icon {
+    font-size: 1.5em;
+}
+
+.notification .message {
+    flex-grow: 1;
+}
+
+.notification .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.notification .close-btn:hover {
+    color: #ccc;
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Responsive Design - Consistent across all pages */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+        margin: 15px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .form-section h2 {
+        font-size: 1.4em;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    .form-section h2 {
+        font-size: 1.2em;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Loading Screen - Consistent across all pages -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <img src="https://i.imgur.com/lwddsvh.png" alt="Loading Logo" />
+            <div class="spinner"></div>
+            <p>Peace is loading…</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <img src="https://i.imgur.com/lwddsvh.png" alt="LPFHRA Logo" class="logo">
+            <h1>LPFHRA Forgot Password</h1>
+            <p>Enter your registered email address to reset your password.</p>
+        </header>
+
+        <form id="forgotForm">
+            <div class="form-section">
+                <h2>Reset Your Password</h2>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Enter your email address" required autocomplete="email">
+                </div>
+                
+                <button type="submit" class="submit-btn" id="sendResetLinkBtn">Send Reset Link</button>
+                <p class="login-prompt">Remember your password? <a href="login.html">Login here</a></p>
+            </div>
+        </form>
+    </div>
+
+    <div id="notificationContainer"></div>
+
+    <!-- Firebase SDK (Assuming firebase.js exists and initializes app) -->
+    <script type="module">
+        import { app } from './firebase.js'; // Assuming firebase.js exports 'app'
+        import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+        import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
+        
+        // Pass Firebase instances to the main script.js
+        // This makes them accessible to the external script.js file
+        window.firebaseApp = app;
+        window.firebaseAuth = getAuth(app);
+        window.sendPasswordResetEmail = sendPasswordResetEmail;
+        window.firebaseDatabase = getDatabase(app);
+        window.dbRef = ref(window.firebaseDatabase); // Root reference for Realtime Database
+        window.dbGet = get; // Alias for get function
+        window.dbChild = child; // Alias for child function
+        
+        
+        
+        document.addEventListener('DOMContentLoaded', () => {
+    const preloader = document.getElementById('preloader');
+    const forgotForm = document.getElementById('forgotForm');
+    const emailInput = document.getElementById('email');
+    const sendResetLinkBtn = document.getElementById('sendResetLinkBtn');
+
+    // Simulate preloader
+    setTimeout(() => {
+        preloader.classList.add('hidden');
+    }, 1500); // Hide preloader after 1.5 seconds
+
+    // --- Utility Functions ---
+
+    // Function to display notifications (reused from other pages)
+    function showNotification(message, type = 'info', duration = 5000) {
+        const container = document.getElementById('notificationContainer');
+        const notification = document.createElement('div');
+        notification.classList.add('notification', type);
+        
+        let icon = '';
+        if (type === 'success') icon = '<i class="fas fa-check-circle icon"></i>';
+        else if (type === 'error') icon = '<i class="fas fa-times-circle icon"></i>';
+        else icon = '<i class="fas fa-info-circle icon"></i>';
+
+        notification.innerHTML = `
+            ${icon}
+            <span class="message">${message}</span>
+            <button class="close-btn">&times;</button>
+        `;
+        container.appendChild(notification);
+
+        notification.querySelector('.close-btn').addEventListener('click', () => {
+            notification.style.animation = 'fadeOut 0.5s forwards';
+            setTimeout(() => notification.remove(), 500);
+        });
+
+        if (duration) {
+            setTimeout(() => {
+                notification.style.animation = 'fadeOut 0.5s forwards';
+                setTimeout(() => notification.remove(), 500);
+            }, duration);
+        }
+    }
+
+    // --- Firebase Authentication and Database Setup ---
+    // These are made available globally by the <script type="module"> in forgot.html
+    const auth = window.firebaseAuth;
+    const sendPasswordResetEmail = window.sendPasswordResetEmail;
+    const dbRef = window.dbRef; // Root reference for Realtime Database
+    const dbGet = window.dbGet; // Alias for get function
+    const dbChild = window.dbChild; // Alias for child function
+
+    let submitting = false; // To prevent multiple submissions
+
+    // --- Forgot Password Form Submission ---
+    forgotForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        if (submitting) return; // Prevent multiple clicks
+        submitting = true;
+        sendResetLinkBtn.disabled = true;
+        sendResetLinkBtn.textContent = "Sending..."; // Change button text
+        preloader.classList.remove('hidden'); // Show loading screen
+
+        const email = emailInput.value.trim();
+
+        if (!email) {
+            showNotification('Please enter your email address.', 'error');
+            submitting = false;
+            sendResetLinkBtn.disabled = false;
+            sendResetLinkBtn.textContent = "Send Reset Link";
+            preloader.classList.add('hidden');
+            return;
+        }
+
+        try {
+            // First, check if the email exists in our Realtime Database 'users' node
+            // This adds an extra layer of validation to prevent sending reset emails to arbitrary addresses
+            const usersSnapshot = await dbGet(dbChild(dbRef, `users`));
+            let emailExistsInDB = false;
+            if (usersSnapshot.exists()) {
+                usersSnapshot.forEach((childSnapshot) => {
+                    const userData = childSnapshot.val();
+                    if (userData.email === email) {
+                        emailExistsInDB = true;
+                        return true; // Break out of forEach
+                    }
+                });
+            }
+
+            if (!emailExistsInDB) {
+                showNotification("This email address is not registered with LPFHRA. Please check your email or register.", 'error', 8000);
+                submitting = false;
+                sendResetLinkBtn.disabled = false;
+                sendResetLinkBtn.textContent = "Send Reset Link";
+                preloader.classList.add('hidden');
+                return;
+            }
+
+            // If email exists in DB, proceed to send password reset email via Firebase Auth
+            await sendPasswordResetEmail(auth, email);
+
+            showNotification(
+                "A password reset link has been sent to your email address. <br><b>Please check your inbox now</b>.<br>If you don't see the email within 2 minutes, check your 'Spam' or 'Junk' folder.",
+                'success',
+                10000 // Keep success message longer
+            );
+            // Optionally clear the email field after successful send
+            emailInput.value = '';
+
+        } catch (error) {
+            console.error("Forgot password error:", error.code, error.message);
+            let errorMessage = "An unknown error occurred. Please try again.";
+
+            if (error.code === 'auth/invalid-email') {
+                errorMessage = "The email address is not valid.";
+            } else if (error.code === 'auth/user-not-found') {
+                // Firebase Auth will return 'user-not-found' if email isn't registered in Auth.
+                // Our DB check already handles this, but good to have a fallback.
+                errorMessage = "This email address is not registered with LPFHRA. Please check your email or register.";
+            } else if (error.code === 'auth/missing-email') {
+                errorMessage = "Please enter an email address.";
+            } else if (error.code === 'auth/network-request-failed') {
+                errorMessage = "Network error. Please check your internet connection and try again.";
+            }
+            
+            showNotification(`${errorMessage} <br> <small>If the problem persists, please contact administration.</small>`, 'error', 8000);
+
+        } finally {
+            submitting = false;
+            sendResetLinkBtn.disabled = false;
+            sendResetLinkBtn.textContent = "Send Reset Link";
+            preloader.classList.add('hidden'); // Hide loading regardless of success/failure
+        }
+    });
+
+    // No password visibility toggle needed for forgot password page
+});
+
+    </script>
+    <script src="script.js"></script> <!-- External JavaScript file -->
+</body>
+</html>

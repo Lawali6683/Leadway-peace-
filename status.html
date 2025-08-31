@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>LPFHRA Members Posts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <style>
+        :root {
+            --primary-color: #ffcb05;
+            --background-color: black;
+            --text-color: #ffffff;
+            --overlay-color: rgba(24, 0, 34, 0.7);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .status-container {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .status-post {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.5s ease-in-out;
+            will-change: transform;
+            background-color: var(--background-color);
+        }
+        .status-post.active {
+            display: flex;
+            transform: translateY(0%);
+        }
+        .post-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            z-index: 5;
+            gap: 10px;
+        }
+        .post-header-top .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            min-width: 0;
+        }
+        .post-header-top .app-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 6;
+        }
+        .post-header-top .app-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .user-info .profile-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+            object-fit: cover;
+        }
+        .user-info .user-details {
+            display: flex;
+            flex-direction: column;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .user-details .main-line {
+            font-weight: 600;
+            font-size: 1rem;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .user-details .sub-line {
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+        .icon-plus {
+            position: absolute;
+            top: 50px;
+            right: 70px;
+            font-size: 2rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            z-index: 5;
+        }
+        .post-body {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .post-body .media-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .post-body .media-element {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .post-body .image-grid {
+            display: grid;
+            width: 100%;
+            height: 100%;
+            gap: 2px;
+            background-color: #333;
+        }
+        .post-body .image-grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-grid.count-2 { grid-template-columns: 1fr 1fr; }
+        .image-grid.count-3 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+        .image-grid.count-3 img:first-child { grid-row: span 2; }
+        .image-grid.count-4 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+        .image-grid.count-5 { grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; }
+        .image-grid.count-5 img:first-child { grid-area: 1 / 1 / 3 / 2; }
+        .image-grid.count-5 img:nth-child(2) { grid-area: 1 / 2 / 2 / 3; }
+        .image-grid.count-5 img:nth-child(3) { grid-area: 2 / 2 / 3 / 3; }
+        .image-grid.count-5 img:nth-child(4) { grid-area: 1 / 3 / 2 / 4; }
+        .image-grid.count-5 img:nth-child(5) { grid-area: 2 / 3 / 3 / 4; }
+        
+        .post-body .youtube-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .post-body .youtube-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .post-body .post-text-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            z-index: 1;
+        }
+        .post-text {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            max-height: 5em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 5px;
+            display: none;
+            align-self: flex-start;
+        }
+        .post-footer {
+            position: absolute;
+            right: 10px;
+            top: 40%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            z-index: 1;
+        }
+        .post-footer .action-item {
+           display: flex;
+            
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            gap: 10px;
+            font-size: 0.9rem;
+            transition: transform 0.2s ease;
+            
+        }
+        .post-footer .action-item:active {
+            transform: scale(0.9);
+        }
+        .post-footer .action-item .icon {
+            font-size: 2rem;
+            color: var(--text-color);
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+        .post-footer .action-item .count {
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1rem;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+        .post-footer .action-item.like-action .icon { color: var(--primary-color); }
+        .post-footer .action-item.liked .icon { color: #3b5998; }
+        .loader-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: var(--background-color);
+            color: var(--primary-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 3;
+        }
+        .loader-container .loader {
+            border: 5px solid #d915ff;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .fullscreen-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .fullscreen-viewer.active {
+            display: flex;
+        }
+        .fullscreen-viewer .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+             
+        }
+        .fullscreen-viewer .download-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+             
+        }
+        .fullscreen-viewer img, .fullscreen-viewer video {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .text-more-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: var(--background-color);
+            padding: 20px;
+            box-sizing: border-box;
+            display: none;
+            flex-direction: column;
+            color: var(--text-color);
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+            z-index: 5;
+        }
+        .text-more-overlay.show {
+            display: flex;
+            transform: translateY(0);
+        }
+        .text-more-overlay .close-btn {
+            position: sticky;
+            top: 40px;
+            right: 3px;
+            background: none;
+            border: none;
+            color: red;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 10px;
+            text-align: right;
+            align-self: flex-end;
+        }
+        .action-menu-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            
+            width: 100vw;
+            background-color: var(--background-color);
+            border-top: 1px solid #333;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 30;
+        }
+        .action-menu-container.show {
+            transform: translateY(0);
+        }
+        .action-menu-container .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            gap: 15px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+        }
+        .action-menu-container .menu-item:last-child {
+            border-bottom: none;
+        }
+        .action-menu-container .menu-item .icon {
+            color: var(--primary-color);
+            width: 25px;
+            text-align: center;
+        }
+        .action-menu-container .menu-item.danger-option .icon, .action-menu-container .menu-item.danger-option {
+            color: red;
+        }
+        .push-notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-150%);
+            background-color: rgba(255, 255, 255, 0.95);
+            color: black;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease-in-out;
+            z-index: 200;
+        }
+        .push-notification.show {
+            transform: translateX(-50%) translateY(0);
+        }
+        
+       .actions-container{
+           top: 30px;
+       }
+    </style>
+</head>
+<body>
+    <div class="loader-container" id="loader-container">
+        <div class="loader"></div>
+        <p>Loading LPFHRA Members Posts...</p>
+    </div>
+
+    <div class="status-container" id="status-container"></div>
+
+    <div class="fullscreen-viewer" id="fullscreen-viewer">
+        <button class="close-btn" id="fullscreen-close-btn"><i class="fa-solid fa-xmark"></i></button>
+        <button class="download-btn" id="download-btn"><i class="fa-solid fa-download"></i></button>
+        <img id="fullscreen-image" src="" alt="Fullscreen Image" style="display:none;">
+        <video id="fullscreen-video" src="" controls style="display:none;"></video>
+    </div>
+
+    <div class="action-menu-container" id="action-menu-container">
+        <div class="menu-item" id="close-menu-btn">
+            <span class="icon"><i class="fa-solid fa-xmark"></i></span>
+            <span>Close</span>
+        </div>
+        <div class="menu-item translate-option" data-lang="en">
+            <span class="icon"><i class="fa-solid fa-language"></i></span>
+            <span>Translate to English</span>
+        </div>
+        <div class="menu-item translate-option" data-lang="ha">
+            <span class="icon"><i class="fa-solid fa-language"></i></span>
+            <span>Translate to Hausa</span>
+        </div>
+        <div class="menu-item translate-option" data-lang="fr">
+            <span class="icon"><i class="fa-solid fa-language"></i></span>
+            <span>Translate to French</span>
+        </div>
+        <div class="menu-item translate-option" data-lang="ar">
+            <span class="icon"><i class="fa-solid fa-language"></i></span>
+            <span>Translate to Arabic</span>
+        </div>
+        <div class="menu-item edit-option" style="display:none;">
+            <span class="icon"><i class="fa-solid fa-pen-to-square"></i></span>
+            <span>Edit Post</span>
+        </div>
+        <div class="menu-item danger-option delete-option" style="display:none;">
+            <span class="icon"><i class="fa-solid fa-trash-can"></i></span>
+            <span>Delete Post</span>
+        </div>
+    </div>
+
+    <div class="push-notification" id="push-notification"></div>
+
+    <script type="module">
+        import { app } from './firebase.js';
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+        import { getDatabase, ref, get, set, runTransaction } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js";
+
+        const db = getDatabase(app);
+        const auth = getAuth(app);
+        const statusContainer = document.getElementById('status-container');
+        const loaderContainer = document.getElementById('loader-container');
+        const fullscreenViewer = document.getElementById('fullscreen-viewer');
+        const fullscreenImage = document.getElementById('fullscreen-image');
+        const fullscreenVideo = document.getElementById('fullscreen-video');
+        const actionMenuContainer = document.getElementById('action-menu-container');
+        const pushNotification = document.getElementById('push-notification');
+
+        let posts = [];
+        let currentIndex = 0;
+        let startY = 0;
+        let isSwiping = false;
+        let isAnimating = false;
+        const POST_VIEWED_KEY = "viewed_lpfhra_posts";
+        let viewedPosts = JSON.parse(localStorage.getItem(POST_VIEWED_KEY)) || {};
+        let userUid = null;
+        let allUsers = {};
+        const POST_TRANSLATION_KEY = 'post_translations';
+
+        let translations = JSON.parse(localStorage.getItem(POST_TRANSLATION_KEY)) || {};
+
+        const showNotification = (message, type = 'success') => {
+            pushNotification.textContent = message;
+            pushNotification.style.backgroundColor = type === 'success' ? 'rgba(0, 128, 0, 0.9)' : 'rgba(255, 0, 0, 0.9)';
+            pushNotification.classList.add('show');
+            setTimeout(() => {
+                pushNotification.classList.remove('show');
+            }, 3000);
+        };
+
+        async function translateText(text, targetLang) {
+            const cacheKey = `${text}_${targetLang}`;
+            if (translations[cacheKey]) {
+                return translations[cacheKey];
+            }
+            
+            try {
+                const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer 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',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        model: 'openai/gpt-4o',
+                        messages: [
+                            {
+                                role: 'user',
+                                content: `Translate the following text into ${targetLang}: "${text}"`,
+                            },
+                        ],
+                    }),
+                });
+                const data = await response.json();
+                const translatedText = data.choices[0].message.content.trim();
+                translations[cacheKey] = translatedText;
+                localStorage.setItem(POST_TRANSLATION_KEY, JSON.stringify(translations));
+                return translatedText;
+            } catch (error) {
+                console.error("Translation failed:", error);
+                showNotification('Failed to translate the text. Displaying original text.', 'error');
+                return null;
+            }
+        }
+
+        async function fetchAllData() {
+            try {
+                const usersSnapshot = await get(ref(db, 'users'));
+                const allPosts = [];
+
+                if (usersSnapshot.exists()) {
+                    usersSnapshot.forEach(userSnap => {
+                        const userProfile = userSnap.val();
+                        allUsers[userSnap.key] = userProfile;
+
+                        if (userProfile.Posting) {
+                            Object.keys(userProfile.Posting).forEach(postId => {
+                                const postData = userProfile.Posting[postId];
+                                if (postData) {
+                                    allPosts.push({ 
+                                        ...postData, 
+                                        postId: postId, 
+                                        uid: userSnap.key,
+                                        user: userProfile
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+                
+                processAndRenderPosts(allPosts);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                loaderContainer.innerHTML = `<p>Failed to load posts. Check your connection.</p>`;
+            }
+        }
+
+        function processAndRenderPosts(fetchedPosts) {
+            const validPosts = fetchedPosts.filter(post => 
+                post.photoLink1 || (post.photoLink && post.photoLink.length > 0) || post.videoLink || post.audioLink || post.text
+            );
+
+            let unseenPosts = validPosts.filter(post => !viewedPosts[post.postId]);
+            
+            if (unseenPosts.length === 0) {
+                posts = validPosts;
+                currentIndex = 0;
+                viewedPosts = {};
+                localStorage.setItem(POST_VIEWED_KEY, JSON.stringify(viewedPosts));
+            } else {
+                posts = unseenPosts;
+            }
+            
+            posts.sort((a, b) => b.postTime - a.postTime);
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const userLat = position.coords.latitude;
+                    const userLon = position.coords.longitude;
+                    posts.sort((a, b) => {
+                        const aDist = a.user.location ? getDistance(userLat, userLon, a.user.location.lat, a.user.location.lon) : Infinity;
+                        const bDist = b.user.location ? getDistance(userLat, userLon, b.user.location.lat, b.user.location.lon) : Infinity;
+                        return aDist - bDist;
+                    });
+                    renderPosts();
+                }, (error) => {
+                    console.warn("Location access denied:", error);
+                    renderPosts();
+                });
+            } else {
+                renderPosts();
+            }
+
+            loaderContainer.style.display = 'none';
+        }
+
+        function getDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371e3;
+            const φ1 = lat1 * Math.PI / 180;
+            const φ2 = lat2 * Math.PI / 180;
+            const Δφ = (lat2 - lat1) * Math.PI / 180;
+            const Δλ = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+                      Math.cos(φ1) * Math.cos(φ2) *
+                      Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c;
+        }
+
+        function renderPosts() {
+            statusContainer.innerHTML = '';
+            if (posts.length === 0) {
+                loaderContainer.style.display = 'flex';
+                loaderContainer.innerHTML = `<p>No posts found. Check back later!</p>`;
+                return;
+            }
+            posts.forEach((post, index) => {
+                const postElement = document.createElement('div');
+                postElement.className = 'status-post';
+                postElement.dataset.postId = post.postId;
+                postElement.dataset.postUid = post.uid;
+                postElement.innerHTML = generatePostHTML(post, index);
+                statusContainer.appendChild(postElement);
+            });
+            showPost(currentIndex);
+        }
+
+        function generatePostHTML(post, index) {
+            let mediaHtml = '';
+            
+            const user = post.user || {};
+            const userFullname = user.fullName || 'Unknown User';
+            const userPosition = user.position || 'Member';
+            const userState = user.state || '';
+            const userCountry = user.country || '';
+            const userProfilePhoto = user.profilePhoto || 'https://i.imgur.com/lwddsvh.png';
+            const postTime = post.postTime ? formatTime(post.postTime) : '';
+
+            if (post.videoLink) {
+                const isYouTube = post.videoLink.includes('youtu.be') || post.videoLink.includes('youtube.com');
+                if (isYouTube) {
+                    const videoId = post.videoLink.split('v=')[1] || post.videoLink.split('/').pop();
+                    mediaHtml = `<div class="media-content media-video"><div class="youtube-container"><iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe></div></div>`;
+                } else {
+                    mediaHtml = `<div class="media-content media-video"><video src="${post.videoLink}" class="media-element" playsinline muted loop></video></div>`;
+                }
+            } else if (post.audioLink) {
+                mediaHtml = `<div class="media-content media-audio"><audio src="${post.audioLink}" controls></audio></div>`;
+            } else if (post.photoLink && post.photoLink.length > 1) {
+                 const photoCount = post.photoLink.length;
+                 const gridClass = `count-${photoCount > 5 ? 5 : photoCount}`;
+                 mediaHtml = `<div class="media-content media-image"><div class="image-grid ${gridClass}">`;
+                 post.photoLink.forEach(link => {
+                     mediaHtml += `<img src="${link}" class="media-element">`;
+                 });
+                 mediaHtml += `</div></div>`;
+            } else if (post.photoLink1) {
+                mediaHtml = `<div class="media-content media-image"><img src="${post.photoLink1}" class="media-element"></div>`;
+            }
+            
+            let contentHtml = '';
+            if (post.text) {
+                contentHtml += `
+                    <div class="post-text-container">
+                        <div class="post-text" id="post-text-${index}">${post.text}</div>
+                        <button class="read-more-btn">Read More</button>
+                    </div>
+                    <div class="text-more-overlay" id="text-more-overlay-${index}">
+                        <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+                        <p>${post.text}</p>
+                    </div>`;
+            }
+            
+            const likeCount = post.like || 0;
+            const seeCount = post.see || 0;
+            const commentCount = post.totalComment || 0;
+
+            const actionsHtml = `
+                <div class="actions-container">
+                    <div class="action-item see-action">
+                        <span class="icon"><i class="fa-solid fa-eye"></i></span>
+                        <span class="count">${seeCount}</span>
+                    </div>
+                    <div class="action-item comment-action" data-post-id="${post.postId}" data-post-uid="${post.uid}">
+                        <span class="icon"><i class="fa-solid fa-comments"></i></span>
+                        <span class="count">${commentCount}</span>
+                    </div>
+                    <div class="action-item like-action" data-post-id="${post.postId}" data-post-uid="${post.uid}">
+                        <span class="icon"><i class="fa-solid fa-thumbs-up"></i></span>
+                        <span class="count">${likeCount}</span>
+                    </div>
+                </div>
+            `;
+            
+            return `
+                <div class="post-header-top">
+                    <div class="user-info">
+                        <img src="${userProfilePhoto}" class="profile-image">
+                        <div class="user-details">
+                            <span class="main-line">${userFullname} (${userPosition})</span>
+                            <span class="sub-line">${userCountry} ${userState} | ${postTime}</span>
+                        </div>
+                    </div>
+                    <div class="app-logo">
+                        <img src="https://i.imgur.com/lwddsvh.png" alt="LPFHRA Logo">
+                    </div>
+                </div>
+                
+                <div class="post-body">
+                    ${mediaHtml}
+                    ${contentHtml}
+                </div>
+                
+                <div class="post-footer">
+                    ${actionsHtml}
+                </div>
+                <i class="fa-solid fa-plus icon-plus" data-post-id="${post.postId}"></i>
+            `;
+        }
+
+        function showPost(index) {
+            if (isAnimating || index < 0 || index >= posts.length) return;
+            isAnimating = true;
+            const allPosts = document.querySelectorAll('.status-post');
+            const newPost = allPosts[index];
+
+            if (!newPost) {
+                isAnimating = false;
+                return;
+            }
+            
+            document.querySelectorAll('video, audio').forEach(media => media.pause());
+
+            const newMedia = newPost.querySelector('.media-element');
+            if (newMedia) {
+                if (newMedia.tagName === 'VIDEO' || newMedia.tagName === 'AUDIO') {
+                    newMedia.play().catch(e => console.error("Media playback error:", e));
+                }
+            }
+
+            allPosts.forEach((post, i) => {
+                post.style.transform = `translateY(${100 * (i - index)}%)`;
+                if (i === index) {
+                    post.classList.add('active');
+                    updateSeeCount(post);
+                    viewedPosts[post.dataset.postId] = true;
+                    localStorage.setItem(POST_VIEWED_KEY, JSON.stringify(viewedPosts));
+                } else {
+                    post.classList.remove('active');
+                }
+            });
+            
+            currentIndex = index;
+            setTimeout(() => {
+                isAnimating = false;
+                checkTextLength();
+            }, 500);
+        }
+
+        statusContainer.addEventListener('touchstart', (e) => {
+            if (isAnimating) return;
+            startY = e.touches[0].clientY;
+            isSwiping = true;
+        });
+        statusContainer.addEventListener('touchmove', (e) => {
+            if (!isSwiping || isAnimating) return;
+            const currentY = e.touches[0].clientY;
+            const diffY = currentY - startY;
+            if (Math.abs(diffY) > 50) {
+                if (diffY < 0) {
+                    showPost(currentIndex + 1);
+                } else {
+                    showPost(currentIndex - 1);
+                }
+                isSwiping = false;
+            }
+        });
+        statusContainer.addEventListener('touchend', () => {
+            isSwiping = false;
+        });
+
+        document.addEventListener('click', async (e) => {
+            const likeBtn = e.target.closest('.like-action');
+            if (likeBtn) {
+                const postId = likeBtn.dataset.postId;
+                const postUid = likeBtn.dataset.postUid;
+                const postRef = ref(db, `users/${postUid}/Posting/${postId}`);
+                
+                runTransaction(postRef, (currentData) => {
+                    if (currentData) {
+                        if (!currentData.like) currentData.like = 0;
+                        currentData.like++;
+                    }
+                    return currentData;
+                });
+                const countEl = likeBtn.querySelector('.count');
+                const currentCount = parseInt(countEl.textContent);
+                countEl.textContent = `${currentCount + 1}`;
+                likeBtn.classList.add('liked');
+                showNotification('Liked successfully!');
+            }
+            
+            const commentBtn = e.target.closest('.comment-action');
+            if (commentBtn) {
+                const postId = commentBtn.dataset.postId;
+                const postUid = commentBtn.dataset.postUid;
+                window.location.href = `comment.html?postId=${postId}&postUid=${postUid}`;
+            }
+            
+            const iconPlus = e.target.closest('.icon-plus');
+            if (iconPlus) {
+                actionMenuContainer.classList.add('show');
+            }
+
+            const closeMenuBtn = e.target.closest('#close-menu-btn');
+            if (closeMenuBtn) {
+                actionMenuContainer.classList.remove('show');
+            }
+
+            const translateBtn = e.target.closest('.translate-option');
+            if (translateBtn) {
+                actionMenuContainer.classList.remove('show');
+                const lang = translateBtn.dataset.lang;
+                const activePost = document.querySelector('.status-post.active');
+                const postTextEl = activePost.querySelector('.post-text');
+                const originalText = activePost.querySelector('.text-more-overlay p').textContent;
+                
+                if (!originalText) {
+                    showNotification('No text to translate.', 'error');
+                    return;
+                }
+
+                const cacheKey = `${originalText}_${lang}`;
+                const cachedTranslation = translations[cacheKey];
+
+                if (cachedTranslation) {
+                    postTextEl.textContent = cachedTranslation;
+                    activePost.querySelector('.text-more-overlay p').textContent = cachedTranslation;
+                    showNotification('Translation loaded from cache.');
+                    return;
+                }
+
+                postTextEl.textContent = 'Translating...';
+                translateText(originalText, lang).then(translated => {
+                    if (translated) {
+                        postTextEl.textContent = translated;
+                        activePost.querySelector('.text-more-overlay p').textContent = translated;
+                        showNotification('Translation successful!');
+                    } else {
+                        postTextEl.textContent = originalText;
+                    }
+                });
+            }
+
+            const mediaElement = e.target.closest('.media-element');
+            if (mediaElement) {
+                fullscreenViewer.classList.add('active');
+                if (mediaElement.tagName === 'IMG') {
+                    fullscreenImage.src = mediaElement.src;
+                    fullscreenImage.style.display = 'block';
+                    fullscreenVideo.style.display = 'none';
+                    document.getElementById('download-btn').style.display = 'block';
+                } else if (mediaElement.tagName === 'VIDEO') {
+                    fullscreenVideo.src = mediaElement.src;
+                    fullscreenVideo.style.display = 'block';
+                    fullscreenImage.style.display = 'none';
+                    fullscreenVideo.play();
+                    document.getElementById('download-btn').style.display = 'none';
+                }
+            }
+            const fullscreenCloseBtn = e.target.closest('#fullscreen-close-btn');
+            if (fullscreenCloseBtn) {
+                fullscreenViewer.classList.remove('active');
+                fullscreenVideo.pause();
+            }
+
+            const downloadBtn = e.target.closest('#download-btn');
+            if (downloadBtn) {
+                const imageUrl = fullscreenImage.src;
+                const link = document.createElement('a');
+                link.href = imageUrl;
+                link.download = `lpfhra_image_${Date.now()}.jpg`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                showNotification('Download started...');
+            }
+
+            const readMoreBtn = e.target.closest('.read-more-btn');
+            if (readMoreBtn) {
+                const activePost = readMoreBtn.closest('.status-post');
+                const overlay = activePost.querySelector('.text-more-overlay');
+                if (overlay) {
+                    overlay.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            const closeBtn = e.target.closest('.text-more-overlay .close-btn');
+            if (closeBtn) {
+                closeBtn.closest('.text-more-overlay').classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+
+        async function updateSeeCount(postElement) {
+            const postId = postElement.dataset.postId;
+            const postUid = postElement.dataset.postUid;
+            const postRef = ref(db, `users/${postUid}/Posting/${postId}`);
+            
+            runTransaction(postRef, (currentData) => {
+                if (currentData) {
+                    if (!currentData.see) currentData.see = 0;
+                    currentData.see++;
+                }
+                return currentData;
+            });
+        }
+
+        function checkTextLength() {
+            const activePost = document.querySelector('.status-post.active');
+            if (!activePost) return;
+            const postText = activePost.querySelector('.post-text');
+            const readMoreBtn = activePost.querySelector('.read-more-btn');
+            if (postText && readMoreBtn) {
+                if (postText.scrollHeight > postText.clientHeight) {
+                    readMoreBtn.style.display = 'block';
+                } else {
+                    readMoreBtn.style.display = 'none';
+                }
+            }
+        }
+
+        function formatTime(timestamp) {
+            const date = new Date(timestamp);
+            const now = new Date();
+            const seconds = Math.floor((now - date) / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            const days = Math.floor(hours / 24);
+
+            if (seconds < 60) return `${seconds}s ago`;
+            if (minutes < 60) return `${minutes}m ago`;
+            if (hours < 24) return `${hours}h ago`;
+            if (days < 7) return `${days}d ago`;
+            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        }
+
+        fetchAllData();
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                userUid = user.uid;
+            } else {
+                userUid = null;
+            }
+        });
+    </script>
+</body>
+</html>
