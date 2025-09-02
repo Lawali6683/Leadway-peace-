@@ -1,0 +1,1932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+        /* 🙏✔️ SITE 1 START: Global Styles & Preloader */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0D1B2A, #1B263B, #415A77);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #ffffff;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 27, 42, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+
+.preloader-content {
+    text-align: center;
+}
+
+.preloader-content img {
+    width: 100px;
+    height: 100px;
+    animation: pulse 2s infinite;
+    border-radius: 50%;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.25), 
+                0 0 50px rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.preloader-content img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), 
+                0 0 60px rgba(255, 255, 255, 0.2);
+}
+
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.preloader-content p {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+/* 🙏✔️ SITE 1 END: Global Styles & Preloader */
+
+
+
+.action-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.action-button {
+    background: #415A77;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-button:hover {
+    background: #778DA9;
+    transform: translateY(-2px);
+}
+
+.new-post-btn {
+    background: #1B263B;
+}
+
+
+
+/* 🙏✔️ SITE 3 END: Main Content */
+
+/* 🙏✔️ SITE 4 START: Write Post Container */
+.write-post-container {
+    background: #1B263B;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-post-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-post-btn:hover {
+    color: #E0E1DD;
+}
+
+textarea#post-text {
+    width: 100%;
+    min-height: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    color: #fff;
+    font-size: 1em;
+    resize: vertical;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+textarea#post-text::placeholder {
+    color: #E0E1DD;
+    opacity: 0.7;
+}
+
+.post-upload-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.post-upload-options button, .link-input-save-btn {
+    background: #415A77;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.post-upload-options button:hover, .link-input-save-btn:hover {
+    background: #778DA9;
+    transform: scale(1.05);
+}
+
+.link-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #778DA9;
+    border-radius: 8px;
+    position: relative;
+}
+
+.link-input-container input {
+    width: calc(100% - 20px);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+}
+
+.link-input-container input::placeholder {
+    color: #E0E1DD;
+}
+
+.link-input-close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+button#submit-post-btn {
+    background: #415A77;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    display: block;
+    width: 100%;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+button#submit-post-btn:hover {
+    background: #778DA9;
+    transform: translateY(-2px);
+}
+/* 🙏✔️ Site 4 END: Write Post Container */
+/* 🙏✔️ SITE 5 START: Posts Display */
+
+.post-card {
+    background: transparent;
+    border-radius: 0;
+    margin: 20px 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+    
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.post-user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.post-user-info .profile-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #415A77;
+}
+.user-details {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 0; 
+    left: 0; 
+}
+.user-details h4 {
+    margin: 0;
+    font-size: 1em;
+    color: #E0E1DD;
+}
+.user-meta {
+    font-size: 0.8em;
+    color: #778DA9;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.post-options-container {
+    position: relative; 
+}
+.post-options-btn {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.2em;
+    cursor: pointer;
+    position: relative;
+    z-index: 600;
+}
+.post-options-menu {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background: #1B263B;
+    border: 1px solid #415A77;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    
+    display: none; 
+    flex-direction: column; 
+    min-width: 120px; 
+    z-index: 1000; 
+}
+
+.post-options-menu:not(.hidden) {
+    display: flex;
+    
+    align-items: flex-start; 
+}
+
+.post-options-menu button {
+    display: block; 
+    width: 100%;
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.post-options-menu button:hover {
+    background: #415A77;
+}
+
+.post-options-menu .close-options-menu {
+    text-align: right; 
+    padding: 5px;
+    color: #fff;
+    font-size: 1.2em;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.post-content {
+    margin: 15px 15px 0 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.post-text {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+    color: #E0E1DD;
+}
+.post-text.collapsed {
+    max-height: 100px;
+    overflow: hidden;
+    position: relative;
+}
+.post-text.collapsed::after {
+    content: '...';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to left, #1B263B, rgba(27, 38, 59, 0));
+    padding-left: 20px;
+}
+.read-more-btn {
+    background: none;
+    border: none;
+    color: #778DA9;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.post-media-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    
+}
+.post-media-container img,
+.post-media-container video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.post-media-container img:hover {
+    transform: scale(1.02);
+}
+.post-media-container video {
+    max-width: 100%;
+}
+.post-media-container audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+.post-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 15px;
+    border-top: none;
+    margin-top: 0;
+}
+.post-footer-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.post-footer-item:hover {
+    color: #E0E1DD;
+}
+.post-footer-item i {
+    font-size: 1.2em;
+}
+.post-footer-item.like.liked i {
+    color: #415A77;
+}
+
+/* 🙏✔️ SITE 5 END: Posts Display */
+
+
+/* 🙏✔️ SITE 6 START: Full Screen Viewers */
+
+.viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    transition: opacity 0.3s ease;
+}
+
+/* Wannan sabon class ne don boye dukkan viewers */
+.viewer.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.viewer img, .viewer video {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.viewer-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none; /* Cire background */
+    border: none;    /* Cire border */
+    color: #fff;
+    font-size: 2em;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.viewer-close:hover {
+    color: #bbb;
+}
+
+.viewer-download {
+    position: absolute;
+    top: 20px;
+    right: 70px;
+    color: #fff;
+    font-size: 2em;
+    cursor: pointer;
+}
+/* 🙏✔️ SITE 6 END: Full Screen Viewers */
+
+/* Sabon Code don Sanarwa (Push Notification) */
+#push-notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #415A77; 
+    color: #E0E1DD;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    /* An cire display: none; a nan */
+    font-family: Arial, sans-serif;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+#push-notification-container.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+
+/* 🙏✔️ Site 7 START: Footer */
+.footer {
+padding: 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    
+
+    
+}
+
+.footer p {
+    margin: 5px 0;
+    color: #E0E1DD;
+    font-size: 1.0rem;
+}
+
+.footer .social-icons {
+    margin: 10px 0;
+    font-size: 1.0rem;
+}
+
+.footer .social-icons a {
+    color: #fff;
+    font-size: 1.5em;
+    margin: 0 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+    color: #778DA9;
+    transform: scale(1.1);
+}
+
+.footer .contact-link {
+    color: #778DA9;
+    text-decoration: none;
+    font-weight: 600;
+}
+/* 🙏✔️ SITE 7 END: Footer */
+
+
+/* Styling for profile viewer modal */
+#image-viewer-profile {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+#image-viewer-profile.hidden {
+    display: none;
+    opacity: 0;
+}
+
+#image-viewer-profile .viewer-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#viewer-profile-image {
+    max-width: 90%;
+    max-height: 90%;
+    display: block;
+    margin: auto;
+}
+
+#image-viewer-profile .viewer-close { 
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+#image-viewer-profile .viewer-close:hover,
+#image-viewer-profile .viewer-close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Styling for user info container */
+#user-info-container {
+    position: absolute;
+    top: 300px;
+    left: 2px;
+    color: #fff;
+    padding: 10px;
+}
+
+#user-info-container h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+#user-info-container p {
+    font-size: 16px;
+    margin: 5px 0 0 0;
+}
+
+
+/* New Edit Post Modal Styles */
+        .edit-post-textarea {
+            width: calc(100% - 20px); /* Adjust width to account for padding */
+            min-height: 150px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #415A77;
+            background-color: #0D1B2A;
+            color: #E0E1DD;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            resize: vertical; /* Allow vertical resizing */
+        }
+
+        .edit-post-actions {
+            display: flex;
+            justify-content: flex-end; /* Align buttons to the right */
+            gap: 10px;
+        }
+
+        .edit-post-actions button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s ease;
+        }
+
+        .edit-post-save-btn {
+            background: #2d8cf0;
+            color: #fff;
+        }
+
+        .edit-post-save-btn:hover {
+            background: #1e6ec7;
+        }
+
+        .edit-post-cancel-btn {
+            background: #778DA9;
+            color: #fff;
+        }
+
+        .edit-post-cancel-btn:hover {
+            background: #5a6e87;
+        }
+
+
+/* Styling for all viewers (Image, Video, Profile) */
+.viewer {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.viewer.hidden {
+    display: none;
+}
+
+.viewer-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.viewer-close:hover,
+.viewer-close:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+/* Styling for specific viewers */
+#viewer-image, #viewer-video, #viewer-profile-image {
+    max-width: 90%;
+    max-height: 90%;
+    display: block;
+    margin: auto;
+}
+
+#image-viewer-profile .viewer-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#viewer-profile-badge {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+/* 🙏✔️ NEW: Edit Post Modal */
+.site1-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Zai nuna a tsakiyar shafi */
+    background: rgba(13, 27, 42, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+    </style>
+    
+    <style>
+      
+
+/* --- Header --- */
+
+.header {
+     background-color: rgba(0, 0, 0, 0.3);
+            border-bottom: 3px solid #415A77;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.header-left .logo {
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    object-fit: contain;
+    background: #fff;
+    border: 2px solid #415A77;
+    transition: transform 0.3s ease;
+}
+
+.header-left .logo:hover {
+    transform: scale(1.05);
+}
+
+.header-nav {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #E0E1DD;
+    text-decoration: none;
+    font-size: 1.5em;
+    transition: color 0.3s ease;
+}
+
+.nav-icon:hover {
+    color: #2d8cf0;
+}
+
+.nav-text {
+    font-size: 0.7em;
+    margin-top: 5px;
+    color: #B2B8BC;
+}
+
+/* --- Main Content --- */
+
+.main-content {
+    padding-top: 8px;
+    
+    padding-left: 20px;
+    padding-right: 20px;
+    min-height: 50%;
+    background: #1B263B;
+    color: #E0E1DD;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-container {
+      
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 40px auto;
+    padding: 3px;
+    position: relative;
+    
+    max-width: 600px;
+}
+
+.profile-banner-section {
+    text-align: center;
+}
+
+.profile-banner {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    border: 4px solid #2d8cf0;
+    background-color: #0D1B2A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.profile-banner:hover {
+    border-color: #ffd700;
+}
+
+#profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-banner:hover .profile-overlay {
+    opacity: 1;
+}
+
+.camera-icon-btn {
+    background: #2d8cf0;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease;
+}
+
+.camera-icon-btn:hover {
+    background: #1e6ec7;
+}
+
+#photo-upload {
+    display: none;
+}
+
+#user-info-container h1 {
+    font-size: 2em;
+    margin: 0;
+    font-weight: 600;
+    color: #E0E1DD;
+}
+
+#user-info-container p {
+    font-size: 1em;
+    color: #778DA9;
+    margin: 5px 0;
+}
+
+/* Wannan shine sabon tsari na border line */
+.user-info-separator {
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(to right, #415A77, rgba(65, 90, 119, 0));
+    margin: 20px auto 0;
+}
+
+/* --- Tsarin masu kallo (Image viewer) --- */
+
+#image-viewer-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    padding: 20px;
+}
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.close-btn:hover,
+.close-btn:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+.hidden {
+    display: none !important;
+}
+
+
+
+    </style>
+    </head>
+<body>
+   
+    <div id="preloader">
+        <div class="preloader-content">
+            <img src="https://i.imgur.com/lwddsvh.png" alt="Loading Logo" />
+            <div class="spinner"></div>
+            <p>Peace is loading…</p>
+        </div>
+    </div>
+    
+     
+    
+   <header class="header">
+    <div class="header-left">
+        <img src="https://i.imgur.com/lwddsvh.png" alt="Logo" class="logo">
+    </div>
+    <nav class="header-nav">
+        <a href="index.html" class="nav-icon home-icon" aria-label="Home">
+            <i class="fas fa-home"></i>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="leadwayCourse.html" class="nav-icon user-icon hidden" id="courses-link" aria-label="Courses & Certificates">
+            <i class="fas fa-user-graduate"></i>
+            <span class="nav-text">Courses</span>
+        </a>
+        <a href="checkReport.html" class="nav-icon notes-icon hidden" id="notes-link" aria-label="My Documents">
+            <i class="fas fa-sticky-note"></i>
+            <span class="nav-text">My Center Report </span>
+        </a>
+    </nav>
+</header>
+
+ <main class="main-content">
+    <div class="profile-banner">
+        <img id="profile-photo" src="https://i.imgur.com/your-default-image.png" alt="Profile Photo">
+        <div class="profile-overlay">
+            <button class="camera-icon-btn hidden" id="upload-photo-btn" aria-label="Upload Profile Photo">
+                <i class="fas fa-camera"></i>
+            </button>
+            <input type="file" id="photo-upload" accept="image/*" class="hidden">
+        </div>
+    </div>
+  
+        <h3>
+            <span id="user-full-name"></span> (<span id="user-position"></span>)
+        </h3>
+        <p id="user-location"></p>
+    </div>
+    <div id="image-viewer-profile" class="hidden">
+        <span id="image-viewer-profile-close" class="close-btn">&times;</span>
+        <img id="viewer-profile-image" class="modal-content" src="">
+    </div>
+</main></main>
+
+                       <div class="action-buttons-container">
+            <div class="action-buttons-left">
+                <button id="share-profile-btn" class="action-button hidden">
+                    <i class="fas fa-share-alt"></i> Share Profile Link 
+                </button>
+            </div>
+            <div class="action-buttons-right">
+                <button id="new-post-btn" class="action-button new-post-btn hidden">
+                    <i class="fas fa-plus"></i> New Post
+                </button>
+            </div>
+        </div>
+
+        <div id="write-post-container" class="write-post-container hidden">
+            <button class="close-post-btn" id="close-post-btn" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <textarea id="post-text" placeholder="What's on your mind?"></textarea>
+            <div class="post-upload-options">
+                <button id="upload-image-btn" aria-label="Upload Image"><i class="fas fa-images"></i></button>
+                <button id="upload-video-btn" aria-label="Upload Video"><i class="fas fa-video"></i></button>
+                <button id="upload-audio-btn" aria-label="Upload Audio"><i class="fas fa-microphone"></i></button>
+                <button id="link-input-btn" aria-label="Add Link"><i class="fas fa-link"></i></button>
+            </div>
+            <div id="link-input-container" class="link-input-container hidden">
+                <input type="url" id="image-link-input" placeholder="Image URL (max 5)">
+                <input type="url" id="video-link-input" placeholder="Video URL (only 1)">
+                <input type="url" id="audio-link-input" placeholder="Audio URL (only 1)">
+                <button id="link-input-close-btn" class="link-input-close-btn"><i class="fas fa-times"></i></button>
+                <button id="link-input-save-btn" class="link-input-save-btn"><i class="fas fa-check"></i></button>
+            </div>
+            <button id="submit-post-btn" class="post-button">Post</button>
+        </div>
+
+        <div id="posts-container" class="posts-container">
+        </div>
+    </main>
+    
+    
+
+    <div id="push-notification-container" class="push-notification-container hidden">
+        <p id="notification-message"></p>
+    </div>
+    
+    
+      <div id="edit-post-modal" class="site1-modal hidden">
+    <div class="site1-modal-content">
+        <button class="site1-modal-close"><i class="fa-solid fa-times"></i></button>
+        <h3 style="color: #2d8cf0; margin-top: 0;">Edit Your Post</h3>
+        <textarea id="edit-post-textarea" class="edit-post-textarea"></textarea>
+        <div class="edit-post-actions">
+            <button id="edit-post-save-btn" class="edit-post-save-btn">Save Changes</button>
+            <button id="edit-post-cancel-btn" class="edit-post-cancel-btn">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="image-viewer" class="viewer hidden">
+    <button id="image-viewer-close" class="viewer-close"><i class="fa-solid fa-times"></i></button>
+    <button id="image-viewer-download" class="viewer-download hidden"><i class="fa-solid fa-download"></i></button>
+    <img id="viewer-image" src="" alt="Viewed Image">
+</div>
+
+<div id="video-viewer" class="viewer hidden">
+    <button id="video-viewer-close" class="viewer-close"><i class="fa-solid fa-times"></i></button>
+    <video id="viewer-video" controls autoplay src=""></video>
+</div>
+
+<div id="image-viewer-profile" class="viewer hidden">
+    <button id="image-viewer-profile-close" class="viewer-close"><i class="fa-solid fa-times"></i></button>
+    <div class="viewer-content">
+        <img id="viewer-profile-image" src="" alt="Profile Photo">
+        <img id="viewer-profile-badge" src="" alt="Support Team Badge" class="hidden">
+    </div>
+</div>
+   
+   
+   
+   
+    
+    <footer class="footer">
+        <p>Leadway Peace Functions And Human Rights Aids</p>
+        <div class="social-icons">
+            <a href="#" id="facebook-share" aria-label="Share on Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" id="email-share" aria-label="Share via Email"><i class="fas fa-envelope"></i></a>
+            <a href="#" id="whatsapp-share" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" id="telegram-share" aria-label="Share on Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="#" id="instagram-share" aria-label="Share on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" id="x-share" aria-label="Share on X"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>Email: <a href="mailto:leadwaypeacefoundation@gmail.com">leadwaypeacefoundation @gmail.com</a></p>
+        <a href="contact.html" class="contact-link">Contact Us</a>
+    </footer>
+    
+   
+  
+   
+
+<script type="module">
+    // 🙏✔️ Site 1 START: Imports
+    import { app, analytics, firebaseConfig } from './firebase.js';
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+    import { getDatabase, ref, get, set, push, update, remove, child, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+    // 🙏✔️ SITE 1 END: Imports
+
+    // 🙏✔️ SITE 2 START: Global Variables
+    const auth = getAuth(app);
+    const db = getDatabase(app);
+    let currentUser = null;
+    let profileDataCache = null;
+    let postsDataCache = {};
+    let translationCache = {};
+    const imgurClientId = '5acf7eff9c91660';
+    const openRouterApiKey = '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';
+
+    const preloader = document.getElementById('preloader');
+    const preloaderContent = document.querySelector('.preloader-content');
+    const coursesLink = document.getElementById('courses-link');
+    const notesLink = document.getElementById('notes-link');
+    const profilePhoto = document.getElementById('profile-photo');
+    const uploadPhotoBtn = document.getElementById('upload-photo-btn');
+    const photoUploadInput = document.getElementById('photo-upload');
+    const shareProfileBtn = document.getElementById('share-profile-btn');
+    const newPostBtn = document.getElementById('new-post-btn');
+    const writePostContainer = document.getElementById('write-post-container');
+    const closePostBtn = document.getElementById('close-post-btn');
+    const postTextarea = document.getElementById('post-text');
+    const postsContainer = document.getElementById('posts-container');
+    const submitPostBtn = document.getElementById('submit-post-btn');
+    const linkInputBtn = document.getElementById('link-input-btn');
+    const linkInputContainer = document.getElementById('link-input-container');
+    const linkInputSaveBtn = document.getElementById('link-input-save-btn');
+    const linkInputCloseBtn = document.getElementById('link-input-close-btn');
+    const imageLinkInput = document.getElementById('image-link-input');
+    const videoLinkInput = document.getElementById('video-link-input');
+    const audioLinkInput = document.getElementById('audio-link-input');
+
+    // New element selectors for viewers
+    const imageViewer = document.getElementById('image-viewer');
+    const viewerImage = document.getElementById('viewer-image');
+    const imageViewerClose = document.getElementById('image-viewer-close');
+    const imageViewerDownload = document.getElementById('image-viewer-download');
+
+    const videoViewer = document.getElementById('video-viewer');
+    const viewerVideo = document.getElementById('viewer-video');
+    const videoViewerClose = document.getElementById('video-viewer-close');
+
+    const imageViewerProfile = document.getElementById('image-viewer-profile');
+    const viewerProfileImage = document.getElementById('viewer-profile-image');
+    const viewerProfileBadge = document.getElementById('viewer-profile-badge');
+    const imageViewerProfileClose = document.getElementById('image-viewer-profile-close');
+
+    const userFullName = document.getElementById('user-full-name');
+    const userPosition = document.getElementById('user-position');
+    const userLocation = document.getElementById('user-location');
+    const notificationContainer = document.getElementById('push-notification-container');
+    const notificationMessage = document.getElementById('notification-message');
+    const editPostModal = document.getElementById('edit-post-modal');
+    const editPostTextarea = document.getElementById('edit-post-textarea');
+    const editPostSaveBtn = document.getElementById('edit-post-save-btn');
+    const editPostCancelBtn = document.getElementById('edit-post-cancel-btn');
+    const editPostCloseBtn = editPostModal.querySelector('.site1-modal-close');
+
+ /// 🙏✔️ SITE 2 END: Global Variables
+// Intersection Observer for handling post visibility
+const observerOptions = {
+    root: null, // viewport
+    rootMargin: '0px',
+    threshold: 0.5 // trigger when 50% of the element is visible
+};
+
+const postObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const postDiv = entry.target;
+            const postId = postDiv.dataset.postId;
+            const ownerUid = postDiv.dataset.ownerUid;
+            handlePostSee(ownerUid, postId);
+            observer.unobserve(postDiv); 
+        }
+    });
+}, observerOptions);
+
+// Close profile image viewer
+imageViewerProfileClose.addEventListener('click', () => {
+    imageViewerProfile.classList.add('hidden');
+});
+
+// Close media viewers
+imageViewerClose.addEventListener('click', () => {
+    imageViewer.classList.add('hidden');
+});
+videoViewerClose.addEventListener('click', () => {
+    viewerVideo.pause();
+    videoViewer.classList.add('hidden');
+});
+
+// Add a single click listener to the posts container for all actions
+postsContainer.addEventListener('click', handlePostActions);
+
+function handlePostActions(event) {
+    const target = event.target;
+    const postDiv = target.closest('.post-card');
+    if (!postDiv) return;
+
+    const postId = postDiv.dataset.postId;
+    const ownerUid = postDiv.dataset.ownerUid;
+
+    // AYYUKAN DA AKA HADA A NAN
+    // ===================================
+
+    // Handle "Read More" click
+    if (target.classList.contains('read-more-btn')) {
+        const postTextElement = postDiv.querySelector('.post-text');
+        const originalText = postsDataCache[postId].text;
+        postTextElement.textContent = originalText;
+        target.classList.add('hidden');
+        return;
+    }
+
+    // Handle Image & Video Click to view
+    const clickedMedia = target.closest('.post-media-container img, .post-media-container video, .post-media-container .video-overlay');
+    if (clickedMedia) {
+        if (clickedMedia.tagName === 'IMG') {
+            viewImage(clickedMedia.src);
+        } else if (clickedMedia.tagName === 'VIDEO' || clickedMedia.classList.contains('video-overlay')) {
+            const videoElement = postDiv.querySelector('video');
+            if (videoElement) {
+                viewVideo(videoElement.src);
+            }
+        }
+        return;
+    }
+
+    // Handle Profile Photo Click to view
+    const clickedProfilePhoto = target.closest('.post-user-info .profile-photo');
+    if (clickedProfilePhoto) {
+        const post = postsDataCache[postId];
+        viewProfileImage(clickedProfilePhoto.src, post.supportTeams);
+        return;
+    }
+    
+    // Handle Likes
+    const likeBtn = target.closest('.like-count');
+    if (likeBtn) {
+        if (postId && ownerUid) {
+            handlePostLike(ownerUid, postId);
+        } else {
+            console.error("Post ID or User ID not found on like button.");
+        }
+        return;
+    }
+
+    // Handle Comments button
+    const commentBtn = target.closest('.comment-count');
+    if (commentBtn) {
+        if (postId && ownerUid) {
+            window.location.href = `comment.html?postId=${postId}&postUid=${ownerUid}`;
+        } else {
+            console.error("Post ID or User ID not found on comment button.");
+        }
+        return;
+    }
+
+    // Handle options menu toggle
+    const optionsBtn = target.closest('.post-options-btn');
+    if (optionsBtn) {
+        const optionsMenu = postDiv.querySelector(`#options-menu-${postId}`);
+        // Close any other open menus first
+        document.querySelectorAll('.post-options-menu:not(.hidden)').forEach(menu => {
+            if (menu !== optionsMenu) {
+                menu.classList.add('hidden');
+            }
+        });
+        optionsMenu.classList.toggle('hidden');
+        return;
+    }
+    
+    // Handle options menu close button
+    const closeOptionsBtn = target.closest('.close-options-menu');
+    if (closeOptionsBtn) {
+        closeOptionsBtn.closest('.post-options-menu').classList.add('hidden');
+        return;
+    }
+
+    // Handle actions within the options menu
+    const actionBtn = target.closest('button[data-action]');
+    if (actionBtn) {
+        const action = actionBtn.dataset.action;
+        const postTextElement = postDiv.querySelector(`#post-text-${postId}`);
+        const originalText = postsDataCache[postId].text;
+        const isOwner = currentUser && currentUser.uid === ownerUid;
+        
+        if (action === 'delete' && isOwner) {
+            deletePostWithNotification(ownerUid, postId);
+        } else if (action && action.startsWith('translate-')) {
+            const targetLang = action.replace('translate-', '');
+            if (postTextElement) {
+                translatePostText(postTextElement, originalText, targetLang, postId);
+            }
+        } else if (action === 'edit' && isOwner) {
+            editPost(ownerUid, postId);
+        }
+        // Close options menu after action
+        actionBtn.closest('.post-options-menu').classList.add('hidden');
+    }
+}
+
+async function deletePostWithNotification(ownerUid, postId) {
+    showNotification('Deleting post...');
+    const postRef = ref(db, `users/${ownerUid}/Posting/${postId}`);
+    try {
+        await remove(postRef);
+        showNotification('Post deleted!');
+    } catch (error) {
+        console.error("Error deleting post:", error);
+        showNotification('Failed to delete post.');
+    }
+}
+
+async function translatePostText(element, originalText, targetLang, postId) {
+    const cachedTranslation = localStorage.getItem(`translation-${postId}-${targetLang}`);
+    if (cachedTranslation) {
+        element.textContent = cachedTranslation;
+        showNotification('Using cached translation.');
+    } else {
+        showLoading(element);
+        try {
+            const translatedText = await translateText(originalText, targetLang);
+            hideLoading(element, translatedText);
+            if (translatedText && translatedText !== originalText) {
+                localStorage.setItem(`translation-${postId}-${targetLang}`, translatedText);
+                element.textContent = translatedText;
+                showNotification('Translation successful!');
+            } else {
+                element.textContent = originalText;
+                showNotification('Failed to translate. Showing original text.');
+            }
+        } catch (error) {
+            console.error("Translation error:", error);
+            hideLoading(element, originalText);
+            showNotification('Failed to translate. Showing original text.');
+        }
+    }
+}
+
+// NEW FUNCTION: Handles the edit modal instead of prompt
+async function editPost(ownerUid, postId) {
+    const post = postsDataCache[postId];
+    editPostTextarea.value = post.text;
+    editPostModal.classList.remove('hidden');
+
+    const savePostHandler = async () => {
+        const newText = editPostTextarea.value;
+        if (newText !== null && newText !== post.text) {
+            showNotification('Updating post...');
+            const postRef = ref(db, `users/${ownerUid}/Posting/${postId}/text`);
+            try {
+                await set(postRef, newText);
+                showNotification('Post updated!');
+                editPostModal.classList.add('hidden');
+            } catch (error) {
+                console.error("Error updating post:", error);
+                showNotification('Failed to update post.');
+            }
+        } else {
+            editPostModal.classList.add('hidden');
+        }
+        // Remove listeners after use
+        editPostSaveBtn.removeEventListener('click', savePostHandler);
+        editPostCancelBtn.removeEventListener('click', cancelPostHandler);
+        editPostCloseBtn.removeEventListener('click', cancelPostHandler);
+    };
+
+    const cancelPostHandler = () => {
+        editPostModal.classList.add('hidden');
+        // Remove listeners after use
+        editPostSaveBtn.removeEventListener('click', savePostHandler);
+        editPostCancelBtn.removeEventListener('click', cancelPostHandler);
+        editPostCloseBtn.removeEventListener('click', cancelPostHandler);
+    };
+
+    editPostSaveBtn.addEventListener('click', savePostHandler);
+    editPostCancelBtn.addEventListener('click', cancelPostHandler);
+    editPostCloseBtn.addEventListener('click', cancelPostHandler);
+}
+
+/// 🙏✔️ Site 3 START: Utility Functions
+            
+    
+    function showPreloader() {
+        preloader.classList.remove('hidden');
+    }
+
+    function hidePreloader() {
+        preloader.classList.add('hidden');
+    }
+
+    function showNotification(message) {
+        notificationMessage.textContent = message;
+        notificationContainer.classList.remove('hidden');
+        setTimeout(() => {
+            notificationContainer.classList.add('hidden');
+        }, 3000);
+    }
+
+    function formatTimeAgo(timestamp) {
+        if (!timestamp) return ''; // Return empty string if no timestamp
+        const now = new Date();
+        const postDate = new Date(timestamp);
+        if (isNaN(postDate.getTime())) { // Check if postDate is a valid date
+            return ''; // Return empty string for invalid dates
+        }
+        const seconds = Math.floor((now - postDate) / 1000);
+        
+        let interval = seconds / 31536000;
+        if (interval > 1) return Math.floor(interval) + " years ago";
+        interval = seconds / 2592000;
+        if (interval > 1) return Math.floor(interval) + " months ago";
+        interval = seconds / 86400;
+        if (interval > 1) return Math.floor(interval) + " days ago";
+        interval = seconds / 3600;
+        if (interval > 1) return Math.floor(interval) + " hours ago";
+        interval = seconds / 60;
+        if (interval > 1) return Math.floor(interval) + " minutes ago";
+        return Math.floor(seconds) + " seconds ago";
+    }
+
+    async function uploadToImgur(file) {
+        const formData = new FormData();
+        formData.append('image', file);
+        try {
+            const response = await fetch("https://api.imgur.com/3/image", {
+                method: "POST",
+                headers: {
+                    Authorization: `Client-ID ${imgurClientId}`
+                },
+                body: formData
+            });
+            const data = await response.json();
+            if (data.success) {
+                return data.data.link;
+            } else {
+                throw new Error('Imgur upload failed');
+            }
+        } catch (error) {
+            console.error("Imgur upload error:", error);
+            return null;
+        }
+    }
+
+    async function translateText(text, targetLanguage) {
+        if (!text) return "";
+        const cacheKey = `${text}-${targetLanguage}`;
+        if (translationCache[cacheKey]) {
+            return translationCache[cacheKey];
+        }
+        try {
+            const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${openRouterApiKey}`,
+                    'HTTP-Referer': 'https://lpfhra.page.div', 
+                    'X-Title': 'Leadway App', 
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    model: 'openai/gpt-4o-mini',
+                    messages: [
+                        {
+                            role: 'system',
+                            content: `You are a translator. Translate the following text into ${targetLanguage}. Maintain the original formatting, including line breaks and gaps.`
+                        },
+                        {
+                            role: 'user',
+                            content: text,
+                        },
+                    ],
+                }),
+            });
+            const data = await response.json();
+            const translatedText = data.choices[0].message.content;
+            translationCache[cacheKey] = translatedText;
+            return translatedText;
+        } catch (error) {
+            console.error("Translation error:", error);
+            return text;
+        }
+    }
+
+    function showLoading(element) {
+        element.innerHTML = '<span class="loading-spinner"></span>';
+        element.classList.add('loading-text-container');
+    }
+
+    function hideLoading(element, originalText) {
+        element.innerHTML = originalText;
+        element.classList.remove('loading-text-container');
+    }
+
+    // Function to view a full-size image
+    function viewImage(imageSrc) {
+        viewerImage.src = imageSrc;
+        imageViewer.classList.remove('hidden');
+    }
+
+    // Function to view a full-size video
+    function viewVideo(videoSrc) {
+        viewerVideo.src = videoSrc;
+        viewerVideo.load();
+        viewerVideo.play();
+        videoViewer.classList.remove('hidden');
+    }
+
+    // Function to view a profile photo with a team badge
+    function viewProfileImage(profileSrc, badgeSrc) {
+        viewerProfileImage.src = profileSrc;
+        if (badgeSrc) {
+            viewerProfileBadge.src = badgeSrc;
+            viewerProfileBadge.classList.remove('hidden');
+        } else {
+            viewerProfileBadge.classList.add('hidden');
+        }
+        imageViewerProfile.classList.remove('hidden');
+    }
+                        
+
+ // Function to generate a unique ID for unregistered users
+function getGuestUserId() {
+    let guestId = localStorage.getItem('guestUserId');
+    if (!guestId) {
+        guestId = 'guest-' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('guestUserId', guestId);
+    }
+    return guestId;
+}
+
+// Function to handle post liking
+async function handlePostLike(ownerUid, postId) {
+    // Get the user's ID, either registered or a unique guest ID from localStorage
+    const userId = (currentUser) ? currentUser.uid : getGuestUserId();
+    const likedKey = `liked-${postId}-${userId}`;
+
+    const likeRef = ref(db, `users/${ownerUid}/Posting/${postId}/like`);
+    
+    try {
+        const hasLiked = localStorage.getItem(likedKey) === 'true';
+
+        if (hasLiked) {
+            // If the user has already liked the post, unlike it
+            localStorage.setItem(likedKey, 'false');
+            await runTransaction(likeRef, (currentLike) => {
+                return Math.max(0, (currentLike || 1) - 1);
+            });
+           
+        } else {
+            // If the user has not liked the post, like it
+            localStorage.setItem(likedKey, 'true');
+            await runTransaction(likeRef, (currentLike) => {
+                return (currentLike || 0) + 1;
+            });
+            
+        }
+    } catch (error) {
+        console.error("Kuskure wajen canza son post (like):", error);
+        
+    }
+}
+
+
+// Function to handle post "See" count
+// Zai ƙara "see" sau ɗaya ga kowane post a localStorage
+async function siteHandlePostSee(ownerUid, postId) {
+    // Key na musamman domin adana bayani a localStorage ga kowane post
+    const hasSeenKey = `seen-${postId}`;
+    // Duba ko mai amfani ya riga ya ga post ɗin
+    if (localStorage.getItem(hasSeenKey)) {
+        // Idan ya riga ya gani, to kada a ƙara "see"
+        return;
+    }
+
+    const seeRef = ref(db, `users/${ownerUid}/Posting/${postId}/see`);
+    try {
+        await runTransaction(seeRef, (currentSee) => {
+            // Tabbatar da cewa adadin "see" ba zai zama kasa da 0 ba
+            return (currentSee || 0) + 1;
+        });
+        // Ajiye alamar cewa mai amfani ya riga ya ga wannan post ɗin
+        localStorage.setItem(hasSeenKey, 'true');
+    } catch (error) {
+        console.error("Error updating see count:", error);
+    }
+}
+
+// Function to handle post submission
+// Zai duba bayanan user da aka ajiye sannan ya ajiye sabon post a Firebase
+async function siteSubmitPost() {
+    if (!currentUser) {
+        showNotification('Please log in to create a post.');
+        return;
+    }
+
+    const postData = {
+        userId: currentUser.uid,
+        text: postTextarea.value || '',
+        photoLink1: imageLinkInput.value || '',
+        videoLink: videoLinkInput.value || '',
+        audioLink: audioLinkInput.value || '',
+        postingTime: new Date().toISOString(),
+        location: 'Nigeria, FCT',
+        see: 0, // An gyara wannan, yanzu zai fara daga 0
+        like: 0,
+        totalComment: 0,
+        profilePhoto: profileDataCache.profilePhoto || '',
+        fullName: profileDataCache.fullName || '',
+        country: profileDataCache.country || '',
+        state: profileDataCache.state || '',
+        position: profileDataCache.position || '',
+        profileLink: profileDataCache.profileLink || '',
+    };
+
+    showNotification('Posting...');
+    try {
+        const postsRef = ref(db, `users/${currentUser.uid}/Posting`);
+        const newPostRef = push(postsRef);
+        await set(newPostRef, postData);
+        showNotification('Post created successfully!');
+        writePostContainer.classList.add('hidden');
+        postTextarea.value = '';
+        imageLinkInput.value = '';
+        videoLinkInput.value = '';
+        audioLinkInput.value = '';
+    } catch (error) {
+        console.error("Error creating post:", error);
+        showNotification('Failed to create post. Please try again.');
+    }
+}
+
+// Function to display user info on the profile page
+function siteDisplayUserInfo(userData) {
+    userFullName.textContent = userData.fullName || 'No name provided';
+    userPosition.textContent = userData.position || 'No position';
+    userLocation.textContent = `${userData.country || 'Unknown country'}, ${userData.state || 'Unknown state'}`;
+}
+
+// SITE 4: Firebase Authentication & Profile Setup
+onAuthStateChanged(auth, async (user) => {
+    hidePreloader();
+    const urlParams = new URLSearchParams(window.location.search);
+    const profileUid = urlParams.get('uid') || (user ? user.uid : null);
+    if (user) {
+        currentUser = user;
+    } else {
+        currentUser = null;
+    }
+    if (profileUid) {
+        siteLoadProfileAndPosts(profileUid);
+    } else {
+        document.querySelector('.profile-banner').classList.add('no-uid-profile');
+        profilePhoto.src = "https://i.imgur.com/lwddsvh.png";
+        shareProfileBtn.classList.add('hidden');
+        newPostBtn.classList.add('hidden');
+        coursesLink.classList.add('hidden');
+        notesLink.classList.add('hidden');
+        postsContainer.innerHTML = '<p class="public-message" style="text-align: center;">This is a public profile. Please view here before clicking <a href="index.html">Home</a> </p>';
+    }
+});
+
+async function siteLoadProfileAndPosts(uid) {
+    const userRef = ref(db, `users/${uid}`);
+    onValue(userRef, (snapshot) => {
+        const userData = snapshot.val();
+        if (userData) {
+            profileDataCache = userData;
+            siteUpdateProfileUI(uid, userData);
+            siteDisplayUserInfo(userData);
+        }
+    });
+    const postsRef = ref(db, `users/${uid}/Posting`);
+    onValue(postsRef, (snapshot) => {
+        const posts = snapshot.val();
+        postsDataCache = posts || {};
+        siteRenderPosts(uid, postsDataCache);
+    });
+}
+
+function siteUpdateProfileUI(uid, userData) {
+    if (userData.profilePhoto) {
+        profilePhoto.src = userData.profilePhoto;
+    }
+    const isOwner = currentUser && currentUser.uid === uid;
+    if (isOwner) {
+        uploadPhotoBtn.classList.remove('hidden');
+        shareProfileBtn.classList.remove('hidden');
+        newPostBtn.classList.remove('hidden');
+        coursesLink.classList.remove('hidden');
+        notesLink.classList.remove('hidden');
+    } else {
+        uploadPhotoBtn.classList.add('hidden');
+        shareProfileBtn.classList.remove('hidden');
+        newPostBtn.classList.add('hidden');
+        coursesLink.classList.add('hidden');
+        notesLink.classList.add('hidden');
+    }
+    profilePhoto.onclick = () => viewProfileImage(profilePhoto.src);
+}
+
+// SITE 5: Profile Photo Upload
+uploadPhotoBtn.addEventListener('click', () => {
+    photoUploadInput.click();
+});
+photoUploadInput.addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (file && currentUser) {
+        showNotification('Uploading profile picture...');
+        const imageUrl = await uploadToImgur(file);
+        if (imageUrl) {
+            const userRef = ref(db, `users/${currentUser.uid}/profilePhoto`);
+            await set(userRef, imageUrl);
+            showNotification('Profile picture updated!');
+            const postsRef = ref(db, `users/${currentUser.uid}/Posting`);
+            const snapshot = await get(postsRef);
+            const posts = snapshot.val();
+            if (posts) {
+                const updates = {};
+                for (const postId in posts) {
+                    updates[`users/${currentUser.uid}/Posting/${postId}/profilePhoto`] = imageUrl;
+                }
+                await update(ref(db), updates);
+            }
+        } else {
+            showNotification('Failed to upload picture. Try again.');
+        }
+    }
+});
+
+// SITE 6: Post Creation & UI
+newPostBtn.addEventListener('click', () => {
+    writePostContainer.classList.remove('hidden');
+});
+closePostBtn.addEventListener('click', () => {
+    writePostContainer.classList.add('hidden');
+    postTextarea.value = '';
+    imageLinkInput.value = '';
+    videoLinkInput.value = '';
+    audioLinkInput.value = '';
+});
+linkInputBtn.addEventListener('click', () => {
+    linkInputContainer.classList.toggle('hidden');
+});
+linkInputCloseBtn.addEventListener('click', () => {
+    linkInputContainer.classList.add('hidden');
+});
+
+// An canja submitPostBtn.addEventListener don amfani da sabon function na 'siteSubmitPost'
+submitPostBtn.addEventListener('click', siteSubmitPost);
+
+function siteRenderPosts(uid, posts) {
+    postsContainer.innerHTML = '';
+    const postIds = Object.keys(posts || {});
+    postIds.sort((a, b) => new Date(posts[b].postingTime) - new Date(posts[a].postingTime));
+    const fragment = document.createDocumentFragment();
+    postIds.forEach(postId => {
+        const post = posts[postId];
+        const postElement = siteCreatePostElement(uid, postId, post);
+        fragment.appendChild(postElement);
+    });
+    postsContainer.appendChild(fragment);
+    // Observe each new post element to track visibility for "see" count
+    postsContainer.querySelectorAll('.post-card').forEach(postElement => {
+        postObserver.observe(postElement);
+    });
+}
+const TRUNCATE_LIMIT = 200; // Limit for post text to show 'Read More'
+function siteCreatePostElement(ownerUid, postId, post) {
+    const postDiv = document.createElement('div');
+    postDiv.className = 'post-card';
+    postDiv.dataset.postId = postId;
+    postDiv.dataset.ownerUid = ownerUid;
+
+    const isOwner = currentUser && currentUser.uid === ownerUid;
+    const hasText = post.text && post.text.trim() !== '';
+    const needsTruncate = hasText && post.text.length > TRUNCATE_LIMIT;
+    const displayText = needsTruncate ? post.text.substring(0, TRUNCATE_LIMIT) + '...' : post.text;
+    let mediaHTML = '';
+    if (post.photoLink1) {
+        mediaHTML += `<img src="${post.photoLink1}" alt="Post Photo">`;
+    }
+    if (post.videoLink) {
+        mediaHTML += `<video src="${post.videoLink}" controls></video>`;
+    }
+    if (post.audioLink) {
+        mediaHTML += `<audio src="${post.audioLink}" controls></audio>`;
+    }
+
+    // Updated HTML structure for post-options-container
+    postDiv.innerHTML = `
+        <div class="post-header">
+            <div class="post-user-info">
+                <img src="${post.profilePhoto || 'https://i.imgur.com/lwddsvh.png'}" alt="Profile Photo" class="profile-photo">
+                <div class="user-details">
+                    <h4><i class=""></i> ${post.fullName || 'User'} ${post.position ? `(${post.position})` : ''}</h4>
+                    <span class="user-meta">${post.country || ''}, ${post.state || ''} &bull; ${formatTimeAgo(post.postingTime)}</span>
+                </div>
+            </div>
+            <div class="post-options-container">
+                <button class="post-options-btn" aria-label="Post Options">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+                <div class="post-options-menu hidden" id="options-menu-${postId}">
+                    <button class="close-options-menu" aria-label="Close menu"><i class="fas fa-times"></i></button>
+                    ${hasText ? `<button data-action="translate-en">English</button>` : ''}
+                    ${hasText ? `<button data-action="translate-ha">Hausa</button>` : ''}
+                    ${hasText ? `<button data-action="translate-yo">Yoruba</button>` : ''}
+                    ${hasText ? `<button data-action="translate-ig">Igbo</button>` : ''}
+                    ${hasText ? `<button data-action="translate-fr">Français</button>` : ''}
+                    ${hasText ? `<button data-action="translate-ar">Arabic</button>` : ''}
+                    ${hasText ? `<button data-action="translate-hi">Hindi</button>` : ''}
+                    ${hasText ? `<button data-action="translate-bn">Bengali</button>` : ''}
+                    ${hasText ? `<button data-action="translate-es">Spanish</button>` : ''}
+                    ${isOwner ? `<button data-action="edit">Edit</button>` : ''}
+                    ${isOwner ? `<button data-action="delete">Delete</button>` : ''}
+                </div>
+            </div>
+        </div>
+        <div class="post-content">
+            ${hasText ? `<p class="post-text" id="post-text-${postId}">${displayText}</p>` : ''}
+            ${needsTruncate ? `<button class="read-more-btn">Read More</button>` : ''}
+            <div class="post-media-container" id="media-container-${postId}">
+                ${mediaHTML}
+            </div>
+        </div>
+        <div class="post-footer">
+            <div class="post-footer-item see-count">
+                <i class="fas fa-eye"></i> <span id="see-count-${postId}">${post.see || 0}</span>
+            </div>
+            <div class="post-footer-item comment-count" data-post-id="${post.postId}" data-post-uid="${post.uid}">
+                <i class="fas fa-comment"></i> <span id="comment-count-${postId}">${post.totalComment || 0}</span>
+            </div>
+            <div class="post-footer-item like-count" data-post-id="${post.postId}" data-post-uid="${post.uid}">
+                <i class="fas fa-thumbs-up"></i> <span id="like-count-${postId}">${post.like || 0}</span>
+            </div>
+        </div>
+    `;
+    return postDiv;
+}
+
+// SITE: Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+    hidePreloader();
+});
+document.addEventListener('click', (event) => {
+    document.querySelectorAll('.post-options-menu').forEach(menu => {
+        const postDiv = menu.closest('.post-card');
+        const optionsBtn = postDiv.querySelector('.post-options-btn');
+        if (!optionsBtn.contains(event.target) && !menu.contains(event.target)) {
+            menu.classList.add('hidden');
+        }
+    });
+});
+</script>
+
+    </body>
+</html>
