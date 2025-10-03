@@ -1,0 +1,19 @@
+{
+  "name": "Leadway",
+  "version": "1.0.0",
+  "description": "this aip for Leadway peace Cloudflare Pages Functions.",
+  "private": true,
+  "scripts": {
+    "start": "npx wrangler pages dev",
+    "deploy": "npx wrangler pages deploy"
+  },
+  "keywords": [
+    "cloudflare",
+    "pages",
+    "functions",
+    "api",
+    "openAl-data"
+  ],
+  "author": "Haruna Lawali",
+  "license": "ISC"
+}
