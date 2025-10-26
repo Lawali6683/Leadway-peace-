@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LPFHRA: Free Human Rights Course</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+       
+:root {
+    --primary-color: #007BFF;
+    --secondary-color: #3B5998;
+    --text-dark: #333;
+    --text-light: #f4f4f4;
+    --bg-light: #f9f9f9;
+    --bg-dark: #1B263B;
+    --card-bg: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-color: var(--bg-light);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1500x800.png?text=Empowerment+and+Human+Rights') no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.hero-content {
+    animation: fadeIn 2s ease-in-out;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+
+.section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+
+.mission-section {
+    background-color: var(--bg-light);
+}
+
+.mission-text {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    color: #555;
+}
+
+
+.features-section {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.feature-item .icon {
+    font-size: 3rem;
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+.feature-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+
+.coming-soon-section {
+    background-color: var(--bg-light);
+}
+
+.topics-list {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto 50px;
+    text-align: left;
+}
+
+.topics-list li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.topics-list li::before {
+    content: "\f00c"; 
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+.coming-soon-card {
+    background: var(--primary-color);
+    color: var(--text-light);
+    padding: 40px 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.coming-soon-card h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.announcement {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+
+.footer {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer p {
+    margin-bottom: 5px;
+}
+
+.footer a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); }
+    50% { transform: scale(1.02); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
+    100% { transform: scale(1); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); }
+}
+
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .section {
+        padding: 50px 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .coming-soon-card h2 {
+        font-size: 2rem;
+    }
+
+    .announcement {
+        font-size: 1.2rem;
+    }
+}
+
+.logo img {
+    max-width: 100px;
+    height: auto;
+    background: white;
+    border-radius: 50%;
+}
+
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="logo">
+                <img src="https://i.imgur.com/PZwb8dE.jpeg" alt="LPFHRA Logo">
+            </div>
+            <h1>Welcome to the LPFHRA Learning Hub</h1>
+            <p>Empower yourself with knowledge. Defend justice. Protect human rights.</p>
+            <div class="logo">
+                <img src="https://i.imgur.com/lwddsvh.png" alt="LPFHRA Logo">
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="section mission-section">
+            <div class="container">
+                <h2 class="section-title">A Vision for a Just World</h2>
+                <p class="mission-text">
+                    The Leadway Peace Functions and Human Rights Aids (LPFHRA) organization is currently developing a comprehensive online learning platform. We are building a system that provides you with a flexible, accessible, and high-quality educational experience. Our goal is to empower you to become a true advocate for peace and human rights.
+                </p>
+                <p class="mission-text">
+                    Soon, you will have the opportunity to access a complete course with video lectures, detailed examples, and interactive quizzes—all designed to help you master every topic.
+                </p>
+            </div>
+        </section>
+
+        <section id="features" class="section features-section">
+            <div class="container">
+                <h2 class="section-title">Your Journey to Empowerment</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-book-open icon"></i>
+                        <h3>Free & Comprehensive Learning</h3>
+                        <p>Our course is completely free, offering you a full curriculum on human rights and law without any cost. Access knowledge that can change your community.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-award icon"></i>
+                        <h3>Globally Recognized Certification</h3>
+                        <p>Upon completing the course and passing the final assessment, you will receive an accredited certificate, recognized by various authorities, allowing you to utilize your new skills anywhere.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-video icon"></i>
+                        <h3>Dynamic & Engaging Content</h3>
+                        <p>Each lesson is designed with video tutorials, real-world case studies, and practical examples to ensure a deep and lasting understanding. You must complete each module's quiz before proceeding.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-users icon"></i>
+                        <h3>Become a Peace Ambassador</h3>
+                        <p>The knowledge you gain will prepare you to become a certified Peace Ambassador in your country, equipped to promote justice and peace in your community.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="coming-soon" class="section coming-soon-section">
+            <div class="container">
+                <h2 class="section-title">Course Topics Include:</h2>
+                <ul class="topics-list">
+                    <li>The Fundamentals of Human Rights Law</li>
+                    <li>Understanding Child Protection and Welfare</li>
+                    <li>Promoting Justice and Non-violent Communication</li>
+                    <li>Healthcare Rights for All</li>
+                    <li>Peace-building and Conflict Resolution</li>
+                    <li>And much more!</li>
+                </ul>
+                <div class="coming-soon-card">
+                    <h2>LPFHRA Course & Certificate:</h2>
+                    <p class="announcement">Coming Soon! Stay tuned for a transformative learning experience.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; LPFHRA. All rights reserved.</p>
+            <p>Reg. 7373969</p>
+            <p>For inquiries, please contact us at: <a href="mailto:leawaypeacefoundation@gmail.com ">info@lpfhra.org</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

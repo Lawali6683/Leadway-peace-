@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LPHRA - Upload Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0D1B2A, #1B263B, #415A77);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+   
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+    gap: 15px; 
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.lang-switch {
+    display: flex;
+    gap: 5px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #4CAF50;
+}
+
+
+
+.profile-icon:hover {
+    color: #4CAF50;
+}
+
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .header-right {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .nav-container {
+        order: 1;
+    }
+    
+    .lang-switch {
+        order: 2;
+    }
+}
+
+        .logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            background: white;
+        }
+
+        .brand-name {
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 5px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .lang-btn.active,
+        .lang-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: #4CAF50;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4CAF50;
+        }
+
+       
+
+        .profile-icon:hover {
+            color: #4CAF50;
+        }
+
+        .content-section {
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .content-section h1 {
+            font-size: 2.5em;
+            color: #E0FBFC;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .content-section h2 {
+            font-size: 1.8em;
+            color: #72E0A4;
+            margin-top: 30px;
+            border-left: 4px solid #72E0A4;
+            padding-left: 10px;
+        }
+
+        .content-section p {
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .catbox-button {
+            display: inline-block;
+            background-color: #FF6B6B;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .catbox-button:hover {
+            background-color: #FF4747;
+            transform: translateY(-2px);
+        }
+
+        .instruction-step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #BDD2F0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .instruction-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+        }
+
+        .post-example-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+        }
+
+        .catbox-iframe-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .catbox-iframe-wrapper {
+            position: relative;
+            width: 90%;
+            height: 90%;
+            max-width: 1200px;
+            max-height: 800px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .catbox-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .close-iframe-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #FF6B6B;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: transform 0.2s;
+            z-index: 1001;
+        }
+
+        .close-iframe-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .lang-text {
+            display: none;
+        }
+
+        .lang-text.active {
+            display: block;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .header-right {
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 10px;
+            }
+            .lang-switch {
+                order: 1;
+            }
+            nav {
+                order: 2;
+            }
+            .profile-icon {
+                order: 3;
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+        <img src="https://i.imgur.com/lwddsvh.png" alt="LPHRA Logo" class="logo">
+        <span class="brand-name">LPFHRA</span>
+    </div>
+    <div class="header-right">
+        <div class="nav-container">
+            <nav>
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            </nav>
+            
+              <nav>
+                <a href="profile.html"><i class="fas fa-user-circle"></i> Profile </a>
+            </nav>
+          
+        </div>
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="en">English</button>
+            <button class="lang-btn" data-lang="ha">Hausa</button>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="content-section">
+        <div class="lang-text active" data-lang="en">
+            <h1>Welcome to the LPFHRA Media Upload Guide</h1>
+            <p>Welcome! This page will guide you on how to upload a video or audio file to get a link you can use to post on your LPFHRA page.</p>
+            <p>You cannot upload large video or audio files directly on the platform. To make this easy for all LPHRA members, we have provided a simple solution.</p>
+            
+            <h2>How to Upload and Get a Link</h2>
+            <p>It's very simple. Just follow these steps:</p>
+            <div class="instruction-step">
+                <span class="step-number">1</span>
+                <div>
+                    <p>Click the button below to open **Catbox.moe**. This website allows you to upload media files and get a direct link for free.</p>
+                    <div class="text-center">
+                        <a href="#" class="catbox-button" id="catboxLink">Open Catbox.moe</a>
+                    </div>
+                </div>
+            </div>
+            <div class="instruction-step">
+                <span class="step-number">2</span>
+                <p>On the Catbox.moe page, click the **"Choose File"** button to select your audio or video file from your device. After selecting, the upload will start automatically.</p>
+            </div>
+            <div class="instruction-step">
+                <span class="step-number">3</span>
+                <p>Once the upload is complete, you will see a **"File URL"** link. Copy this link. This is the link you will use for your post on the LPHRA platform.</p>
+            </div>
+
+            <h2>How to Post with Your Link</h2>
+            <p>After you have copied your media link, you can use it to create a post on LPFHRA. This is what you do:</p>
+            <div class="instruction-step">
+                <span class="step-number">1</span>
+                <p>In the post box on your LPHRA page, paste the audio or video link you just copied. The system will automatically recognize the link.</p>
+            </div>
+            <p class="text-center">Your post will look like this:</p>
+            <img src="https://i.imgur.com/tPV1HoY.png" alt="LPHRA Post Example" class="post-example-image">
+            <p>You can also use a link from other platforms like **YouTube** for videos, or any direct link for audio files. Just make sure it's a valid link.</p>
+            <div class="text-center" style="margin-top: 40px;">
+                <p>If you have questions or need more help, feel free to contact us via email or ask a nearby LPHRA member for assistance.</p>
+            </div>
+        </div>
+
+        <div class="lang-text" data-lang="ha">
+            <h1>Barka da zuwa Shafin Jagora don Loda Bidiyo ko Audio a LPFHRA</h1>
+            <p>Barka da zuwa! Wannan shafin zai jagorance ka kan yadda zaka loda bidiyo ko audio don samun link da zaka yi amfani da shi wajen yin post a shafin ka na LPFHRA.</p>
+            <p>Ba za ka iya loda bidiyo ko audio masu nauyi kai tsaye a shafin ba. Amma don sauƙaƙe wa dukkanin mambobin LPHRA, mun samar da wata hanya mai sauki.</p>
+
+            <h2>Yadda Zaka Loda kuma ka Samu Link</h2>
+            <p>Yana da matukar sauki. Bi wadannan matakai:</p>
+            <div class="instruction-step">
+                <span class="step-number">1</span>
+                <div>
+                    <p>Danna maɓallin da ke ƙasa don buɗe **Catbox.moe**. Wannan shafin zai ba ka damar loda fayilolin bidiyo da audio kyauta kuma ka samu link ɗinsu kai tsaye.</p>
+                    <div class="text-center">
+                        <a href="#" class="catbox-button" id="catboxLinkHa">Buɗe Catbox.moe</a>
+                    </div>
+                </div>
+            </div>
+            <div class="instruction-step">
+                <span class="step-number">2</span>
+                <p>A shafin Catbox.moe, danna maɓallin **"Choose File"** (Zaɓi Fayil) don zaɓar bidiyo ko audio daga na'urarka. Bayan ka zaɓa, lodawar za ta fara kai tsaye.</p>
+            </div>
+            <div class="instruction-step">
+                <span class="step-number">3</span>
+                <p>Da zarar an kammala lodawar, zaka ga wani link mai taken **"File URL"** (Link na Fayil). Ka kwafa wannan link. Wannan shine link din da zaka yi amfani da shi wajen yin post a shafin LPHRA.</p>
+            </div>
+
+            <h2>Yadda Zaka Yi Post da Link</h2>
+            <p>Bayan ka kwafa link ɗin ka, zaka iya amfani da shi wajen yin post a LPFHRA. Ga abinda zaka yi:</p>
+            <div class="instruction-step">
+                <span class="step-number">1</span>
+                <p>A cikin wurin yin post a shafin LPFHRA, liƙa (paste) link ɗin audio ko bidiyo da ka kwafa. Tsarin shafin zai gane link ɗin kai tsaye.</p>
+            </div>
+            <p class="text-center">Post ɗinka zai yi kama da wannan:</p>
+            <img src="https://i.imgur.com/tPV1HoY.png" alt="Misali Post a LPHRA" class="post-example-image">
+            <p>Haka kuma, zaka iya amfani da link daga wasu shafuka kamar **YouTube** don bidiyo, ko kowane irin link mai inganci don audio. Ka tabbatar link ɗin yana aiki daidai.</p>
+            <div class="text-center" style="margin-top: 40px;">
+                <p>Idan kana da wata tambaya ko kana buƙatar ƙarin bayani, ka tuntube mu ta hanyar email ko kuma ka tambayi wani mamba na LPFHRA mafi kusa da kai don ya taimaka maka.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="catbox-iframe-container" id="catboxIframeContainer">
+    <div class="catbox-iframe-wrapper">
+        <button class="close-iframe-btn" id="closeIframeBtn">&times;</button>
+        <iframe src="https://catbox.moe" frameborder="0" class="catbox-iframe"></iframe>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const langTexts = document.querySelectorAll('.lang-text');
+        const catboxLinks = document.querySelectorAll('#catboxLink, #catboxLinkHa');
+        const catboxIframeContainer = document.getElementById('catboxIframeContainer');
+        const closeIframeBtn = document.getElementById('closeIframeBtn');
+
+        function switchLanguage(lang) {
+            langBtns.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            langTexts.forEach(text => {
+                text.classList.toggle('active', text.dataset.lang === lang);
+            });
+        }
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchLanguage(btn.dataset.lang);
+            });
+        });
+
+        catboxLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                catboxIframeContainer.style.display = 'flex';
+            });
+        });
+
+        closeIframeBtn.addEventListener('click', () => {
+            catboxIframeContainer.style.display = 'none';
+        });
+
+      
+        catboxIframeContainer.addEventListener('click', (event) => {
+            if (event.target.id === 'catboxIframeContainer') {
+                catboxIframeContainer.style.display = 'none';
+            }
+        });
+
+       
+        switchLanguage('en');
+    });
+</script>
+
+</body>
+</html>
