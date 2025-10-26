@@ -1642,9 +1642,96 @@
     }
    
 
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;  
+    transition: opacity 0.5s ease;
+}
+
+.preloader-content {
+    text-align: center;
+}
+
+.preloader-content img {
+    width: 100px;
+    height: 100px;
+    animation: pulse 2s infinite;
+    border-radius: 50%;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.25), 
+                0 0 50px rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05);
+    background: white;
+    padding: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.preloader-content img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), 
+                0 0 60px rgba(255, 255, 255, 0.2);
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.preloader-content p {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: white; 
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.25), 0 0 50px rgba(255, 255, 255, 0.15);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), 0 0 60px rgba(255, 255, 255, 0.2);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.25), 0 0 50px rgba(255, 255, 255, 0.15);
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
   </style>             
 </head>
 <body>
+    <div id="preloader">
+    <div class="preloader-content">
+        <img src="https://i.imgur.com/lwddsvh.png" alt="Loading Logo" />
+        <div class="spinner"></div>
+        <p>Peace is loading…</p>
+    </div>
+</div>
  
     <header id="site1-header">
         <div class="site1-header-row">
@@ -1691,7 +1778,7 @@
  <p style="font-size: 12px; font-weight: bold; line-height: 1.5;">
 
     <div class="image-container image-style-15">
-        <img src="https://i.imgur.com/2qXwtZr.png" alt="Haruna Lawali" 
+        <img src="https://i.imgur.com/ISDT1Iq.png" alt="Haruna Lawali" 
              style="width:220px; height:220px;" 
              onclick="openImage(this.src)">                               
   <p>  I, Haruna Lawali, created this website so that everyone can see how the members of Leadway Peace Foundation and Human Rights Aids (LPFHRA) are committed to promoting peace, justice, and protecting the rights of women, children, the less privileged, and those who have been oppressed.
@@ -1898,10 +1985,18 @@ const postVisibilityObserver = new IntersectionObserver((entries, observer) => {
     });
 }, postObserverOptions);
 
+
+
+
 function hidePreloader() {
     const preloader = document.getElementById('preloader');
-    if (preloader) {
-        preloader.style.display = 'none';
+    if (preloader) {        
+      
+        preloader.style.opacity = '0';        
+       
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500); 
     }
 }
 
@@ -2168,11 +2263,32 @@ globalAudioPlayer.addEventListener('ended', () => {
     }
 });
 
-window.addEventListener('load', () => {
-    hidePreloader();
-    loadSite2BannerPost();
-    loadSite4PostsFeed();
-    loadSite3Members();
+
+
+window.addEventListener('load', async () => {
+    console.log("Window loaded. Ana jiran dukkan data na Firebase...");
+    try {
+      
+        const loadPromises = [
+            loadSite2BannerPost(),
+            loadSite4PostsFeed(),
+            loadSite3Members()
+        ];
+        
+       
+        await Promise.all(loadPromises);
+        
+        console.log("An gama loading dukkan data.");
+        
+       
+        hidePreloader();
+        
+    } catch (error) {
+        console.error("An samu matsala wajen loading data:", error);
+       
+        hidePreloader();
+        showCustomNotification("Error loading data. Please refresh.", "error");
+    }
 });
 
 bgBtns.forEach(btn => {
@@ -2330,8 +2446,11 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function loadSite2BannerPost() {
-    get(ref(db, 'NewPost')).then(snapshot => {
+
+
+
+function loadSite2BannerPost() {   
+    return get(ref(db, 'NewPost')).then(snapshot => {
         if (!snapshot.exists()) {
             bannerSection.innerHTML = '<p>No new post available.</p>';
             return;
@@ -2443,11 +2562,18 @@ function loadSite2BannerPost() {
             });
         }
         handlePostSee(ownerUid, postId, bannerSection.id);
+    }).catch(error => { 
+        console.error("Error loading banner post:", error);
+        bannerSection.innerHTML = '<p>Error loading post.</p>';
+        throw error; 
     });
 }
 
-function loadSite3Members() {
-    get(ref(db, 'users')).then(snapshot => {
+
+
+
+function loadSite3Members() {  
+    return get(ref(db, 'users')).then(snapshot => {
         if (!snapshot.exists()) {
             membersSection.innerHTML = '<p>No members found.</p>';
             return;
@@ -2506,12 +2632,17 @@ function loadSite3Members() {
                 window.location = `profile.html?uid=${uid}`;
             });
         });
+    }).catch(error => { 
+        console.error("Error loading members:", error);
+        membersSection.innerHTML = '<p>Error loading members.</p>';
+        throw error;
     });
 }
 
 
-function loadSite4PostsFeed() {
-    get(ref(db, 'users')).then(snapshot => {
+
+function loadSite4PostsFeed() { 
+    return get(ref(db, 'users')).then(snapshot => {
         if (!snapshot.exists()) {
             postsFeed.innerHTML = '<p>No posts available.</p>';
             return;
@@ -2543,8 +2674,13 @@ function loadSite4PostsFeed() {
             postVisibilityObserver.observe(postElement);
         });
         postsFeed.addEventListener('click', handleSite4PostActions);
+    }).catch(error => {
+        console.error("Error loading posts feed:", error);
+        postsFeed.innerHTML = '<p>Error loading posts.</p>';
+        throw error;
     });
 }
+
 
 function renderSite4PostCard(post) {
     const hasText = post.text && post.text.trim() !== '';
