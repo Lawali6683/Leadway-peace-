@@ -317,8 +317,8 @@
 }
 .user-details h4 {
     margin: 0;
-    font-size: 1em;
-    color: #E0E1DD;
+    font-size: 13px;
+    
 }
 .user-meta {
     font-size: 0.8em;
@@ -1636,10 +1636,7 @@
         border: 3px solid #795548; 
     }
 
-    .image-style-15:hover img {
-        transform: skewX(0deg) translateX(10px);
-        box-shadow: 0 0 0 #9e9e9e; 
-    }
+   
    
 
 
@@ -1722,6 +1719,91 @@
     display: none !important;
 }
 
+
+.translate-icon {
+ font-size: 40px;
+  color: #007bff;
+  cursor: pointer;
+  margin: 8px;
+  transition: 0.3s;
+  position: absolute;
+  right: 0px;
+  top: 200px;
+  
+  
+}
+
+.translate-icon:hover {
+  color: #0056b3;
+  transform: scale(1.2);
+}
+
+.translate-container {
+  position: absolute;
+  top: 45px;
+  right: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 12px;
+  width: 220px;
+  z-index: 9999;
+  font-family: Arial, sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+.close-btn {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#languageSelect, #customLanguage {
+  width: 100%;
+  padding: 6px;
+  margin-top: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#submitLang {
+  margin-top: 6px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#submitLang:hover {
+  background: #0056b3;
+}
+
+.loader {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #007bff;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+
+
+.tran{
+    Font-size: 10px;
+    Font-weight: bold;
+}
+
   </style>             
 </head>
 <body>
@@ -1777,25 +1859,61 @@
  
  <p style="font-size: 12px; font-weight: bold; line-height: 1.5;">
 
-    <div class="image-container image-style-15">
-        <img src="https://i.imgur.com/ISDT1Iq.png" alt="Haruna Lawali" 
-             style="width:220px; height:220px;" 
-             onclick="openImage(this.src)">                               
-  <p>  I, Haruna Lawali, created this website so that everyone can see how the members of Leadway Peace Foundation and Human Rights Aids (LPFHRA) are committed to promoting peace, justice, and protecting the rights of women, children, the less privileged, and those who have been oppressed.
-  </p>
 
-  <p style="font-size: 12px; font-weight: bold; line-height: 1.5;">
-    The foundation works to protect human rights, support the less privileged, and encourage unity and peace. Our members also need support such as tools, job opportunities, contracts, and training – in order to become self-reliant and continue to grow.
-  </p>
+<div class="image-container image-style-15">
+  <img src="https://i.imgur.com/ISDT1Iq.png" alt="Haruna Lawali"
+       style="width:220px; height:220px;" onclick="openImage(this.src)">
+  
+  <!-- Translation Icon -->
+  <i class="fa-solid fa-globe translate-icon" title="Translate this text" onclick="toggleTranslateContainer()"><i class="tran"> Translation</i></i>
 
-  <p style="font-size: 12px; font-weight: bold; line-height: 1.5;">
-    Our program is open to everyone. You can join us, partner with us, or register as a member. After registration, you will receive a certificate of experience and the chance to take part in development opportunities.
-  </p>
+  <!-- Translation container -->
+  <div id="translateContainer" class="translate-container hidden">
+    <span class="close-btn" onclick="closeTranslateContainer()">&times;✖️</span>
+    <h4>Select Language</h4>
+    <select id="languageSelect">
+      <option value="">Choose language...</option>
+      <option value="en">English</option>
+      <option value="ar">Arabic</option>
+      <option value="fr">French</option>
+      <option value="ha">Hausa</option>
+      <option value="yo">Yoruba</option>
+      <option value="ig">Igbo</option>
+      <option value="es">Spanish</option>
+      <option value="other">Other</option>
+    </select>
 
-  <p style="font-size: 12px; font-weight: bold; line-height: 1.5;">
-    You can also contact the nearest LPFHRA member for help, advice, or to file a complaint. They are ready to support you in legal matters and to help resolve your challenges.
-  </p>
+    <div id="otherLanguageInput" style="display:none;">
+      <input type="text" id="customLanguage" placeholder="Enter language code or name">
+      <button id="submitLang"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
 </div>
+
+<!-- Text content -->
+<div id="textSection">
+ <p>
+  I, Haruna Lawali, created this website to show how members of the Leadway Peace Foundation and Human Rights Aids (LPFHRA) are committed to promoting peace, justice, and protecting the rights of women, children, and the less privileged.
+ </p>
+
+ <p style="font-size: 12px; font-weight: bold; line-height: 1.5;">
+ Our foundation stands for truth, fairness, and transparency in all humanitarian activities. Unlike many aid organizations where help sometimes fails to reach the right people, LPFHRA members actively monitor and report every effort to ensure honesty and proper follow-up.
+ </p>
+
+ <p style="font-size: 12px; font-weight: bold; line-height: 1.5;">
+  Each registered member has a certified page showing their work in humanitarian aid, peacebuilding, legal support, and community development. Members can share their achievements, stories, or awareness posts — such as about new opportunities, public health, or human rights.
+ </p>
+
+ <p style="font-size: 12px; font-weight: bold; line-height: 1.5;">
+  Visitors can read, listen, and translate every post into their preferred language for easier understanding.
+Everyone is welcome to join, partner with us, or register as a member. After registration, you’ll receive a certificate of experience and access to training and empowerment opportunities.
+ </p>
+
+ <p style="font-size: 12px; font-weight: bold; line-height: 1.5;">
+ You can also contact the nearest LPFHRA member for help, advice, or to report a complaint — they are always ready to assist you in matters of justice and peace.
+ </p>
+</div>
+<div id="loader" class="loader hidden"></div>
 </div>
 </div>
 
@@ -3081,5 +3199,75 @@ if (socials[3]) socials[3].href = "https://t.me/";
 if (socials[4]) socials[4].href = "https://instagram.com/";
 if (socials[5]) socials[5].href = "https://x.com/";
 </script>
+<script>
+const translateContainer = document.getElementById("translateContainer");
+const languageSelect = document.getElementById("languageSelect");
+const otherInput = document.getElementById("otherLanguageInput");
+const loader = document.getElementById("loader");
+const textSection = document.getElementById("textSection");
+
+let originalHTML = textSection.innerHTML;
+
+function toggleTranslateContainer() {
+  translateContainer.classList.toggle("hidden");
+}
+
+function closeTranslateContainer() {
+  translateContainer.classList.add("hidden");
+}
+
+languageSelect.onchange = () => {
+  if (languageSelect.value === "other") {
+    otherInput.style.display = "block";
+  } else if (languageSelect.value) {
+    otherInput.style.display = "none";
+    translatePage(languageSelect.value);
+  }
+};
+
+document.getElementById("submitLang").onclick = () => {
+  const lang = document.getElementById("customLanguage").value.trim();
+  if (lang) translatePage(lang);
+};
+
+async function translatePage(targetLang) {
+  const text = textSection.innerText.trim();
+  if (!text) return;
+
+
+  textSection.innerHTML = "";
+  loader.classList.remove("hidden");
+
+  try {
+    const response = await fetch("https://leadwaypeace.pages.dev/api/translate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "@haruna66"
+      },
+      body: JSON.stringify({
+        text: text,
+        targetLang: targetLang
+      })
+    });
+
+    const data = await response.json();
+    loader.classList.add("hidden");
+
+    if (response.ok && data.translatedText) {
+      textSection.innerHTML = `<p style="font-weight:bold; line-height:1.5;">${data.translatedText}</p>`;
+      localStorage.setItem("translatedText", data.translatedText);
+    } else {
+      textSection.innerHTML = originalHTML;
+      alert("Translation failed. Showing original text.");
+    }
+  } catch (error) {
+    loader.classList.add("hidden");
+    textSection.innerHTML = originalHTML;
+    alert("An error occurred while translating.");
+  }
+}
+</script>
+
 </body>
 </html>
