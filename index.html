@@ -1,0 +1,3829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadway Peace Foundation</title>    
+<meta property="og:description" content="Leadway Peace Functions and Human Rights Aids (LPFHRA) is dedicated to fostering peace, promoting justice, and advocating for human rights across communities. Join us in our mission to build a world where dignity is respected, conflicts are resolved peacefully, and everyone's fundamental rights are protected. Explore our initiatives, connect with our network, and become part of the change!" />
+<meta property="og:image" content="https://i.imgur.com/lwddsvh.png" />
+<meta property="og:image:secure_url" content="https://i.imgur.com/lwddsvh.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lpfhra.pages.dev/" /> 
+<meta property="og:image:alt" content="Leadway Peace Functions and Human Rights Aids Logo" />
+<link rel="icon" type="image/png" href="https://i.imgur.com/lwddsvh.png" />    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">    
+  <link rel="manifest" href="/manifest.json">
+
+<style>
+       
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0D1B2A, #1B263B, #415A77);
+            color: #ffffff;    
+            line-height: 1.6;
+            transition: background 0.4s, color 0.4s;
+           
+            --main-text-color: #ffffff;
+            --border-line-color: rgba(255, 255, 255, 0.1); 
+            --accent-color: #778DA9; 
+            --like-icon-color: #415A77; 
+        }
+
+        body.bg-2 {
+            background: #0e0e0e;
+            color: #f4f4f4;
+            --main-text-color: #f4f4f4;
+            --border-line-color: rgba(244, 244, 244, 0.1); 
+            --accent-color: #a0a0a0;
+        }
+
+        body.bg-3 {
+            background: linear-gradient(120deg, #f6f7fb 0%, #e3e7ee 100%);
+            color: #2a2a2a;
+            --main-text-color: #2a2a2a;
+            --border-line-color: rgba(42, 42, 42, 0.1); 
+            --accent-color: #6a6a6a;
+        }
+
+      
+        #site1-header {    
+            width: 100vw;
+            background-color: rgba(0, 0, 0, 0.3);    
+            border-bottom: 3px solid #415A77;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            box-shadow: 0 0 25px rgba(0, 255, 180, 0.3); 
+            
+            
+        }
+
+        .site1-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0rem;
+            max-width: 100vw;
+            padding: .7rem 0rem;
+            padding: 15px;
+            
+        }
+
+        .site1-logo {
+            height: 36px;
+            width: 36px;
+            border-radius: 10px;
+            object-fit: contain;
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+            border: 2px solid #415A77;
+            
+        }
+
+        .site1-course {
+            height: 35px;
+            width: 53px;
+            border-radius: 10px;
+            object-fit: contain;
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+            border: 2px solid #415A77;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+
+        .site1-course:hover {
+            box-shadow: 0 0 0 2px #2d8cf0;
+        }
+
+        .site1-bg-btn {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: inherit; 
+            transition: color 0.2s;
+            padding: 0rem 0.7rem;
+            border-radius: 7px;
+        }
+
+        .site1-bg-btn:focus, .site1-bg-btn:hover {
+            color: #ffd700;
+            background: #263b5e;
+        }
+
+        .site1-push-btn,
+        .site1-download-btn,
+        .site1-bell-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: inherit;
+            padding: 0.25rem 0.8rem;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .site1-push-btn:hover,
+        .site1-download-btn:hover,
+        .site1-bell-btn:hover {
+            background: #2d8cf0;
+            color: #fff;
+        }
+
+        
+        .site1-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(10, 20, 40, 0.46);
+            align-items: center; justify-content: center;
+        }
+
+        .site1-modal-content {
+            background: #1B263B;
+            color: #fff;
+            min-width: 300px;
+            max-width: 90vw;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .site1-modal-close {
+            position: absolute;
+            top: 12px; right: 12px;
+            border: none;
+            background: none;
+            font-size: 1.6rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .site1-modal-menu {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .site1-modal-menu button {
+            background: #415A77;
+            color: #fff;
+            font-size: 1.06rem;
+            border: none;
+            border-radius: 7px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .site1-modal-menu button:hover {
+            background: #2d8cf0;
+        }
+
+        .site1-modal-warning {
+            margin-top: 1.5rem;
+            background: #ffd7002a;
+            color: #ffd700;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.97rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .site1-bell-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2d8cf0;
+        }
+
+        .site1-bell-toggle {
+            background: #2d8cf0;
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 1.08rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .site1-download-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #13ad57;
+        }
+
+        .site1-download-btn-modal {
+            background: #13ad57;
+            color: #fff;
+            padding: 0.6rem 1.3rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 1.11rem;
+            cursor: pointer;
+        }
+        .site4-translate-title {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #2d8cf0;
+        }
+
+        .site4-translate-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+        }
+
+        .site4-translate-list button {
+            background: #415A77;
+            color: #fff;
+            font-size: 1.06rem;
+            border: none;
+            border-radius: 7px;
+            padding: 10.4rem 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .site4-translate-list button:hover {
+            background: #ffd700;
+            color: #222;
+        }
+                
+                                 
+
+.post-card {
+    background: transparent;
+    border-radius: 0;
+    margin: 20px 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+    
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.post-user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.post-user-info .profile-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #415A77;
+}
+.user-details {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 0; 
+    left: 0; 
+}
+.user-details h4 {
+    margin: 0;
+    font-size: 13px;
+    
+}
+.user-meta {
+    font-size: 0.8em;
+    color: #778DA9;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.post-options-container {
+    position: relative; 
+}
+.post-options-btn {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.2em;
+    cursor: pointer;
+    position: relative;
+    z-index: 600;
+}
+.post-options-menu {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background: #1B263B;
+    border: 1px solid #415A77;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    
+    display: none; 
+    flex-direction: column; 
+    min-width: 120px; 
+    z-index: 1000; 
+}
+
+.post-options-menu:not(.hidden) {
+    display: flex;
+    
+    align-items: flex-start; 
+}
+
+.post-options-menu button {
+    display: block; 
+    width: 100%;
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 8px 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.post-options-menu button:hover {
+    background: #415A77;
+}
+
+.post-options-menu .close-options-menu {
+    text-align: right; 
+    padding: 5px;
+    color: #fff;
+    font-size: 1.2em;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.post-content {
+    margin: 15px 15px 0 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.post-text {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+    color: #E0E1DD;
+}
+.post-text.collapsed {
+    max-height: 100px;
+    overflow: hidden;
+    position: relative;
+}
+.post-text.collapsed::after {
+    content: '...';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to left, #1B263B, rgba(27, 38, 59, 0));
+    padding-left: 20px;
+}
+.read-more-btn {
+    background: none;
+    border: none;
+    color: #778DA9;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.post-media-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    
+}
+.post-media-container img,
+.post-media-container video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.post-media-container img:hover {
+    transform: scale(1.02);
+}
+.post-media-container video {
+    max-width: 100%;
+}
+.post-media-container audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+.post-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 15px;
+    border-top: none;
+    margin-top: 0;
+}
+.post-footer-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.post-footer-item:hover {
+    color: #E0E1DD;
+}
+.post-footer-item i {
+    font-size: 1.2em;
+}
+.post-footer-item.like.liked i {
+    color: #415A77;
+}
+                       
+        .post-options-container {
+            position: relative; 
+        }
+
+        .post-options-btn {
+            background: none;
+            border: none;
+            Color: red;
+            font-size: 1.2em;
+            cursor: pointer;
+            position: relative;
+            z-index: 600; 
+        }
+
+        .post-options-menu {
+            position: absolute;
+            top: 30px;
+            right: 0;
+            background: #1B263B; 
+            border: 1px solid #415A77;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            padding: 10px;
+            display: none; 
+            flex-direction: column; 
+            min-width: 120px; 
+            z-index: 5; 
+        }
+        
+        .post-options-menu:not(.hidden) {
+            display: flex !important; 
+            align-items: flex-start; 
+        }
+        .post-options-menu button {
+            display: block; 
+            width: 100%;
+            background: none;
+            border: none;
+            color: #fff;
+            padding: 8px 12px;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            z-index: 5;
+        }
+        .post-options-menu button:hover {
+            background: #415A77;
+        }
+        
+        .post-options-menu .close-options-menu {
+            text-align: right; 
+            padding: 5px;
+            color: #fff;
+            font-size: 1.2em;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .post-content { 
+            margin: 0 15px; 
+            padding-bottom: 10px; 
+            border-bottom: 1px solid var(--border-line-color); 
+        }
+        .post-text {
+            white-space: pre-wrap; 
+            word-wrap: break-word; 
+            margin-bottom: 10px;
+            color: var(--main-text-color); 
+        }
+        .post-text.collapsed {
+            max-height: 100px; 
+            overflow: hidden;
+            position: relative;
+        }
+        .post-text.collapsed::after {
+            content: '...';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(to left, #1B263B, rgba(27, 38, 59, 0));
+            padding-left: 20px;
+        }
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: block; 
+            text-align: left; 
+            padding-left: 15px; 
+        }
+        .post-media-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+            padding-bottom: 0; 
+            border-bottom: none; 
+        }
+       
+        .post-media-container img,
+        .post-media-container video {
+            width: 100%; 
+            height: auto; 
+            object-fit: contain; 
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .post-media-container img:hover {
+            transform: scale(1.02);
+        }
+        .post-media-container audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .post-footer { 
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 15px;
+            border-top: none; 
+            margin-top: 0;
+        }
+        .post-footer-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: inherit;
+        }
+        .post-footer-item:hover {
+            color: var(--main-text-color); 
+        }
+        .post-footer-item i {
+            font-size: 1.2em;
+        }
+        .post-footer-item.like.liked i {
+            color: var(--like-icon-color); 
+        }
+
+        .viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none; 
+            justify-content: center;
+            align-items: center;
+            z-index: 2000; 
+        }
+
+        .viewer img, .viewer video {
+            max-width: 90%; 
+            max-height: 90%; 
+            object-fit: contain; 
+        }
+
+        .viewer-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 2.5em; 
+            cursor: pointer;
+            background: none; 
+            border: none; 
+            padding: 0; 
+            line-height: 1; 
+        }
+
+        .viewer-download {
+            position: absolute;
+            top: 20px;
+            right: 70px; 
+            color: #fff;
+            font-size: 2.5em; 
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0; 
+            line-height: 1;
+        }
+
+       
+        #push-notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #415A77; 
+            color: #E0E1DD;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            display: none; 
+            font-family: Arial, sans-serif;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        #push-notification-container.hidden {
+            display: none;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        #push-notification-container p {
+            margin: 0;
+        }
+                        
+         
+        #site2-banner-post {
+            margin-top: 0.9rem;
+            width: 100vw; 
+            min-height: 200px;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
+            background: transparent; 
+            position: relative;
+            overflow: hidden;
+            padding: 15px 0; 
+        }
+        
+        .site2-post-time {
+            font-size: 0.9em;
+            color: var(--accent-color); 
+            margin-bottom: 0; 
+            width: 100%; 
+            text-align: center; 
+            padding-top: 10px; 
+            border-top: 1px solid var(--border-line-color); 
+        }
+        
+        .site2-banner-media {
+            width: 100%; 
+            position: relative;
+            padding-bottom: 0; 
+            margin-bottom: 0; 
+            border-bottom: none; 
+        }
+
+        #site2-banner-post iframe,
+        #site2-banner-post video,
+        #site2-banner-post .site2-banner-img,
+        #site2-banner-post audio {
+            width: 100%; 
+            height: auto; 
+            border-radius: 0; 
+            object-fit: contain; 
+        }
+
+        #site2-banner-post .site2-banner-carousel {
+            width: 100%;
+            position: relative;
+            padding-bottom: 0; 
+            margin-bottom: 0; 
+            border-bottom: none; 
+        }
+
+        #site2-banner-post .site2-banner-carousel img {
+            object-fit: contain; 
+            border-radius: 0; 
+        }
+
+        .site2-banner-carousel-controls {
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 10px;
+            z-index: 10;
+        }
+
+        .site2-banner-carousel-controls button {
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .site2-banner-text-container {
+            width: 100%;
+            padding: 0 15px; 
+            margin-top: 0; 
+            padding-bottom: 0; 
+            border-bottom: none; 
+        }
+
+        .site2-banner-text {
+            font-size: 1.05rem;
+            color: var(--main-text-color); 
+            white-space: pre-wrap; 
+            word-wrap: break-word; 
+            text-align: center; 
+            margin-bottom: 0; 
+        }
+
+        .site2-banner-read-more {
+            background: none;
+            border: none;
+            color: var(--accent-color); 
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: block; 
+            text-align: center; 
+            width: 100%; 
+        }
+        
+        .media-border-line {
+            border-bottom: 1px solid var(--border-line-color); 
+            margin-top: 10px; 
+            width: 100%;
+        }
+        
+        .site2-banner-media .site2-banner-fs,
+        .post-media-container .site4-media-fs-btn { 
+            position: absolute;
+            top: 50%;
+            left: 90%; 
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            padding: 10px 15px;
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 5;
+            transition: background 0.3s ease;
+        }
+
+        .site2-banner-media .site2-banner-fs:hover,
+        .post-media-container .site4-media-fs-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+                                                      
+
+#site3-members-carousel {
+    margin: 1rem 0;
+    width: 100vw;
+    padding: 0.3rem 0;
+    overflow-x: auto;
+    display: flex;
+    gap: 0.8rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+#site3-members-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.site3-member-card {
+    background: transparent;
+    border-radius: 12px;
+    padding: 0.1rem 2.0rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1.2px solid rgba(65,90,119,0.6);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    background: linear-gradient(180deg, rgba(40, 5, 60, 0.63) 0%, rgba(20, 10, 3, 0.10) 70%, rgba(20, 20, 20, 0.07) 100%);
+    border-radius: 16px;
+}
+.site3-member-card:hover {
+    border-color: #ffd700;
+    transform: translateY(-2px);
+}
+
+.site3-member-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0rem;
+    border: 1.5px solid #ffd700;
+}
+
+
+.site3-member-info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.site3-member-name {
+    font-weight: 600;
+    font-size: 1em;
+    color: var(--main-text-color);
+    line-height: 1.2; 
+    margin: 0;
+    font-style: normal;
+}
+
+.site3-member-position,
+.site3-member-location,
+.site3-member-phone {
+    font-size: 12px;
+    color: var(--main-text-color);
+    line-height: 1.0;
+    margin: 10px;
+    font-style: normal;
+    overflow: hidden;
+}
+
+.site3-member-position {
+    color: var(--accent-color);
+    font-style: italic;
+}
+
+.site3-member-phone a {
+    color: inherit;
+    text-decoration: none;
+}
+.site3-member-phone a:hover {
+    text-decoration: underline;
+}
+
+.site3-call-icon {
+    color: #13ad57;
+    margin-right: 0.2rem;
+}     
+        
+        
+        #site4-posts-feed {
+            margin: 1.2rem 0 2.2rem 0;
+            width: 100vw; 
+            display: flex;
+            flex-direction: column;
+            gap: 2.3rem;
+            align-items: center; 
+        }
+        
+       
+        #site5-footer {
+            width: 100vw;
+            background: linear-gradient(90deg, #1B263B 60%, #415A77 100%);
+            color: #fff;
+            border-top: 3px solid #415A77;
+            padding: 1.3rem 0 0.7rem 0;
+            position: relative;
+        }
+
+        .site5-footer-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.3rem;
+            flex-wrap: wrap;
+        }
+
+        .site5-logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            border: 2px solid #ffd700;
+            object-fit: contain;
+        }
+
+        .site5-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffd700;
+        }
+
+        .site5-socials {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .site5-socials a {
+            color: #fff;
+            background: #2d8cf0;
+            padding: 0.5rem;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .site5-socials a:hover {
+            background: #ffd700;
+            color: #222;
+        }
+
+        .site5-footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.4rem;
+            margin-top: 1.1rem;
+            font-size: 13px;
+        }
+
+        .site5-contact-link {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+        
+
+        @media (max-width: 700px) {
+            .site1-header-row,
+           
+            .site5-footer-row,
+            #site4-posts-feed {
+                flex-wrap: wrap;
+                gap: 0.6rem;
+            }
+
+           
+
+            .site5-title {
+                font-size: 14px;
+            }
+
+        }
+        
+
+        body.bg-2 .site1-header-row,
+        body.bg-2 #site5-footer,
+        body.bg-2 .site1-modal-content {
+            background: #232323 !important;
+            color: #f4f4f4 !important;
+        }
+
+        body.bg-3 .site1-header-row,
+        body.bg-3 #site5-footer,
+        body.bg-3 .site1-modal-content {
+            background: #ece9f6 !important;
+            color: #2a2a2a !important;
+        }
+
+        body.bg-3 .site5-socials a {
+            background: #ffd700;
+            color: #2a2a2a;
+        }
+
+        body.bg-3 .site5-title {
+            color: #2d8cf0;
+        }
+      
+
+        body::-webkit-scrollbar {
+            width: 8px;
+            background: #415A77;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: #2d8cf0;
+            border-radius: 4px;
+        }
+
+        .edit-post-textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #415A77;
+            background-color: #0D1B2A;
+            color: #E0E1DD;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            resize: vertical; 
+        }
+
+        .edit-post-actions {
+            display: flex;
+            justify-content: flex-end; 
+            gap: 10px;
+        }
+
+        .edit-post-actions button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s ease;
+        }
+
+        .edit-post-save-btn {
+            background: #2d8cf0;
+            color: #fff;
+        }
+
+        .edit-post-save-btn:hover {
+            background: #1e6ec7;
+        }
+
+        .edit-post-cancel-btn {
+            background: #778DA9;
+            color: #fff;
+        }
+
+        .edit-post-cancel-btn:hover {
+            background: #5a6e87;
+        }
+                    
+
+.organization-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 21px;
+    
+    font-weight: 900;
+            background: conic-gradient(
+                #FF0000 0% 15%, 
+                #eeff15 15% 30%, 
+                #FFFF00 30% 45%, 
+                #00FF00 45% 60%, 
+                #0000FF 60% 75%, 
+                #6edcca 75% 90%, 
+                #9400D3 90% 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+.wrapper {
+  background-color: #f0f0f0; 
+  padding: 20px;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+}
+ 
+.custom-notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #333; 
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: none; 
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  min-width: 250px;
+  max-width: 350px;
+  font-family: 'Inter', sans-serif; 
+}
+
+.custom-notification-container.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.custom-notification-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.custom-notification-close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  margin-left: 15px;
+  line-height: 1;
+}
+
+
+.custom-notification-container.info {
+  background-color: #2196F3; 
+}
+
+.custom-notification-container.success {
+  background-color: #4CAF50; 
+}
+
+.custom-notification-container.error {
+  background-color: #F44336; 
+}
+
+
+.site1-modal {
+  display: none;
+  position: fixed;
+  z-index: 1001; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4); 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.site1-modal.hidden {
+  
+}
+
+.site1-modal-content {
+  background: linear-gradient(135deg, #0D1B2A, #1B263B, #415A77); 
+  margin: auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  color: white;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box; 
+}
+
+.site1-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.site1-modal-close:hover,
+.site1-modal-close:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.site1-bell-title,
+.site1-download-title {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.site1-bell-title i,
+.site1-download-title i {
+  color: #FFA726; 
+}
+
+.site1-bell-toggle,
+.site1-download-btn-modal {
+  background-color: #FFA726;
+  color: #0D1B2A;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.site1-bell-toggle:hover,
+.site1-download-btn-modal:hover {
+  background-color: #FFB74D;
+  transform: translateY(-2px);
+}
+
+    .radio-control-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            border-radius: 0;
+        }
+        .radio-control-overlay .radio-icon {
+            font-size: 3em;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            transition: transform 0.2s ease-in-out;
+        }
+        .radio-control-overlay .radio-icon.playing {
+            animation: pulse-animation 1.5s infinite;
+        }
+        @keyframes pulse-animation {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .radio-control-overlay:hover .radio-icon {
+            transform: scale(1.1);
+        }
+        
+       
+.site2-post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.site2-post-time {
+    color: #778DA9;
+    font-size: 0.8em;
+}
+
+.site2-post-actions {
+    display: flex;
+    gap: 20px;
+}
+
+
+.menu-item {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.menu-item:hover {
+    color: #FF5733; 
+}
+
+.new-post-btn {
+    background-color: #007BFF;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.new-post-btn:hover {
+    background-color: #0056b3;
+}
+
+
+ .frame-bottom-bar {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  margin-bottom: 0px; 
+}
+
+.live-indicator {
+  width: 20px;
+  height: 20px;
+  background-color: red; 
+  border-radius: 50%; 
+  animation: live-pulse 1.5s infinite; 
+  left: 50%;  
+  position: relative;
+  
+}
+
+@keyframes live-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.live-text {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: red;
+ 
+ 
+}
+
+ 
+        .site1-modal.hidden,
+        .viewer.hidden,
+        .custom-notification-container {
+            display: none !important;
+        }
+        
+        .custom-notification-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-width: 250px;
+            max-width: 90%;
+        }
+
+        .custom-notification-container.success {
+            background-color: #4CAF50; 
+        }
+        .custom-notification-container.error {
+            background-color: #f44336; 
+        }
+        .custom-notification-container.info {
+            background-color: #2196F3; 
+        }
+
+        .custom-notification-content {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        #customNotificationMessage {
+            margin-right: 10px;
+        }
+
+        .custom-notification-close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 0 5px;
+        }
+                
+                
+      
+.post-media-container {
+    position: relative; 
+}
+
+.post-youtube-iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    border: none;
+}
+
+.post-video-fs-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+
+.post-video-fs-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.post-audio-container {
+    
+    background: linear-gradient(180deg, rgba(40, 5, 60, 0.63) 0%, rgba(20, 10, 3, 0.10) 70%, rgba(20, 20, 20, 0.07) 100%);
+    border-radius: 16px;
+}
+
+.post-audio-element {
+    width: 100%;
+     
+}
+
+.custom-notification-container {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    align-items: center;
+    gap: 10px;
+}
+
+.custom-notification-container.success {
+    background-color: #28a745;
+}
+
+.custom-notification-container.info {
+    background-color: #17a2b8;
+}
+
+.custom-notification-container.error {
+    background-color: #dc3545;
+}
+
+.custom-notification-message {
+    font-size: 14px;
+}
+
+.custom-notification-close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.post-options-menu button[data-action="translate"] {
+    width: 100%;
+    text-align: left;
+    padding: 8px 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    
+}
+
+.post-options-menu button[data-action="translate"]:hover {
+    background-color: #f1f1f1;
+}
+
+.other-lang-container {
+    display: none;
+    flex-direction: column;
+    padding: 10px;
+    gap: 5px;
+}
+
+.other-lang-container input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.other-lang-container button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+       
+      .leaway{
+          text-align: center;
+          Font-weight: bold;
+             color: #FFFFFF;
+            text-shadow: 
+                2px 2px 0 #FF6F61,    
+                -2px -2px 0 #6B5B95,  
+                2px -2px 0 #FF6F61, 
+                -2px 2px 0 #6B5B95;
+        }
+        
+      
+    .image-container {
+        display: inline-block;
+        position: relative;
+       
+    }000
+
+    .image-container img {       
+        width: 420px;
+        height: 420px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+        transition: all 0.4s ease; 
+    }
+ .image-container .caption {
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 1.4;
+        margin-top: 10px;
+        color: #333;
+    }
+    
+    .image-container .small-text {
+        font-size: 10px;
+        font-weight: normal;
+        color: #777;
+    }
+
+   
+    .image-style-15 img {
+        border-radius: 5px; 
+        transform: skewX(-10deg); 
+        box-shadow: 4px 4px 0 #9e9e9e; 
+        border: 3px solid #795548; 
+    }
+
+      
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;  
+    transition: opacity 0.5s ease;
+}
+
+.preloader-content {
+    text-align: center;
+}
+
+.preloader-content img {
+    width: 100px;
+    height: 100px;
+    animation: pulse 2s infinite;
+    border-radius: 50%;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.25), 
+                0 0 50px rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05);
+    background: white;
+    padding: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.preloader-content img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), 
+                0 0 60px rgba(255, 255, 255, 0.2);
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.preloader-content p {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: white; 
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.25), 0 0 50px rgba(255, 255, 255, 0.15);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.4), 0 0 60px rgba(255, 255, 255, 0.2);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.25), 0 0 50px rgba(255, 255, 255, 0.15);
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+.translate-icon {
+ font-size: 40px;
+  color: #007bff;
+  cursor: pointer;
+  margin: 8px;
+  transition: 0.3s;
+  position: absolute;
+  right: 0px;
+  top: 200px;
+  
+  
+}
+
+.translate-icon:hover {
+  color: #0056b3;
+  transform: scale(1.2);
+}
+
+.translate-container {
+  position: absolute;
+  top: 45px;
+  right: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 12px;
+  width: 220px;
+  z-index: 9999;
+  font-family: Arial, sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+.close-btn {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#languageSelect, #customLanguage {
+  width: 100%;
+  padding: 6px;
+  margin-top: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#submitLang {
+  margin-top: 6px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#submitLang:hover {
+  background: #0056b3;
+}
+
+.loader {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #007bff;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.tran{
+    Font-size: 10px;
+    Font-weight: bold;
+}
+
+
+
+.site2-banner-media {
+    position: relative; 
+    overflow: hidden;    
+}
+
+.site2-media-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    border-radius: 0;
+    transition: background 0.3s ease;
+}
+
+.site2-media-control-btn {
+    background: none;
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.site2-media-control-btn .site2-media-icon {
+    font-size: 3.5em; 
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.site2-media-control-btn .site2-media-icon.playing {   
+    animation: pulse-animation 1.5s infinite;
+}
+
+.site2-banner-fs {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1em;
+    z-index: 5;
+    transition: background 0.3s;
+}
+
+.site2-banner-fs:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.site2-banner-carousel-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    box-sizing: border-box;
+    z-index: 4;
+}
+
+.site2-banner-prev,
+.site2-banner-next {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background 0.3s;
+}
+
+.site2-banner-prev:hover,
+.site2-banner-next:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.site2-banner-prev:disabled,
+.site2-banner-next:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.audio-progress-bar-container {
+    width: 80%;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.audio-progress-bar {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: #555;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.audio-progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #ffd700;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.audio-time {
+    color: #fff;
+    font-size: 0.8em;
+    min-width: 80px; /* Don gyara tsayi */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+
+.site2-banner-text-container {
+    padding: 15px;
+    background-color: #0D1B2A; 
+    border-radius: 0 0 8px 8px;
+}
+
+.site2-banner-text {
+    color: #E0E1DD;
+    margin-bottom: 10px;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.site2-banner-read-more {
+    background: none;
+    border: none;
+    color: #ffd700;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+
+.media-border-line {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 10px 0;
+}
+
+
+
+.audio-progress-bar {    
+    background: #555; 
+    
+}
+
+
+.audio-progress-bar::-webkit-progress-value {
+    background: #FF5733;
+    border-radius: 3px;
+}
+
+
+.audio-progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #ffd700;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+.audio-progress-bar::-moz-range-thumb {
+    background: #ffd700; 
+    border: none;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.site2-media-overlay {      
+    flex-direction: column; 
+    justify-content: center;
+}
+
+.kaitsaye-media-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.7);
+    transition: filter 0.3s;
+}
+
+.status-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 26px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 30px rgba(0, 123, 255, 0.25),
+              0 4px 100px rgba(0, 123, 255, 0.3); 
+}
+
+
+.status-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #00c6ff, #007bff);
+  box-shadow: 0 12px 40px rgba(0, 123, 255, 0.35),
+              0 6px 120px rgba(0, 123, 255, 0.4);
+}
+
+.status-btn i {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.status-btn:hover i {
+  transform: rotate(90deg);
+}
+
+
+  </style>          
+</head>
+<body>
+    <div id="preloader">
+    <div class="preloader-content">
+        <img src="https://i.imgur.com/lwddsvh.png" alt="Loading Logo" />
+        <div class="spinner"></div>
+        <p>Peace is loading…</p>
+    </div>
+</div>
+ 
+    <header id="site1-header">
+        <div class="site1-header-row">
+            <img src="https://i.imgur.com/lwddsvh.png" alt="LPHRA Logo" class="site1-logo">
+            <img src="https://i.imgur.com/PZwb8dE.jpeg" alt="Leadway Course" class="site1-course" title="Go to Leadway Course" tabindex="0">
+            <button class="site1-bg-btn site1-bg-1" title="Dark Blue Theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="site1-bg-btn site1-bg-2" title="Dark Theme">
+                <i class="fa-solid fa-circle"></i>
+            </button>
+            <button class="site1-bg-btn site1-bg-3" title="Light Theme">
+                <i class="fa-solid fa-sun"></i>
+            </button>
+            <button class="site1-push-btn" title="Members Menu">
+                <i class="fa-solid fa-user-shield"></i>
+            </button>
+            <button id="site1-bell-btn" class="site1-bell-btn" title="Notifications">
+                <i class="fa-solid fa-bell fa-shake"></i>
+            </button>
+            
+            <a href="status.html" class="menu-item new-post-btn">New Post Status</a>
+            <a href="report.html" class="menu-item new-post-btn">Report Form</a>
+            <button id="site1-download-btn" class="site1-download-btn" title="Download App">
+                <i class="fa-solid fa-download fa-bounce"></i>
+            </button>
+        </div>
+    </header>
+<div class="leaway"> Leaway Peace Foundation and Human Rights Aids</div>
+    <div class="frame-bottom-bar">
+        <span class="live-indicator"></span>
+        <span class="live-text">LIVE</span>
+        <span class="organization-name">LPFHRA</span>
+    </div>
+    <div style="text-align: center;">
+        <p class="live-info">Live Section: Video, Radio, For Leadway Peace Functions & Human Rights Aids</p>
+    </div>
+
+    <section id="site2-banner-post"></section>
+    
+    <div id="video-viewer" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 9999; display: none; justify-content: center; align-items: center;">
+    <button id="video-viewer-close" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 2em; cursor: pointer;">
+        <i class="fas fa-times"></i>
+    </button>
+    <div style="width: 90%; max-width: 900px; max-height: 80vh;">
+        <video id="viewer-video" controls playsinline style="width: 100%; height: auto; max-height: 80vh;"></video>
+    </div>
+</div>
+
+
+   <div style="text-align: center; margin: 2rem auto; max-width: 700px; padding: 0 15px; color: var(--main-text-color);">
+
+ 
+ <p style="font-size: 12px; font-weight: bold; line-height: 1.5;">
+
+
+<div class="image-container image-style-15">
+  <img src="https://i.imgur.com/lGb8hIq.png" alt="Haruna Lawali"
+       style="width:220px; height:220px;" onclick="openImage(this.src)">
+  
+ 
+  <i class="fa-solid fa-globe translate-icon" title="Translate this text" onclick="toggleTranslateContainer()"><i class="tran"> Translation</i></i>
+
+  
+  <div id="translateContainer" class="translate-container hidden">
+    <span class="close-btn" onclick="closeTranslateContainer()">&times;✖️</span>
+    <h4>Select Language</h4>
+    <select id="languageSelect">
+      <option value="">Choose language...</option>
+      <option value="en">English</option>
+      <option value="ar">Arabic</option>
+      <option value="fr">French</option>
+      <option value="ha">Hausa</option>
+      <option value="yo">Yoruba</option>
+      <option value="ig">Igbo</option>
+      <option value="es">Spanish</option>
+      <option value="other">Other</option>
+    </select>
+
+    <div id="otherLanguageInput" style="display:none;">
+      <input type="text" id="customLanguage" placeholder="Enter language code or name">
+      <button id="submitLang"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
+
+<div id="textSection">
+ <p>
+  I, Haruna Lawali, created this website to show how members of the Leadway Peace Foundation and Human Rights Aids (LPFHRA) are committed to promoting peace, justice, and protecting the rights of women, children, and the less privileged.
+ </p>
+
+ <p style="font-size: 12px; font-weight: bold; line-height: 1.5;">
+ Our foundation stands for truth, fairness, and transparency in all humanitarian activities. Unlike many aid organizations where help sometimes fails to reach the right people, LPFHRA members actively monitor and report every effort to ensure honesty and proper follow-up.
+ </p>
+
+ <p style="font-size: 12px; font-weight: bold; line-height: 1.5;">
+  Each registered member has a certified page showing their work in humanitarian aid, peacebuilding, legal support, and community development. Members can share their achievements, stories, or awareness posts — such as about new opportunities, public health, or human rights.
+ </p>
+
+ <p style="font-size: 12px; font-weight: bold; line-height: 1.5;">
+  Visitors can read, listen, and translate every post into their preferred language for easier understanding.
+Everyone is welcome to join, partner with us, or register as a member. After registration, you’ll receive a certificate of experience and access to training and empowerment opportunities.
+ </p>
+
+ <p style="font-size: 12px; font-weight: bold; line-height: 1.5;">
+ You can also contact the nearest LPFHRA member for help, advice, or to report a complaint — they are always ready to assist you in matters of justice and peace.
+ </p>
+</div>
+<div id="loader" class="loader hidden"></div>
+</div>
+</div>
+
+<div id="imgModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.85); text-align:center;">
+  <span onclick="closeImage()" style="position:absolute; top:20px; right:35px; font-size:40px; font-weight:bold; color:#fff; cursor:pointer; color: red;">✖</span>
+  <img id="modalImg" src="" style="margin-top:60px; max-width:90%; max-height:80%; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.5);">
+</div>
+
+<script>
+function openImage(src) {
+  document.getElementById("imgModal").style.display = "block";
+  document.getElementById("modalImg").src = src;
+}
+function closeImage() {
+  document.getElementById("imgModal").style.display = "none";
+}
+</script>
+
+
+
+    <section id="site3-members-carousel"></section>
+
+<center>
+<a href="status.html" class="status-btn">
+  <i class="fa-solid fa-circle-plus"></i> New Post (LPFHRA Members Status)
+</a></center>
+
+    <h3 style="text-align: center;">“LPFHRA Members Sharing Their Achievements and Contributions”</h3>
+    
+    <section id="site4-posts-feed"></section>
+
+    <footer id="site5-footer">
+        <div class="site5-footer-row">
+            <img src="https://i.imgur.com/lwddsvh.png" alt="LPHRA Logo" class="site5-logo">
+            <span class="site5-title">Leadway Peace Foundation And Human Rights Aids</span>
+            <div class="site5-socials">
+                <a href="#" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" target="_blank" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="#" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" target="_blank" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+        </div>
+        <center> 
+          <p>Reg. 7373969</p>
+          </center>
+        <div class="site5-footer-bottom">
+            
+                    
+            <span>Email: <a href="mailto:leawaypeacefoundation@gmail.com">info@lpfhra.org</a></span>
+            <span><a href="contact.html" class="site5-contact-link">Contact Us</a></span>
+        </div>
+    </footer>
+
+   
+    <div id="site1-push-modal" class="site1-modal hidden">
+        <div class="site1-modal-content">
+            <button class="site1-modal-close"><i class="fa-solid fa-times"></i></button>
+            <ul class="site1-modal-menu">
+                <li><button onclick="window.location='register.html';"><i class="fa-solid fa-user-plus"></i> Member Register</button></li>
+                <li><button onclick="window.location='login.html';"><i class="fa-solid fa-right-to-bracket"></i> Member Login</button></li>
+                <li><button onclick="window.location='about.html';"><i class="fa-solid fa-info-circle"></i> About Us</button></li>
+                <li><button onclick="window.location='leadwayCourse.html';"><i class="fa-solid fa-certificate"></i> Leadway Course Certificate</button></li>
+            </ul>
+            <div class="site1-modal-warning">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Members of Leadway Peace Foundation and Human Rights Aids approved only can register or login.
+            </div>
+        </div>
+    </div>
+    
+    <div id="site1-bell-modal" class="site1-modal hidden">
+        <div class="site1-modal-content">
+            <button class="site1-modal-close"><i class="fa-solid fa-times"></i></button>
+            <div class="site1-bell-title"><i class="fa-solid fa-bell"></i> Notifications</div>
+            <button class="site1-bell-toggle" id="site1-bell-toggle-btn">Turn On/Off Notifications</button>
+        </div>
+    </div>
+    
+    <div id="site1-download-modal" class="site1-modal hidden">
+        <div class="site1-modal-content">
+            <button class="site1-modal-close"><i class="fa-solid fa-times"></i></button>
+            <div class="site1-download-title"><i class="fa-solid fa-download"></i> Download App</div>
+            <button class="site1-download-btn-modal" id="site1-download-btn-modal">Install LPHRA App</button>
+        </div>
+    </div>
+
+    <div id="site4-translate-modal" class="site1-modal hidden">
+        <div class="site1-modal-content">
+            <button class="site1-modal-close"><i class="fa-solid fa-times"></i></button>
+            <div class="site4-translate-title"><i class="fa-solid fa-language"></i> Translate</div>
+            <ul class="site4-translate-list">
+                <li><button data-lang="en">English</button></li>
+                <li><button data-lang="ha">Hausa</button></li>
+                <li><button data-lang="fr">French</button></li>
+                <li><button data-lang="yo">Yoruba</button></li>
+                <li><button data-lang="ar">Arabic</button></li>
+                <li><button data-lang="hi">Hindi</button></li>
+                <li><button data-lang="bn">Bangla</button></li>
+                <li><button data-lang="es">Spanish</button></li>
+            </ul>
+        </div>
+    </div>
+
+    
+  
+    <div id="image-viewer" class="viewer hidden">
+        <button id="image-viewer-close" class="viewer-close"><i class="fa-solid fa-times"></i></button>
+        <button id="image-viewer-download" class="viewer-download"><i class="fa-solid fa-download"></i></button>
+        <img id="viewer-image" src="" alt="Viewed Image">
+    </div>
+    
+    <div id="video-viewer" class="viewer hidden">
+        <button id="video-viewer-close" class="viewer-close"><i class="fa-solid fa-times"></i></button>
+        <video id="viewer-video" controls autoplay src=""></video>
+    </div>
+
+    <audio id="global-audio-player" style="display:none;"></audio>
+
+    <div id="customNotificationContainer" class="custom-notification-container">
+        <div class="custom-notification-content">
+            <span id="customNotificationMessage"></span>
+            <button class="custom-notification-close-btn">&times;</button>
+        </div>
+    </div>
+  
+    
+<script>
+    const bannerSection = document.getElementById('site2-banner-post');
+    const TRUNCATE_LIMIT = 150;        
+    const videoViewer = document.getElementById('video-viewer');
+    let viewerVideo = document.getElementById('viewer-video'); 
+    const videoViewerClose = document.getElementById('video-viewer-close');
+    
+    
+    const globalAudioPlayer = new Audio();
+    let currentPlayingAudioUrl = null;
+    let isBannerRadioPlaying = false; 
+        
+</script>
+
+<script type="module">
+import { app, analytics, firebaseConfig } from './firebase.js';
+import { getDatabase, ref, get, set, push, update, remove, child, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
+
+const db = getDatabase(app);
+const LOCAL_STORAGE_VERSION = 'v1.1';
+const VERSION_KEY = 'lpfhra_storage_version';
+
+function checkLocalStorageVersion() {
+    const currentVersion = localStorage.getItem(VERSION_KEY);
+    if (currentVersion !== LOCAL_STORAGE_VERSION) {
+        localStorage.clear();
+        localStorage.setItem(VERSION_KEY, LOCAL_STORAGE_VERSION);
+    }
+}
+
+checkLocalStorageVersion();
+
+let postsDataCache = {};
+let translationCache = {};
+
+const bgBtns = document.querySelectorAll('.site1-bg-btn');
+const pushModal = document.getElementById('site1-push-modal');
+const downloadModal = document.getElementById('site1-download-modal');
+const bellModal = document.getElementById('site1-bell-modal');
+const translateModal = document.getElementById('site4-translate-modal');
+const imageViewer = document.getElementById('image-viewer');
+const viewerImage = document.getElementById('viewer-image');
+const imageViewerClose = document.getElementById('image-viewer-close');
+const imageViewerDownload = document.getElementById('image-viewer-download');
+const videoViewer = document.getElementById('video-viewer');
+const viewerVideo = document.getElementById('viewer-video');
+const videoViewerClose = document.getElementById('video-viewer-close');
+const postsFeed = document.getElementById('site4-posts-feed');
+const bannerSection = document.getElementById('site2-banner-post');
+const membersSection = document.getElementById('site3-members-carousel');
+
+const globalAudioPlayer = document.getElementById('global-audio-player');
+let currentPlayingAudioUrl = null;
+let isBannerRadioPlaying = false;
+const TRUNCATE_LIMIT = 200;
+const seenPostsTracker = new Set();
+const memberLastSeenKeyPrefix = 'memberLastSeen_';
+
+const postObserverOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5
+};
+
+const postVisibilityObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const postElement = entry.target;
+            const postId = postElement.dataset.postId;
+            const ownerUid = postElement.dataset.ownerUid;
+
+            if (!seenPostsTracker.has(postId)) {
+                handlePostSee(ownerUid, postId, postElement.id);
+                seenPostsTracker.add(postId);
+            }
+            observer.unobserve(postElement);
+        }
+    });
+}, postObserverOptions);
+
+
+function hidePreloader() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {        
+      
+        preloader.style.opacity = '0';        
+       
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500); 
+    }
+}
+
+function showNotification(message, type = 'info') {
+    const notificationContainer = document.getElementById('customNotificationContainer');
+    const notificationMessage = document.getElementById('customNotificationMessage');
+    
+    if (notificationContainer && notificationMessage) {
+        notificationMessage.textContent = message;
+        notificationContainer.className = `custom-notification-container ${type}`;
+        notificationContainer.style.display = 'flex';
+        
+        const closeBtn = notificationContainer.querySelector('.custom-notification-close-btn');
+        if (closeBtn) {
+            closeBtn.onclick = () => {
+                notificationContainer.style.display = 'none';
+            };
+        }
+        setTimeout(() => {
+            notificationContainer.style.display = 'none';
+        }, 3000);
+    } else {
+        console.warn("Notification elements not found. Cannot show notification.");
+    }
+}
+
+function showCustomNotification(message, type) {
+    showNotification(message, type);
+}
+
+function formatTimeAgo(utcTimestamp) {
+    if (!utcTimestamp) return '';
+    const date = new Date(utcTimestamp);
+    if (isNaN(date.getTime())) {
+        return '';
+    }
+    const now = new Date();
+    const seconds = Math.floor((now - date) / 1000);
+    let interval = seconds / 31536000;
+    if (interval > 1) return Math.floor(interval) + " years ago";
+    interval = seconds / 2592000;
+    if (interval > 1) return Math.floor(interval) + " months ago";
+    interval = seconds / 86400;
+    if (interval > 1) return Math.floor(interval) + " days ago";
+    interval = seconds / 3600;
+    if (interval > 1) return Math.floor(interval) + " hours ago";
+    interval = seconds / 60;
+    if (interval > 1) return Math.floor(interval) + " minutes ago";
+    return Math.floor(seconds) + " seconds ago";
+}
+
+function siteFormatTime(utcTimestamp) {
+    if (!utcTimestamp) return '';
+    const date = new Date(utcTimestamp);
+    if (isNaN(date.getTime())) {
+        return '';
+    }
+    return date.toLocaleString(undefined, {
+        year: "numeric", month: "short", day: "numeric",
+        hour: "2-digit", minute: "2-digit"
+    });
+}
+
+async function translateText(text, targetLanguage) {
+    if (!text) return "";
+    const cacheKey = `${text}-${targetLanguage}`;
+    if (translationCache[cacheKey]) {
+        return translationCache[cacheKey];
+    }
+    try {
+        const response = await fetch("https://leadwaypeace.pages.dev/api/translate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": "@haruna66"
+            },
+            body: JSON.stringify({
+                text: text,
+                targetLang: targetLanguage
+            })
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || "Translation failed");
+        }
+        
+        const data = await response.json();
+        const translatedText = data.translatedText;
+        translationCache[cacheKey] = translatedText;
+        return translatedText;
+    } catch (error) {
+        console.error("Translation error:", error);
+        return text;
+    }
+}
+
+function showLoading(element) {
+    element.innerHTML = '<span class="loading-spinner"></span>';
+    element.classList.add('loading-text-container');
+}
+
+function hideLoading(element, originalText) {
+    element.innerHTML = originalText;
+    element.classList.remove('loading-text-container');
+}
+
+function viewImage(imageSrc) {
+    if (imageViewer && viewerImage) {
+        viewerImage.src = imageSrc;
+        imageViewer.classList.remove('hidden');
+        imageViewer.style.display = 'flex';
+    } else {
+        showNotification("Image viewer elements not found.");
+    }
+}
+
+
+function viewVideo(videoSrc) {
+    if (videoViewer && viewerVideo) {       
+        let finalVideoSrc = videoSrc;      
+        if (videoSrc.includes('youtube.com') || videoSrc.includes('youtu.be') || videoSrc.includes('youtube-nocookie.com')) {         
+            const ytId = videoSrc.split('v=')[1]?.split('&')[0] || videoSrc.split('/').pop().split('?')[0];
+            finalVideoSrc = `https://www.youtube.com/embed/${ytId}?autoplay=1&controls=1&modestbranding=1&rel=0&showinfo=0`;           
+            
+            if (viewerVideo.tagName.toLowerCase() !== 'iframe') {
+                const newIframe = document.createElement('iframe');
+                newIframe.id = 'viewer-video';
+                newIframe.setAttribute('allowfullscreen', 'true');
+                newIframe.setAttribute('allow', 'autoplay');
+                newIframe.style.width = '100%';
+                newIframe.style.height = '100%';
+               viewerVideo.parentNode.replaceChild(newIframe, viewerVideo);
+                viewerVideo = newIframe; 
+            }
+            viewerVideo.src = finalVideoSrc;
+            
+        } else {
+            
+             if (viewerVideo.tagName.toLowerCase() !== 'video') {
+                const newVideo = document.createElement('video');
+                newVideo.id = 'viewer-video';
+                newVideo.setAttribute('controls', 'true');
+                newVideo.setAttribute('playsinline', 'true');
+                newVideo.style.width = '100%';
+                newVideo.style.height = 'auto';
+                viewerVideo.parentNode.replaceChild(newVideo, viewerVideo);
+                viewerVideo = newVideo;
+            }
+            viewerVideo.src = finalVideoSrc;
+            viewerVideo.load();
+            viewerVideo.play().catch(e => console.error("Video play error:", e));
+        }
+        videoViewer.classList.remove('hidden');
+        videoViewer.style.display = 'flex';        
+    } else {
+        showNotification("Video viewer elements not found.");
+    }
+}
+
+if (videoViewerClose) {
+    videoViewerClose.addEventListener('click', () => {
+        if (viewerVideo) {
+            if (viewerVideo.tagName.toLowerCase() === 'video') {
+                viewerVideo.pause();
+            } else if (viewerVideo.tagName.toLowerCase() === 'iframe') {               
+                viewerVideo.src = viewerVideo.src; 
+            }
+        }
+        if (videoViewer) {
+            videoViewer.classList.add('hidden');
+            videoViewer.style.display = 'none';
+        }
+    });
+}
+
+
+function handlePostSee(ownerUid, postId, elementId) {
+    const localStorageKey = `postSeen_${postId}`;
+    const lastSeenTime = localStorage.getItem(localStorageKey);
+    const now = new Date().getTime();
+    const oneDay = 24 * 60 * 60 * 1000;
+    if (lastSeenTime && (now - parseInt(lastSeenTime)) < oneDay) {
+        return;
+    }
+    const seeRef = ref(db, `users/${ownerUid}/Posting/${postId}/see`);
+    try {
+        runTransaction(seeRef, (currentSee) => {
+            return (currentSee || 0) + 1;
+        });
+        localStorage.setItem(localStorageKey, now.toString());
+        
+        const postElement = document.getElementById(elementId);
+        if (postElement) {
+            const seeCountElement = postElement.querySelector('.post-footer-item.site4-post-see span');
+            if (seeCountElement) {
+                seeCountElement.textContent = (parseInt(seeCountElement.textContent) || 0) + 1;
+            }
+        }
+    } catch (error) {
+        console.error("Error updating see count:", error);
+    }
+}
+
+
+function updateMediaSession(audioElement, title, postId, isRadio = false) {  
+    if ('mediaSession' in navigator) {             
+        const streamType = isRadio ? 'Live Radio (LPFHRA)' : 'Audio Post (LPFHRA)';
+        const metadataTitle = `${title} | ${streamType}`;
+        const metadataArtist = 'Live Radio (LPFHRA) ): Software Dev.';
+        const metadataAlbum = isRadio ? 'Streaming Live' : 'Post Content';       
+        let artworkSrc = 'https://i.imgur.com/lwddsvh.png';
+        const postElement = document.querySelector(`.kaitsaye-post-container[data-postid="${postId}"]`);	
+        if (postElement) {            
+            const imageElement = postElement.querySelector('.kaitsaye-media-image');           
+            if (imageElement && imageElement.src) {
+                artworkSrc = imageElement.src;
+            }
+        }
+
+       
+        navigator.mediaSession.metadata = new MediaMetadata({
+            title: metadataTitle,
+            artist: metadataArtist,
+            album: metadataAlbum,
+            artwork: [              
+                { src: artworkSrc, sizes: '96x96', type: 'image/png' },
+                { src: artworkSrc, sizes: '256x256', type: 'image/png' },
+                { src: artworkSrc, sizes: '512x512', type: 'image/png' },
+            ]
+        });
+         navigator.mediaSession.setActionHandler('play', () => {
+            if (audioElement.paused) {
+                audioElement.play();
+            }
+        });        
+        navigator.mediaSession.setActionHandler('pause', () => {
+            if (!audioElement.paused) {
+                audioElement.pause();
+            }
+        });
+     
+        if (!isRadio) {            navigator.mediaSession.setActionHandler('seekbackward', (details) => {
+                audioElement.currentTime = Math.max(audioElement.currentTime - (details.seekOffset || 10), 0);
+            });           navigator.mediaSession.setActionHandler('seekforward', (details) => {
+                audioElement.currentTime = Math.min(audioElement.currentTime + (details.seekOffset || 10), audioElement.duration);
+            });         
+            navigator.mediaSession.setActionHandler('nexttrack', null);
+            navigator.mediaSession.setActionHandler('previoustrack', null);
+        } else {          
+            navigator.mediaSession.setActionHandler('seekbackward', null);
+            navigator.mediaSession.setActionHandler('seekforward', null);
+        }        
+    }
+}
+
+
+let currentPlayingMediaElement = null; 
+
+function playGlobalAudio(url, isRadio = false, isBanner = false, mediaElement = null) {
+    if (!globalAudioPlayer.paused) {
+        pauseGlobalAudio();
+    }
+       
+    globalAudioPlayer.mozAudioChannelType = 'content'; 
+    globalAudioPlayer.setAttribute('playsinline', ''); 
+    
+    const isNewSrc = globalAudioPlayer.src !== url;
+    
+    if (isNewSrc) {
+        globalAudioPlayer.src = url;
+               
+        globalAudioPlayer.preload = isRadio ? 'auto' : 'metadata'; 
+        
+        globalAudioPlayer.load();
+    }
+      
+    currentPlayingAudioUrl = url;
+    isBannerRadioPlaying = isRadio && isBanner; 
+    currentPlayingMediaElement = mediaElement; 
+  
+    let savedTime = 0;
+    const shouldResume = !isRadio;
+    if (shouldResume) {
+        savedTime = parseFloat(sessionStorage.getItem(`audio_time_${url}`)) || 0;
+        globalAudioPlayer.loop = false;
+    } else {
+        globalAudioPlayer.loop = true; 
+    }
+
+    
+    function tryPlay() {
+       globalAudioPlayer.removeEventListener('loadedmetadata', tryPlay); 
+        globalAudioPlayer.removeEventListener('canplaythrough', tryPlay); 
+      
+        if (shouldResume && savedTime > 0 && globalAudioPlayer.currentTime !== savedTime) {
+            globalAudioPlayer.currentTime = savedTime;
+        } 
+        
+        globalAudioPlayer.play().then(() => {            
+            let postTitle = 'Kai Tsaye Media'; let postId = 'banner_post'; 
+            if (mediaElement) {
+                const postContainer = mediaElement.closest('.kaitsaye-post-container') || document.getElementById('site2-banner-post');
+                if (postContainer) {
+                    postId = postContainer.getAttribute('data-postid') || postId;
+                    postTitle = postContainer.querySelector('.site2-post-title')?.textContent || postTitle; 
+                }
+            } else if (isBanner) {
+                const bannerContainer = document.getElementById('site2-banner-post');
+                postTitle = bannerContainer.querySelector('.site2-banner-title')?.textContent || postTitle;
+            }
+            updateMediaSession(globalAudioPlayer, postTitle, postId, isRadio);
+            
+        }).catch(e => {
+            console.warn("Autoplay blocked. User must interact again:", e);
+            updateMediaIconState(url); 
+        });
+    }
+  
+   
+    if (globalAudioPlayer.readyState >= 3 && !isNewSrc) { 
+        tryPlay(); 
+    }    
+    else {      
+            globalAudioPlayer.removeEventListener('loadedmetadata', tryPlay); 
+        globalAudioPlayer.removeEventListener('canplaythrough', tryPlay); 
+
+        if (isRadio) {
+                       globalAudioPlayer.addEventListener('canplaythrough', tryPlay);
+        } else {
+            
+            tryPlay();           
+            if (isNewSrc) {
+                            globalAudioPlayer.addEventListener('loadedmetadata', tryPlay);
+            }
+        }
+    }
+    
+    updateMediaIconState(url); 
+}
+
+
+function pauseGlobalAudio() {
+    if (!globalAudioPlayer.paused && currentPlayingAudioUrl && !globalAudioPlayer.loop) {
+        sessionStorage.setItem(`audio_time_${currentPlayingAudioUrl}`, globalAudioPlayer.currentTime.toString());
+    }
+    
+    globalAudioPlayer.pause();
+    isBannerRadioPlaying = false; 
+    currentPlayingMediaElement = null;    
+    if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = null; 
+        navigator.mediaSession.setActionHandler('play', null);  
+              navigator.mediaSession.setActionHandler('pause', null); 
+                     navigator.mediaSession.setActionHandler('seekbackward', null);
+        navigator.mediaSession.setActionHandler('seekforward', null);
+        navigator.mediaSession.setActionHandler('nexttrack', null);
+        navigator.mediaSession.setActionHandler('previoustrack', null);
+    }
+    
+    updateMediaIconState(currentPlayingAudioUrl); 
+}
+
+
+function handleVisibilityChange() {
+    if (document.hidden) {      
+        if (currentPlayingAudioUrl && !globalAudioPlayer.paused) {            
+            if ('mediaSession' in navigator) {
+                              navigator.mediaSession.setActionHandler('play', () => {
+                   
+                    if (globalAudioPlayer.paused) {
+                        globalAudioPlayer.play();
+                    }
+                });
+            }
+         
+        }
+    } else {       
+      
+        if ('mediaSession' in navigator) {
+             
+        }
+    }
+}
+
+ document.addEventListener('visibilitychange', handleVisibilityChange);
+
+
+
+
+function toggleGlobalAudio(url, isRadio = false, isBanner = false, mediaElement = null) {
+    if (globalAudioPlayer.src === url && !globalAudioPlayer.paused) {
+        pauseGlobalAudio();
+    } else {       
+        document.querySelectorAll('.site2-media-icon, .post-audio-control-icon').forEach(icon => {
+            icon.classList.remove('fa-pause', 'playing');
+            icon.classList.add('fa-play');
+        });
+        
+        playGlobalAudio(url, isRadio, isBanner, mediaElement);
+    }
+}
+
+function updateMediaIconState(currentUrl) {  
+    const bannerMediaContainer = document.querySelector('.site2-audio-rediyo-container');
+    const bannerIcon = document.querySelector('.site2-media-control-btn .site2-media-icon');
+    const mediaType = bannerMediaContainer?.dataset.mediaType;
+
+    if (bannerIcon) {
+        if (!globalAudioPlayer.paused && globalAudioPlayer.src === currentUrl && (mediaType === 'rediyo' || mediaType === 'audio')) {
+         
+            bannerIcon.classList.remove('fa-play');
+            bannerIcon.classList.add('fa-pause');
+            bannerIcon.classList.add('playing'); 
+        } else {          
+            bannerIcon.classList.remove('fa-pause', 'playing');
+            bannerIcon.classList.add('fa-play');
+        }
+    }
+  
+    document.querySelectorAll('.post-audio-control-icon').forEach(icon => {
+        if (icon.dataset.audioSrc === currentUrl && !globalAudioPlayer.paused) {
+            icon.classList.remove('fa-play');
+            icon.classList.add('fa-pause');
+            icon.classList.add('playing');
+        } else {
+            icon.classList.remove('fa-pause', 'playing');
+            icon.classList.add('fa-play');
+        }
+    });
+}
+
+
+globalAudioPlayer.addEventListener('play', () => {
+    updateMediaIconState(globalAudioPlayer.src);
+});
+
+globalAudioPlayer.addEventListener('pause', () => {
+    updateMediaIconState(globalAudioPlayer.src);
+ 
+    if (!globalAudioPlayer.loop) {
+        sessionStorage.setItem(`audio_time_${globalAudioPlayer.src}`, globalAudioPlayer.currentTime.toString());
+    }
+});
+
+globalAudioPlayer.addEventListener('ended', () => {
+    if (globalAudioPlayer.loop) {
+        
+    } else {      
+        currentPlayingAudioUrl = null;
+        updateMediaIconState(globalAudioPlayer.src);
+    }
+});
+
+
+function formatAudioTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+}
+
+
+function updateAudioProgressBar() {
+    if (globalAudioPlayer.paused || globalAudioPlayer.loop) return; 
+
+    const duration = globalAudioPlayer.duration;
+    const currentTime = globalAudioPlayer.currentTime;
+      
+    const progressContainer = document.querySelector('.site2-audio-rediyo-container[data-media-type="audio"] .audio-progress-bar-container');
+    
+    if (progressContainer) {
+        const progressBar = progressContainer.querySelector('.audio-progress-bar');
+        const timeSpan = progressContainer.querySelector('.audio-time');
+
+        if (progressBar && timeSpan && isFinite(duration) && duration > 0) {
+          
+            const progress = (currentTime / duration) * 100;
+            progressBar.value = progress;
+          
+            timeSpan.textContent = `${formatAudioTime(currentTime)} / ${formatAudioTime(duration)}`;
+                     
+            progressBar.disabled = false;
+        } else if (timeSpan) {
+           
+            timeSpan.textContent = '0:00 / 0:00';
+        }
+    }
+}
+
+
+function handleProgressBarSeek() {    
+    const progressContainer = document.querySelector('.site2-audio-rediyo-container[data-media-type="audio"] .audio-progress-bar-container');
+    const progressBar = progressContainer?.querySelector('.audio-progress-bar');
+
+    if (progressBar && !globalAudioPlayer.loop) { 
+       
+        progressBar.addEventListener('input', () => {
+            const duration = globalAudioPlayer.duration;
+            if (isFinite(duration) && duration > 0) {
+               
+                const seekTime = (progressBar.value / 100) * duration;
+                globalAudioPlayer.currentTime = seekTime;
+            }
+        });
+    }
+}
+
+
+globalAudioPlayer.addEventListener('loadedmetadata', () => {
+ 
+    updateAudioProgressBar(); 
+    handleProgressBarSeek(); 
+});
+
+globalAudioPlayer.addEventListener('timeupdate', () => {
+    
+    updateAudioProgressBar(); 
+  
+    if (!globalAudioPlayer.loop) {
+        sessionStorage.setItem(`audio_time_${currentPlayingAudioUrl}`, globalAudioPlayer.currentTime.toString());
+    }
+});
+
+globalAudioPlayer.addEventListener('play', () => {
+    updateMediaIconState(globalAudioPlayer.src);
+});
+
+globalAudioPlayer.addEventListener('pause', () => {
+    updateMediaIconState(globalAudioPlayer.src);
+ 
+});
+
+globalAudioPlayer.addEventListener('ended', () => {
+    if (globalAudioPlayer.loop) {
+    
+    } else {
+      
+        currentPlayingAudioUrl = null;
+        updateAudioProgressBar(); 
+        updateMediaIconState(globalAudioPlayer.src);
+    }
+});
+
+
+window.addEventListener('load', async () => {
+    console.log("Window loaded. Ana jiran dukkan data na Firebase...");
+    try {      
+        const loadPromises = [
+            loadSite2BannerPost(),
+            loadSite4PostsFeed(),
+            loadSite3Members()
+        ];             
+        await Promise.all(loadPromises);        
+        console.log("An gama loading dukkan data.");             
+        hidePreloader();        
+    } catch (error) {
+        console.error("An samu matsala wajen loading data:", error);       
+        hidePreloader();
+        showCustomNotification("Error loading data. Please refresh.", "error");
+    }
+});
+
+bgBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+        const bg = this.classList.contains('site1-bg-1') ? '' :
+                     this.classList.contains('site1-bg-2') ? 'bg-2' : 'bg-3';
+        document.body.className = bg;
+        localStorage.setItem('site1-bg', bg);
+    });
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    const bg = localStorage.getItem('site1-bg');
+    if (bg) document.body.className = bg;    
+    document.querySelector('.site1-push-btn')?.addEventListener('click', () => {
+        if (pushModal) {
+            pushModal.classList.remove('hidden');
+            pushModal.style.display = 'flex';
+        }
+    });
+    pushModal?.querySelector('.site1-modal-close')?.addEventListener('click', () => {
+        if (pushModal) {
+            pushModal.classList.add('hidden');
+            pushModal.style.display = 'none';
+        }
+    });    
+    document.getElementById('site1-bell-btn')?.addEventListener('click', () => {
+        if (bellModal) {
+            bellModal.classList.remove('hidden');
+            bellModal.style.display = 'flex';
+        }
+    });
+    bellModal?.querySelector('.site1-modal-close')?.addEventListener('click', () => {
+        if (bellModal) {
+            bellModal.classList.add('hidden');
+            bellModal.style.display = 'none';
+        }
+    });
+    document.getElementById('site1-download-btn')?.addEventListener('click', () => {
+        if (downloadModal) {
+            downloadModal.classList.remove('hidden');
+            downloadModal.style.display = 'flex';
+        }
+    });
+    downloadModal?.querySelector('.site1-modal-close')?.addEventListener('click', () => {
+        if (downloadModal) {
+            downloadModal.classList.add('hidden');
+            downloadModal.style.display = 'none';
+        }
+    });
+    
+    document.querySelector('.site1-course')?.addEventListener('click', () => {
+        window.location = 'leadwayCourse.html';
+    });
+    
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js').then(registration => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            }).catch(error => {
+                console.log('Service Worker registration failed:', error);
+            });
+        });
+    }
+
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+    });
+
+    const bellToggleBtn = document.getElementById('site1-bell-toggle-btn');
+    const downloadBtnModal = document.getElementById('site1-download-btn-modal');
+
+    if (bellToggleBtn) {
+        bellToggleBtn.addEventListener('click', () => {
+            if (!('Notification' in window)) {
+                showNotification("Notifications are not supported in your browser.", 'error');
+                return;
+            }
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') {
+                    bellToggleBtn.textContent = 'Turn Off Notifications';
+                    showNotification("Notifications are enabled. You will receive updates.", 'success');
+                } else {
+                    bellToggleBtn.textContent = 'Turn On Notifications';
+                    showNotification("Notifications are denied. You won't receive updates.", 'info');
+                }
+            });
+        });
+    }
+
+    if (downloadBtnModal) {
+        downloadBtnModal.addEventListener('click', () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        showNotification('LPFHRA App was installed successfully!', 'success');
+                    } else {
+                        showNotification('LPFHRA App installation was dismissed.', 'info');
+                    }
+                    deferredPrompt = null;
+                });
+            } else {
+                showNotification("App installation is not available at this moment. You can still use the website.", 'info');
+            }
+        });
+    }
+    
+    if (translateModal) {
+        translateModal.querySelector('.site1-modal-close')?.addEventListener('click', () => {
+            translateModal.classList.add('hidden');
+            translateModal.style.display = 'none';
+        });
+        
+        translateModal.querySelectorAll('button[data-lang]').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const lang = this.dataset.lang;
+                const postId = translateModal.dataset.postId;
+                const postTextElement = document.getElementById(`site4-post-text-${postId}`);
+                const originalText = postsDataCache[document.getElementById(`site4-post-${postId}`).dataset.ownerUid]?.Posting?.[postId]?.text;
+
+                if (lang === 'other') {
+                    document.getElementById('translate-lang-buttons').style.display = 'none';
+                    document.getElementById('other-lang-input-container').style.display = 'flex';
+                } else {
+                    translatePostTextFeed(postTextElement, originalText, lang, postId);
+                    translateModal.classList.add('hidden');
+                    translateModal.style.display = 'none';
+                }
+            });
+        });
+
+        document.getElementById('translate-other-ok')?.addEventListener('click', async () => {
+            const otherLang = document.getElementById('other-lang-input').value.trim();
+            const postId = translateModal.dataset.postId;
+            const postTextElement = document.getElementById(`site4-post-text-${postId}`);
+            const originalText = postsDataCache[document.getElementById(`site4-post-${postId}`).dataset.ownerUid]?.Posting?.[postId]?.text;
+            
+            if (otherLang) {
+                translatePostTextFeed(postTextElement, originalText, otherLang, postId);
+                document.getElementById('other-lang-input').value = '';
+                document.getElementById('other-lang-input-container').style.display = 'none';
+                document.getElementById('translate-lang-buttons').style.display = 'block';
+                translateModal.classList.add('hidden');
+                translateModal.style.display = 'none';
+            } else {
+                showNotification("Please enter a language.", 'info');
+            }
+        });
+    }
+});
+
+
+
+function loadSite2BannerPost() {   
+    return get(ref(db, 'NewPost')).then(snapshot => {
+        if (!snapshot.exists()) {
+            bannerSection.innerHTML = '<p>No new post available.</p>';
+            return;
+        }
+        const post = snapshot.val();      
+        const rediyoLink = post.rediyoLink || post.radioLink; 
+        const audioLink = post.audioLink;
+        const photoLinks = [post.photoLink1, post.photoLink2, post.photoLink3, post.photoLink4, post.photoLink5].filter(Boolean);
+        const hasPhoto = photoLinks.length > 0;
+        const isSinglePhoto = photoLinks.length === 1;        
+        const postId = "bannerPost";
+        const ownerUid = "admin";
+        let bannerMediaHTML = '';        
+       
+        if (rediyoLink || audioLink) {
+            const mediaUrl = rediyoLink || audioLink;
+            const isRadio = !!rediyoLink;
+            const mediaType = isRadio ? 'rediyo' : 'audio';
+            const defaultImg = isRadio ? 'https://placehold.co/600x400/0D1B2A/E0E1DD?text=Radio' : 'https://placehold.co/600x400/0D1B2A/E0E1DD?text=Audio';
+            const imgSrc = photoLinks[0] || defaultImg;
+                       
+            bannerMediaHTML += `
+                <div class="site2-banner-media site2-audio-rediyo-container" data-media-type="${mediaType}" data-media-url="${mediaUrl}">
+                    <img src="${imgSrc}" class="site2-banner-img" style="width:100%;height:auto;object-fit:cover;border-radius:0;">
+                    <div class="site2-media-overlay site2-${mediaType}-overlay">
+                        <button class="site2-media-control-btn" data-media-url="${mediaUrl}" data-is-radio="${isRadio}">
+                            <i class="fa-solid fa-play site2-media-icon" data-media-url="${mediaUrl}"></i>
+                        </button>
+                        ${!isRadio ? '<div class="audio-progress-bar-container"><input type="range" value="0" min="0" max="100" class="audio-progress-bar" disabled><span class="audio-time">0:00 / 0:00</span></div>' : ''}
+                    </div>
+                </div>`;
+            
+        } else if (post.videoLink) {         
+            let videoSrc = post.videoLink;
+            let iframeEmbed = '';
+            let isYouTube = false;
+
+            if (post.videoLink.includes('youtube.com') || post.videoLink.includes('youtu.be')) {
+                isYouTube = true;
+                const ytId = post.videoLink.split('v=')[1]?.split('&')[0] || post.videoLink.split('/').pop();            
+                iframeEmbed = `
+                    <iframe src="https://www.youtube.com/embed/${ytId}?autoplay=0&controls=1&modestbranding=1&rel=0&showinfo=0" 
+                    frameborder="0" allowfullscreen style="width:100%;height:auto;aspect-ratio:16/9;border-radius:0;">
+                    </iframe>`;
+               
+                videoSrc = `https://www.youtube.com/embed/${ytId}?autoplay=1&controls=1&modestbranding=1&rel=0&showinfo=0`;
+            }
+            
+            bannerMediaHTML += `
+                <div class="site2-banner-media">
+                    ${iframeEmbed || `<video src="${post.videoLink}" controls preload="none" style="width:100%;height:auto;border-radius:0;"></video>`}
+                    <button class="site2-banner-fs" data-video-src="${videoSrc}"><i class="fa-solid fa-expand"></i></button>
+                </div>`;
+
+        } else if (hasPhoto) {           
+            let carouselControls = '';
+            if (!isSinglePhoto) {               
+                carouselControls = `
+                    <div class="site2-banner-carousel-controls">
+                        <button class="site2-banner-prev" data-post-id="${postId}" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="site2-banner-next" data-post-id="${postId}" ${isSinglePhoto ? 'disabled' : ''}><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>`;
+            }
+
+            bannerMediaHTML += `
+                <div class="site2-banner-media site2-banner-carousel" data-photo-index="0" data-post-id="${postId}">
+                    <img src="${photoLinks[0]}" class="site2-banner-img current-photo" style="width:100%;height:auto;object-fit:cover;border-radius:0;" data-photo-links='${JSON.stringify(photoLinks)}'>
+                    ${carouselControls}
+                </div>`;
+        }         
+        let bannerHTML = bannerMediaHTML;
+                
+        if (post.text || post.postingTime) {
+            bannerHTML += `<div class="site2-banner-text-container">`;
+            
+            if (post.text) {
+                const needsTruncate = post.text.length > TRUNCATE_LIMIT;
+                const displayText = needsTruncate ? post.text.substring(0, TRUNCATE_LIMIT) + '...' : post.text;
+                bannerHTML += `<div class="site2-banner-text">${displayText}</div>`;
+                if (needsTruncate) {
+                    bannerHTML += `<button class="site2-banner-read-more">Read More</button>`;
+                }
+            }
+            if (post.postingTime) {
+                bannerHTML += `<div class="site2-post-time">${siteFormatTime(post.postingTime)}</div>`;
+                bannerHTML += `<div class="media-border-line"></div>`;
+            }
+            
+            bannerHTML += `</div>`;
+        }
+        
+        bannerSection.innerHTML = bannerHTML;
+       
+        const mediaControlBtn = bannerSection.querySelector('.site2-media-control-btn');
+        if (mediaControlBtn) {
+            mediaControlBtn.addEventListener('click', function() {
+                const url = this.dataset.mediaUrl;
+                const isRadio = this.dataset.isRadio === 'true';
+                toggleGlobalAudio(url, isRadio, true); 
+            });
+        }
+        
+       
+        if (hasPhoto && !isSinglePhoto) {
+            const imgElement = bannerSection.querySelector('.site2-banner-img');
+            const prevBtn = bannerSection.querySelector('.site2-banner-prev');
+            const nextBtn = bannerSection.querySelector('.site2-banner-next');
+            let currentPhotoIndex = 0;
+            const photos = JSON.parse(imgElement.dataset.photoLinks);
+
+            const updateCarousel = () => {
+                imgElement.src = photos[currentPhotoIndex];
+                prevBtn.disabled = currentPhotoIndex === 0;
+                nextBtn.disabled = currentPhotoIndex === photos.length - 1;
+            };
+
+            prevBtn.addEventListener('click', () => {
+                if (currentPhotoIndex > 0) {
+                    currentPhotoIndex--;
+                    updateCarousel();
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentPhotoIndex < photos.length - 1) {
+                    currentPhotoIndex++;
+                    updateCarousel();
+                }
+            });
+        }
+        
+       
+        const bannerReadMoreBtn = bannerSection.querySelector('.site2-banner-read-more');
+        
+        if (bannerReadMoreBtn) {
+            bannerReadMoreBtn.addEventListener('click', () => {
+                const bannerTextElement = bannerSection.querySelector('.site2-banner-text');
+                if (bannerTextElement) {
+                    bannerTextElement.textContent = post.text;
+                    bannerReadMoreBtn.style.display = 'none';
+                }
+            });
+        }
+             
+        bannerSection.querySelectorAll('.site2-banner-img').forEach(imgElement => {
+            imgElement.addEventListener('click', () => viewImage(imgElement.src));
+        });
+                
+        bannerSection.querySelectorAll('.site2-banner-fs').forEach(fsButton => {
+            fsButton.addEventListener('click', () => {
+                const videoSrc = fsButton.dataset.videoSrc;
+                if (videoSrc) viewVideo(videoSrc);
+            });
+        });
+   
+        handlePostSee(ownerUid, postId, bannerSection.id);
+    }).catch(error => { 
+        console.error("Error loading banner post:", error);
+        bannerSection.innerHTML = '<p>Error loading post.</p>';
+        throw error; 
+    });
+}
+
+
+function loadSite3Members() {  
+    return get(ref(db, 'users')).then(snapshot => {
+        if (!snapshot.exists()) {
+            membersSection.innerHTML = '<p>No members found.</p>';
+            return;
+        }
+        const users = snapshot.val();
+        let memberHTML = '';
+        
+        let membersArray = Object.keys(users).map(uid => {
+            const user = users[uid];
+            return { uid, ...user };
+        }).filter(member => member.fullName && member.profilePhoto);       
+        let currentUserLocation = { state: null, country: null };       
+        membersArray.sort((a, b) => {
+            const aSeenTime = localStorage.getItem(memberLastSeenKeyPrefix + a.uid) ? parseInt(localStorage.getItem(memberLastSeenKeyPrefix + a.uid)) : 0;
+            const bSeenTime = localStorage.getItem(memberLastSeenKeyPrefix + b.uid) ? parseInt(localStorage.getItem(memberLastSeenKeyPrefix + b.uid)) : 0;
+            
+            let aProximity = 0;
+            let bProximity = 0;
+            
+            if (aProximity !== bProximity) {
+                return bProximity - aProximity;
+            }
+            return aSeenTime - bSeenTime;
+        });
+        membersArray.forEach(user => {
+            memberHTML += `
+            <div class="site3-member-card" data-uid="${user.uid}">
+                <img src="${user.profilePhoto || 'https://i.imgur.com/lwddsvh.png'}" 
+                class="site3-member-photo" alt="Member Photo">
+                
+                <div class="site3-member-info">
+                <span class="site3-member-name">
+                    ${user.fullName || 'Unknown User'}
+                    <span class="site3-member-position">(${user.position || 'Member'})</span>
+                </span>
+                
+                <span class="site3-member-location">
+                    ${user.country || ''}${user.state ? ' ' + user.state : ''}${user.lga ? ' ' + user.lga : ''}
+                </span>
+                
+                <span class="site3-member-phone">
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="tel:${user.phoneNumber || ''}">${user.phoneNumber || 'Not Available'}</a>
+                </span>
+                </div>
+            </div>
+            `;
+        });
+        membersSection.innerHTML = memberHTML;
+        membersSection.querySelectorAll('.site3-member-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const uid = card.dataset.uid;
+                localStorage.setItem(memberLastSeenKeyPrefix + uid, new Date().getTime().toString());
+                window.location = `profile.html?uid=${uid}`;
+            });
+        });
+    }).catch(error => { 
+        console.error("Error loading members:", error);
+        membersSection.innerHTML = '<p>Error loading members.</p>';
+        throw error;
+    });
+}
+
+
+function loadSite4PostsFeed() { 
+    return get(ref(db, 'users')).then(snapshot => {
+        if (!snapshot.exists()) {
+            postsFeed.innerHTML = '<p>No posts available.</p>';
+            return;
+        }
+        const users = snapshot.val();
+        postsDataCache = users;
+        let posts = [];
+        Object.keys(users).forEach(uid => {
+            if (users[uid].Posting && users[uid].fullName && users[uid].profilePhoto) {
+                Object.keys(users[uid].Posting).forEach(postId => {
+                    const post = users[uid].Posting[postId];
+                    if (!post || (!post.text && !post.photoLink1 && !post.videoLink && !post.audioLink)) {
+                        return;
+                    }
+                    post.uid = uid;
+                    post.postId = postId;
+                    post.user = users[uid];
+                    posts.push(post);
+                });
+            }
+        });
+        posts.sort((a, b) => new Date(b.postingTime || 0).getTime() - new Date(a.postingTime || 0).getTime());
+        let postsHTML = '';
+        posts.forEach(post => {
+            postsHTML += renderSite4PostCard(post);
+        });
+        postsFeed.innerHTML = postsHTML;
+        postsFeed.querySelectorAll('.post-card').forEach(postElement => {
+            postVisibilityObserver.observe(postElement);
+        });
+        postsFeed.addEventListener('click', handleSite4PostActions);
+    }).catch(error => {
+        console.error("Error loading posts feed:", error);
+        postsFeed.innerHTML = '<p>Error loading posts.</p>';
+        throw error;
+    });
+}
+
+function renderSite4PostCard(post) {
+    const hasText = post.text && post.text.trim() !== '';
+    const needsTruncate = hasText && post.text.length > TRUNCATE_LIMIT;
+    const displayText = needsTruncate ? post.text.substring(0, TRUNCATE_LIMIT) + '...' : post.text;
+    
+    let mediaHTML = '';
+    let postContentHTML = '';
+    
+    if (hasText) {
+        postContentHTML += `
+            <div class="post-content">
+                <div class="post-text" id="site4-post-text-${post.postId}">${displayText}</div>
+                ${needsTruncate ? `<button class="read-more-btn">Read More</button>` : ''}
+            </div>
+        `;
+    }
+    
+    if (post.videoLink) {
+        let videoSrc = post.videoLink;
+        let iframeEmbed = '';
+        let showFullscreenButton = true;
+        if (post.videoLink.includes('youtube.com') || post.videoLink.includes('youtu.be')) {
+            const ytId = post.videoLink.split('v=')[1]?.split('&')[0] || post.videoLink.split('/').pop();
+            iframeEmbed = `
+                <iframe src="https://www.youtube.com/embed/${ytId}?autoplay=0&controls=1&modestbranding=1&rel=0&showinfo=0" 
+                frameborder="0" allowfullscreen class="post-youtube-iframe">
+                </iframe>`;
+            videoSrc = `https://www.youtube.com/embed/${ytId}?autoplay=1&controls=1&modestbranding=1&rel=0&showinfo=0`;
+        }
+        mediaHTML = `
+            <div class="post-media-container">
+                ${iframeEmbed || `<video src="${post.videoLink}" controls class="post-video-element"></video>`}
+                ${showFullscreenButton ? `<button class="post-video-fs-btn" data-video-src="${videoSrc}"><i class="fa-solid fa-expand"></i></button>` : ''}
+            </div>`;
+    } else if (post.photoLink1) {
+        const photos = [post.photoLink1, post.photoLink2, post.photoLink3, post.photoLink4, post.photoLink5].filter(Boolean);
+        mediaHTML = `<div class="post-media-container post-photo-container">`;
+        photos.forEach(p => {
+            mediaHTML += `<img src="${p || 'https://i.imgur.com/lwddsvh.png'}" class="post-media-image">`;
+        });
+        mediaHTML += `</div>`;
+    }
+    
+    let audioHTML = '';
+    if (post.audioLink) {
+        audioHTML = `
+            <div class="post-audio-container">
+                <audio src="${post.audioLink}" controls class="post-audio-element"></audio>
+            </div>
+        `;
+    }
+    
+    const finalPostHTML = `
+        <div class="post-card" id="site4-post-${post.postId}" data-post-id="${post.postId}" data-owner-uid="${post.uid}">
+            
+            <div class="post-header">
+            <div class="post-user-info">
+                <img src="${post.profilePhoto || 'https://i.imgur.com/lwddsvh.png'}" alt="Profile Photo" class="profile-photo">
+                <div class="user-details">
+                    <h4><i class=""></i> ${post.fullName || 'User'} ${post.position ? `(${post.position})` : ''}</h4>
+                    <span class="user-meta">${post.country || ''}, ${post.state || ''} &bull; ${formatTimeAgo(post.postingTime)}</span>
+                </div>
+                    </div>
+                </a>
+                <div class="post-options-container">
+                    <button class="post-options-btn" aria-label="Post Options">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                    <div class="post-options-menu hidden" id="site4-options-menu-${post.postId}">
+                        <button class="close-options-menu" aria-label="Close menu"><i class="fas fa-times"></i></button>
+                        ${hasText ? `<button data-action="translate" data-lang="en">English</button>` : ''}
+                        ${hasText ? `<button data-action="translate" data-lang="ha">Hausa</button>` : ''}
+                        ${hasText ? `<button data-action="translate" data-lang="yo">Yoruba</button>` : ''}
+                        ${hasText ? `<button data-action="translate" data-lang="ig">Igbo</button>` : ''}
+                        ${hasText ? `<button data-action="translate" data-lang="fr">French</button>` : ''}
+                        ${hasText ? `<button data-action="translate" data-lang="ar">Arabic</button>` : ''}
+                        ${hasText ? `<button data-action="translate" data-lang="other">Other...</button>` : ''}
+                        <div class="other-lang-container hidden">
+                            <input type="text" id="other-lang-input-${post.postId}" placeholder="Enter language name (e.g., Igbo, Spanish)">
+                            <button data-action="translate-other" data-post-id="${post.postId}">Translate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            ${postContentHTML}
+            ${mediaHTML}
+            ${audioHTML}
+            <div class="post-footer">
+                <span class="post-footer-item site4-post-see"><i class="fa-solid fa-eye"></i> See <span>${post.see || 0}</span></span>
+                <span class="post-footer-item site4-post-comment" data-action="comment" data-post-id="${post.postId}" data-owner-uid="${post.uid}">
+                    <i class="fa-solid fa-comment-dots"></i> Comment <span>${post.totalComment || 0}</span>
+                </span>
+                <span class="post-footer-item site4-post-like" data-action="like" data-post-id="${post.postId}" data-owner-uid="${post.uid}">
+                    <i class="fa-solid fa-thumbs-up"></i> Like <span>${post.like || 0}</span>
+                </span>
+            </div>
+        </div>
+    `;
+    return finalPostHTML;
+}
+
+function handleSite4PostActions(event) {
+    const target = event.target;
+    const postCard = target.closest('.post-card');
+
+    if (!postCard) return;
+
+    const postId = postCard.dataset.postId;
+    const ownerUid = postCard.dataset.ownerUid;
+    const post = postsDataCache[ownerUid]?.Posting?.[postId];    
+        
+    const postTextElement = postCard.querySelector('.post-text');
+  
+    if (target.classList.contains('read-more-btn')) {
+        if (postTextElement && post) {          
+            const isTranslated = postTextElement.dataset.isTranslated === 'true';
+            const fullTranslatedText = postTextElement.dataset.fullTranslatedText;            
+            if (isTranslated && fullTranslatedText) {
+              
+                postTextElement.textContent = fullTranslatedText;
+            } else {
+               
+                postTextElement.textContent = post.text;
+            }          
+            
+            target.style.display = 'none';
+        }
+        return;
+    }
+    
+  
+    if (target.classList.contains('post-media-image')) {
+        viewImage(target.src);
+        return;
+    } else if (target.classList.contains('post-video-fs-btn')) {
+        viewVideo(target.dataset.videoSrc);
+        return;
+    } else if (target.classList.contains('post-audio-control-icon')) {
+        toggleGlobalAudio(target.dataset.audioSrc);
+        return;
+    } else if (target.closest('.post-user-info')) {
+        const uid = target.closest('.post-card').dataset.ownerUid;
+        localStorage.setItem(memberLastSeenKeyPrefix + uid, new Date().getTime().toString());
+        window.location = `profile.html?uid=${uid}`;
+        return;
+    } 
+  
+    const optionsBtn = target.closest('.post-options-btn');
+    if (optionsBtn) {
+        const optionsMenu = postCard.querySelector('.post-options-menu');
+        if (optionsMenu) {
+            document.querySelectorAll('.post-options-menu:not(.hidden)').forEach(menu => {
+                if (menu !== optionsMenu) {
+                    menu.classList.add('hidden');
+                    menu.style.display = 'none';
+                }
+            });
+            optionsMenu.classList.toggle('hidden');
+            optionsMenu.style.display = optionsMenu.classList.contains('hidden') ? 'none' : 'flex';
+        }
+        return;
+    }
+    
+    const closeOptionsBtn = target.closest('.close-options-menu');
+    if (closeOptionsBtn) {
+        const optionsMenu = closeOptionsBtn.closest('.post-options-menu');
+        if (optionsMenu) {
+            optionsMenu.classList.add('hidden');
+            optionsMenu.style.display = 'none';
+        }
+        return;
+    }
+
+  
+    const translateBtn = target.closest('button[data-action="translate"]');
+    if (translateBtn && post && postTextElement) {
+        const lang = translateBtn.dataset.lang;
+        const optionsMenu = translateBtn.closest('.post-options-menu');
+        const otherLangContainer = postCard.querySelector('.other-lang-container');
+        
+        if (lang === 'other') {
+            optionsMenu.querySelectorAll('button[data-action="translate"]').forEach(btn => btn.style.display = 'none');
+            otherLangContainer.classList.remove('hidden');
+            otherLangContainer.style.display = 'flex';
+        } else {
+            translatePostTextFeed(postTextElement, post.text, lang, postId, postCard);
+            if (optionsMenu) {
+                optionsMenu.classList.add('hidden');
+                optionsMenu.style.display = 'none';
+            }
+        }
+        return;
+    }
+
+  
+    const translateOtherBtn = target.closest('button[data-action="translate-other"]');
+    if (translateOtherBtn && post && postTextElement) {
+        const otherLangInput = postCard.querySelector('.other-lang-container input');
+        const otherLang = otherLangInput?.value.trim();
+        const optionsMenu = postCard.querySelector('.post-options-menu');
+
+        if (otherLang) {
+            translatePostTextFeed(postTextElement, post.text, otherLang, postId, postCard);
+            
+           
+            if (otherLangInput) otherLangInput.value = '';
+            const otherLangContainer = postCard.querySelector('.other-lang-container');
+            if (otherLangContainer) {
+                otherLangContainer.classList.add('hidden');
+                otherLangContainer.style.display = 'none';
+            }
+            if (optionsMenu) {
+                optionsMenu.classList.add('hidden');
+                optionsMenu.style.display = 'none';
+                optionsMenu.querySelectorAll('button[data-action="translate"]').forEach(btn => btn.style.display = 'block');
+            }
+        } else {
+            showNotification("Please enter a language.", "info");
+        }
+        return;
+    }
+
+
+    const likeCommentSpan = target.closest('.post-footer-item.site4-post-like, .post-footer-item.site4-post-comment');
+    if (likeCommentSpan) {
+        const postId = likeCommentSpan.dataset.postId;
+        const ownerUid = likeCommentSpan.dataset.ownerUid;
+        if (!postId || !ownerUid) {
+            console.error("PostId or OwnerUid is missing from the element's data attributes.");
+            return;
+        }
+        const action = likeCommentSpan.dataset.action;
+        if (action === 'like') {
+            handlePostLikeFeed(ownerUid, postId, likeCommentSpan);
+        } else if (action === 'comment') {
+            window.location.href = `comment.html?postId=${postId}&postUid=${ownerUid}`;
+        }
+        return;
+    }
+    
+    const clickedImage = target.closest('.post-media-image');
+    if (clickedImage) {
+        viewImage(clickedImage.src);
+        return;
+    }
+    
+    const videoFsBtn = target.closest('.site4-media-fs-btn');
+    if (videoFsBtn) {
+        const videoSrc = videoFsBtn.dataset.video-src;
+        if (videoSrc) viewVideo(videoSrc);
+        return;
+    }
+    
+    const audioControlIcon = target.closest('.post-audio-control-icon');
+    if (audioControlIcon) {
+        const audioSrc = audioControlIcon.dataset.audioSrc;
+        if (audioSrc) toggleGlobalAudio(audioSrc, false);
+        return;
+    }
+}
+
+
+async function translatePostTextFeed(postTextElement, originalText, targetLang, postId, postCard) {
+    if (!postTextElement || !originalText || !targetLang) return;
+
+    const readMoreBtn = postCard ? postCard.querySelector('.read-more-btn') : null;
+    const postContainer = postTextElement;
+    const needsTruncate = originalText.length > TRUNCATE_LIMIT;
+    const cacheKey = `translation_feed_${postId}_${targetLang}`;
+    let translatedText = null;
+   
+    postContainer.dataset.isTranslated = 'false';
+    postContainer.dataset.fullTranslatedText = '';
+ 
+    const cachedTranslation = localStorage.getItem(cacheKey);
+    if (cachedTranslation) {
+        translatedText = cachedTranslation;
+        showNotification('Using cached translation.', 'success');
+    }
+
+    if (!translatedText) {
+        showLoading(postContainer);
+        try {
+          
+            translatedText = await translateText(originalText, targetLang);
+
+            if (translatedText && translatedText !== originalText) {
+                localStorage.setItem(cacheKey, translatedText);
+                showNotification('Translation successful!', 'success');
+            } else {
+              
+                translatedText = originalText;
+                showNotification('This Language is Not Available or translation returned original text.', 'info');
+            }
+        } catch (error) {
+            console.error("Translation error:", error);
+           
+            translatedText = originalText;
+            showNotification('Failed to translate. Showing original text.', 'error');
+        }
+    }
+   
+    if (translatedText !== originalText) {
+        postContainer.dataset.fullTranslatedText = translatedText; 
+        postContainer.dataset.isTranslated = 'true';
+    } else {
+        postContainer.dataset.isTranslated = 'false';
+    }
+  
+    if (needsTruncate) {
+        const displayText = translatedText.substring(0, TRUNCATE_LIMIT) + '...';
+        postContainer.textContent = displayText;
+        if (readMoreBtn) {
+            readMoreBtn.style.display = 'inline-block'; // Nuna "Read More"
+        }
+    } else {
+        postContainer.textContent = translatedText;
+        if (readMoreBtn) {
+            readMoreBtn.style.display = 'none'; 
+        }
+    }
+       postContainer.classList.remove('loading-text-container');    
+   
+    if (postContainer.querySelector('.loading-spinner')) {
+         hideLoading(postContainer, postContainer.textContent);
+    }
+}
+
+
+function getLikerId() {
+    let anonymousId = localStorage.getItem('lpfhra_anonymous_liker_id');
+    if (!anonymousId) {
+        anonymousId = 'anon_' + crypto.randomUUID();
+        localStorage.setItem('lpfhra_anonymous_liker_id', anonymousId);
+    }
+    return anonymousId;
+}
+
+async function handlePostLikeFeed(ownerUid, postId, likeSpanElement) {
+    const likerId = getLikerId();
+    if (!likerId) {
+        showCustomNotification('Could not get a user ID to record your like.', 'error');
+        return;
+    }
+    
+    const likedUsersRef = ref(db, `users/${ownerUid}/Posting/${postId}/likedUsers/${likerId}`);
+    const likeCountRef = ref(db, `users/${ownerUid}/Posting/${postId}/like`);
+    
+    try {
+        const likedSnapshot = await get(likedUsersRef);
+        const currentLikeCountElement = likeSpanElement.querySelector('span');
+        
+        if (likedSnapshot.exists()) {
+            await remove(likedUsersRef);
+            await runTransaction(likeCountRef, (currentLike) => {
+                return Math.max(0, (currentLike || 1) - 1);
+            });
+            showCustomNotification('Post unliked!', 'info');
+            if (currentLikeCountElement) {
+                currentLikeCountElement.textContent = Math.max(0, parseInt(currentLikeCountElement.textContent) - 1);
+            }
+        } else {
+            await set(likedUsersRef, true);
+            await runTransaction(likeCountRef, (currentLike) => {
+                return (currentLike || 0) + 1;
+            });
+            showCustomNotification('Post liked!', 'success');
+            if (currentLikeCountElement) {
+                currentLikeCountElement.textContent = parseInt(currentLikeCountElement.textContent) + 1;
+            }
+        }
+    } catch (error) {
+        console.error("Error toggling like:", error);
+        showCustomNotification('Failed to update like. Please try again.', 'error');
+    }
+}
+
+const socials = document.querySelectorAll('.site5-socials a');
+if (socials[0]) socials[0].href = "https://facebook.com";
+if (socials[1]) socials[1].href = "mailto:leadwaypeace@gmail.com";
+if (socials[2]) socials[2].href = "https://wa.me/";
+if (socials[3]) socials[3].href = "https://t.me/";
+if (socials[4]) socials[4].href = "https://instagram.com/";
+if (socials[5]) socials[5].href = "https://x.com/";
+</script>
+<script>
+const translateContainer = document.getElementById("translateContainer");
+const languageSelect = document.getElementById("languageSelect");
+const otherInput = document.getElementById("otherLanguageInput");
+const loader = document.getElementById("loader");
+const textSection = document.getElementById("textSection");
+
+let originalHTML = textSection.innerHTML;
+
+function toggleTranslateContainer() {
+  translateContainer.classList.toggle("hidden");
+}
+
+function closeTranslateContainer() {
+  translateContainer.classList.add("hidden");
+}
+
+languageSelect.onchange = () => {
+  if (languageSelect.value === "other") {
+    otherInput.style.display = "block";
+  } else if (languageSelect.value) {
+    otherInput.style.display = "none";
+    translatePage(languageSelect.value);
+  }
+};
+
+document.getElementById("submitLang").onclick = () => {
+  const lang = document.getElementById("customLanguage").value.trim();
+  if (lang) translatePage(lang);
+};
+
+async function translatePage(targetLang) {
+  const text = textSection.innerText.trim();
+  if (!text) return;
+
+ 
+  textSection.innerHTML = "";
+  loader.classList.remove("hidden");
+
+  try {
+    const response = await fetch("https://leadwaypeace.pages.dev/api/translate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "@haruna66"
+      },
+      body: JSON.stringify({
+        text: text,
+        targetLang: targetLang
+      })
+    });
+
+    const data = await response.json();
+    loader.classList.add("hidden");
+
+    if (response.ok && data.translatedText) {
+      textSection.innerHTML = `<p style="font-weight:bold; line-height:1.5;">${data.translatedText}</p>`;
+      localStorage.setItem("translatedText", data.translatedText);
+    } else {
+      textSection.innerHTML = originalHTML;
+      alert("Translation failed. Showing original text.");
+    }
+  } catch (error) {
+    loader.classList.add("hidden");
+    textSection.innerHTML = originalHTML;
+    alert("An error occurred while translating.");
+  }
+}
+</script>
+</body>
+</html>
