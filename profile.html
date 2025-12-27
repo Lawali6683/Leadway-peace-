@@ -292,6 +292,9 @@ button#submit-post-btn:hover {
     transform: translateY(-2px);
 }
 
+
+
+
 .post-card {
     background: transparent;
     border-radius: 0;
@@ -313,6 +316,9 @@ button#submit-post-btn:hover {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+
+
 .post-user-info {
     display: flex;
     align-items: center;
@@ -1499,6 +1505,7 @@ const imgurClientId = '5acf7eff9c91660';
 const TRUNCATE_LIMIT = 200;
 
 
+
 const preloader = document.getElementById('preloader');
 const coursesLink = document.getElementById('courses-link');
 const notesLink = document.getElementById('notes-link');
@@ -1811,8 +1818,7 @@ async function siteSubmitPost() {
         
         showNotification('Post created successfully!', 'success');
         if (writePostContainer) writePostContainer.classList.add('hidden');
-        
-        // Clearing inputs and state
+                
         if (postTextarea) postTextarea.value = '';
         if (imageLinkInput) imageLinkInput.value = '';
         if (videoLinkInput) videoLinkInput.value = '';
@@ -1999,11 +2005,22 @@ const observerOptions = {
 const postObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+
             const postDiv = entry.target;
             const postId = postDiv.dataset.postId;
             const ownerUid = postDiv.dataset.ownerUid;
-            handlePostSee(ownerUid, postId);
+
+            // 🔐 Lock: prevent multiple triggers
+            if (postDiv.dataset.seeTriggered === "true") {
+                return;
+            }
+            postDiv.dataset.seeTriggered = "true";
+
+            // 🛑 Stop observing immediately before calling function
             observer.unobserve(postDiv);
+
+            // 👁 Call only once
+            handlePostSee(ownerUid, postId);
         }
     });
 }, observerOptions);
@@ -2098,24 +2115,10 @@ async function handlePostLike(ownerUid, postId) {
     }
 }
 
-async function handlePostSee(ownerUid, postId) {
-    const userId = (currentUser) ? currentUser.uid : getGuestUserId(); 
-    const hasSeenKey = `seen-${postId}-${userId}`;
 
-    if (localStorage.getItem(hasSeenKey)) {
-        return; 
-    }
 
-    const seeRef = ref(db, `users/${ownerUid}/Posting/${postId}/see`);
-    try {
-        await runTransaction(seeRef, (currentSee) => {
-            return (currentSee || 0) + 1;
-        });
-        localStorage.setItem(hasSeenKey, 'true');
-    } catch (error) {
-        console.error("Error updating see count:", error);
-    }
-}
+
+
 
 async function deletePostWithNotification(ownerUid, postId) {
     showNotification('Deleting post...');
@@ -2386,8 +2389,8 @@ function siteRenderPosts(uid, posts) {
     });
 
     postsContainer.appendChild(fragment);
-
-    postsContainer.querySelectorAll('.post-card').forEach(postElement => {
+          
+ postsContainer.querySelectorAll('.post-card').forEach(postElement => {
         postObserver.observe(postElement);
     });
 }
@@ -2469,8 +2472,8 @@ function siteCreatePostElement(ownerUid, postId, post) {
     `;
     return postDiv;
 }
-                              
-    
+   
+
 </script>
     </body>
 </html>
